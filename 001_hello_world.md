@@ -1,4 +1,4 @@
-## D言語入門-Hello, World!
+# D言語入門-Hello, World!
 
 ## Hello, world!---その前に
 
