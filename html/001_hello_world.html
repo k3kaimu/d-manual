@@ -1,0 +1,211 @@
+<h1 id="hello-world---その前に">Hello, world!---その前に</h1>
+<p>　プログラミングの入門といえば&quot;Hello, world!&quot;ですね。早速書いてみたいのですが、皆さんはコンパイラとテキストエディタは手に入れていますか？この2つはポケモンで言えば「たいせつなもの」です。プログラム(==ソースコード)を書くには、テキストエディタがいります。notepad.exeで編集したければそれでいいのですが、せっかくなのでカッコイイテキストエディタを入手しましょう。各エディタの説明はしませんが、個人的にはSublime Text2がオススメです。</p>
+<ul>
+<li>notepad++</li>
+<li>Sublime Text2</li>
+<li>Vim</li>
+<li>Emacs</li>
+</ul>
+<p>　エディタをゲットしたら、次はコンパイラを持ってこないといけません。D言語のコンパイラは有名なものでdmd, gdc, ldcとありますが、普通はdmdを使うので、dmdを<a href="http://dlang.org/download.html">ここ</a>からダウンロードしましょう。Windowsの人は&quot;dmd Windows installer&quot;をダウンロードして実行すれば全部設定くれます。</p>
+<p>　インストールが終わったら、コンソール(ターミナル)画面をたちあげてdmdと打ってみましょう。ズラズラズラ～と文字が出てきたら成功です。</p>
+<h1 id="hello-world">Hello, world!</h1>
+<p>　さて、テキストエディタをたちあげて以下の文字列をそのまま打ち込んでhelloworld.dで保存しましょう。</p>
+<pre class="sourceCode d"><code class="sourceCode d"><span class="kw">import</span> std.stdio;
+
+<span class="dt">void</span> main()
+{
+    writeln(<span class="st">&quot;Hello, world!&quot;</span>);
+}</code></pre>
+<p>　次にコンソールで以下をタイプ。</p>
+<pre><code>dmd -run helloworld</code></pre>
+<p>　さて、コンソールで以下のように出力されれば成功です、おめでとう！これで</p>
+<pre><code>Hello, world!</code></pre>
+<h2 id="注意...">注意...</h2>
+<p>　これからは&quot;dmd...&quot;などのコマンドと実行結果を一緒に、以下のように表記します。</p>
+<pre><code>&gt; dmd -run helloworld
+Hello World!</code></pre>
+<h1 id="hello-worldを詳しくみてみる">Hello, world!を詳しくみてみる</h1>
+<p>　ここからはさっき書いたHello Worldプログラムを解析していきます。</p>
+<h2 id="行目">1行目</h2>
+<pre class="sourceCode d"><code class="sourceCode d"><span class="kw">import</span> std.stdio;</code></pre>
+<p>　「モジュールstd.stdioを読み込む」という意味です。std.stdioのstdはstandardの略で、stdioはstandard Input/Outputの略です。std.stdioというのはstdパッケージに属するstdioモジュールという意味です。今は理解できないかもしれませんが、のちほどモジュールの項で説明します。<br />　1行目を書く理由は、writelnが使いたいからです。std.stdioにはwritelnが定義されていますので、それをimportしてこないとwritelnが使えません。つまり、これから「fooというのを使いたい！fooはbarモジュールで定義されてる」という場合にはfooを使う前に&quot;import bar;&quot;と書かなければいけません。</p>
+<h2 id="行目-1">2行目</h2>
+<p>　2行目はただの空白です。D言語のプログラムのソースコード中では任意の場所に空白を入れても構いません。もちろん、&quot;import&quot;を&quot;i m p o r t&quot;と書くのは不正です。</p>
+<h2 id="行目-2">3行目</h2>
+<pre class="sourceCode d"><code class="sourceCode d"><span class="dt">void</span> main()</code></pre>
+<p>　D言語では、すべてのプログラムはmainという関数(function)から始まります。関数というのは、数学の関数とほとんど同じで入力(input)を受け取ったら、その入力を加工して出力(output)を返すものです。このmainの場合は何も受け取らずなにも返しません(void)が、<code>void main(string[] args)</code>と書けば、<code>string[] args</code>を受け取ってなにも返さないmain関数となります。関数はソースコード上では以下のように記述されます。</p>
+<pre class="sourceCode d"><code class="sourceCode d">OutputType fName(InputType1 arg1, InputType2 arg2, ...)
+{
+    <span class="kw">function</span> Body
+}</code></pre>
+<p>　OutputTypeは関数の出力の型(タイプ)、InputType1とかInputType2は入力の型(タイプ)で、arg1, arg2は仮引数(かりひきすう)と呼ばれます。また、InputType1, InputType2は引数の型, OutputTypeは返り値や戻り値の型(Returned Type)と呼ばれます。function Bodyは関数本体といい、入力から出力を生成する手順を記述します。いきなり意味がわからない単語が増加しましたが、ここは後から詳しく説明します。</p>
+<h2 id="行目-3">4行目</h2>
+<pre class="sourceCode d"><code class="sourceCode d">{</code></pre>
+<p>　3行目の項で説明した関数の{}の開始のカッコです。ここから6行目の&quot;}&quot;までは関数本体となります。</p>
+<h2 id="行目-4">5行目</h2>
+<pre class="sourceCode d"><code class="sourceCode d">    writeln(<span class="st">&quot;Hello, world!&quot;</span>);</code></pre>
+<p>　この行は、「writelnという関数に&quot;Hello, world!&quot;を引数として渡して、呼び出す」という意味です。writelnという関数はstd.stdioにあるというのは説明しました。writelnは、&quot;write&quot;, &quot;ln&quot;に分解できます。&quot;write&quot;は書きだす、&quot;ln&quot;は改行を意味します。つまり、writeln(&quot;Hello, world!&quot;)は「&quot;Hello, world!&quot;と書きだして改行する」という意味です。<br />　writelnがあるんだから、writeもあります。writeは改行なしで出力すること以外はwritelnと同じ動作です。write, writelnについて後ほど詳しく説明します。</p>
+<h2 id="行目-5">6行目</h2>
+<pre class="sourceCode d"><code class="sourceCode d">}</code></pre>
+<p>　main関数の関数本体の終了を表すカッコです。</p>
+<h1 id="write-writelnと型について">write, writelnと型について</h1>
+<p>　write, writelnはstd.stdioで宣言(==定義)されています。writeやwritelnは複数の引数を受け取ることができます。つまり、先ほどのHello Worldのプログラムを改変した以下のコードも有効です。コンパイルして実行してみましょう。</p>
+<pre class="sourceCode d"><code class="sourceCode d"><span class="kw">import</span> std.stdio;
+
+<span class="dt">void</span> main()
+{
+    writeln(<span class="st">&quot;Hello, &quot;</span>, <span class="st">&quot;World! &quot;</span>, <span class="dv">123</span>);
+}</code></pre>
+<pre class="sourceCode d"><code class="sourceCode d">&gt; dmd -run helloworld
+Hello, World! <span class="dv">123</span></code></pre>
+<p>　さて、&quot;Hello, &quot;や&quot;World! &quot;は&quot;&quot;でくくりましたが、123は&quot;&quot;でくくってません。というのは、&quot;&quot;でくくったものはstring(文字列)という型になるのに対し、123とそのまま書くとint(整数; integar)という型になります。ほとんどのプログラミング言語は、データに型を持ちます。ここでいうデータというのは&quot;Hello, &quot;とか123とかのことで、型というのはstring, intのことです。もしデータに型がなければどうなるでしょうか？コンピュータは0, 1で全てを表しているといいますが、123も&quot;Hello, &quot;も0と1で表されてしまいますから、文字なのか数値なのかよくかわらなくなってしまいます。そのようなことを避けるために、数値にはint, 文字列にはstringと型を付けるのです。そして、writelnはどんな型が入力に入っているかを確認できるので、それぞれの型に合わせて出力のフォーマットを変えてくれます。</p>
+<h1 id="関数について">関数について</h1>
+<p>　型についてちょっとはわかったと思うので、次は関数について少し理解しましょう。プログラムは関数とデータの集合だと考えることができます。「関数にデータを渡して、関数がデータを処理してなにか値を返す」というのがプログラムの流れです。関数は、上から順番に実行されていきます。</p>
+<pre class="sourceCode d"><code class="sourceCode d"><span class="kw">import</span> std.stdio;
+
+<span class="dt">void</span> main()
+{
+    write(<span class="st">&quot;Hello, &quot;</span>);
+    write(<span class="st">&quot;World! &quot;</span>);
+    writeln(<span class="dv">123</span>);
+}</code></pre>
+<p>　上のコードを同様に実行しても、一つ前のものと同じ表示になると思います。もし、関数内の実行手順が上から下でないなら、ぐちゃくちゃになっているはずです。<br />　main関数以外の関数を定義して呼び出すことも可能です。以下のコードでは何もしない関数fooを定義してmain関数から呼び出しています。</p>
+<pre class="sourceCode d"><code class="sourceCode d"><span class="dt">void</span> main()
+{
+    foo();
+}
+
+
+<span class="dt">void</span> foo(){}</code></pre>
+<p>　fooの位置は重要でなくて、たとえばmain関数の上に書いても大丈夫です。</p>
+<pre class="sourceCode d"><code class="sourceCode d"><span class="dt">void</span> foo(){}
+
+<span class="dt">void</span> main()
+{
+    foo();
+}</code></pre>
+<p>　foo();を2回呼び出すことも可能です。</p>
+<pre class="sourceCode d"><code class="sourceCode d"><span class="dt">void</span> foo(){}
+
+<span class="dt">void</span> main()
+{
+    foo();
+    foo();
+}</code></pre>
+<h1 id="writef-writefln">writef, writefln</h1>
+<p>　C言語を勉強した人は一度はprintfを使ったことがあると思います。D言語にもprintfのようにフォーマットを指定して数値とかを出力できるwritef, writeflnがあります。</p>
+<pre class="sourceCode d"><code class="sourceCode d"><span class="kw">import</span> std.stdio;
+
+<span class="dt">void</span> main()
+{
+    writefln(<span class="st">&quot;%d : %d&quot;</span>, <span class="dv">1</span>, <span class="dv">2</span>);
+    writefln(<span class="st">&quot;%s : %s&quot;</span>, <span class="dv">2</span>, <span class="dv">4</span>);
+}</code></pre>
+<pre class="sourceCode d"><code class="sourceCode d">&gt; dmd -run helloworld.d
+<span class="dv">1</span> : <span class="dv">2</span>
+<span class="dv">2</span> : <span class="dv">4</span></code></pre>
+<p>　%dと書いた部分に1が入り、次の%dには2が入っていることがわかると思います。次の行では%sにそれぞれ2, 4が入っています。%dや%sはフォーマット指定子といい、%dは10進数出力を表します。%sはデフォルトの指定子で、この場合は%dに等しくなります。もし数値を16進数で出力したい場合には、</p>
+<pre class="sourceCode d"><code class="sourceCode d"><span class="kw">import</span> std.stdio;
+
+<span class="dt">void</span> main()
+{
+    writefln(<span class="st">&quot;%x : %X&quot;</span>, <span class="dv">200</span>, <span class="dv">200</span>);
+}</code></pre>
+<pre><code>&gt; dmd -run helloworld.d
+c8 : C8</code></pre>
+<p>という風に%x, %Xを使います。%xは小文字、%Xは大文字で出力します。<br />　もし、文字列を出力したいなら%sを使います。</p>
+<pre class="sourceCode d"><code class="sourceCode d"><span class="kw">import</span> std.stdio;
+
+<span class="dt">void</span> main()
+{
+    writefln(<span class="st">&quot;%s&quot;</span>, <span class="st">&quot;これは文字列&quot;</span>);
+}</code></pre>
+<pre><code>&gt; dmd -run helloworld.d
+これは文字列</code></pre>
+<p>もし、%dや%xで文字列を出力した場合にはエラーが出ます。</p>
+<pre class="sourceCode d"><code class="sourceCode d"><span class="kw">import</span> std.stdio;
+
+<span class="dt">void</span> main()
+{
+    writefln(<span class="st">&quot;%d&quot;</span>, <span class="st">&quot;これは文字列&quot;</span>);
+}</code></pre>
+<pre><code>&gt; dmd -run helloworld.d
+object.Exception@C:\D\dmd2\src\phobos\std\format.d(2154): Incorrect format specifier for range: %d
+----------------
+0x00416574
+0x004163FF
+0x0040466A
+0x00404206
+0x0040416F
+0x004029C1
+0x004025F8
+0x0040256A
+0x00412078
+0x0040E329
+0x0040B3C0
+0x75A833AA in BaseThreadInitThunk
+0x77DD9EF2 in RtlInitializeExceptionChain
+0x77DD9EC5 in RtlInitializeExceptionChain</code></pre>
+<p>　もし、指定子がわからなかった場合には%sとしておけば最適なフォーマットで出力されるので、迷ったら%sです。</p>
+<h1 id="コメント">コメント</h1>
+<p>　たとえば、複雑なコードを書いた後日、そのコードを読み返した場合に読めるかどうか。たぶん読めても、読みにくいと思います。そのために、ソースコードにはコメントを残しておきます。たとえば、「ここでhogehogeをfugafugaしてる」とかです。よいコメントを書けるプログラマはよいプログラマになれます(たぶん)。</p>
+<pre class="sourceCode d"><code class="sourceCode d"><span class="co">//std.stdioを読み込む</span>
+<span class="kw">import</span> stds.stdio;
+
+<span class="co">/** main関数</span>
+<span class="co"> * Hello, World!と出力</span>
+<span class="co"> */</span>
+<span class="dt">void</span> main()
+{
+    <span class="co">/+</span>
+<span class="co">    writeln(&quot;fugafuga&quot;);</span>
+<span class="co">        /+</span>
+<span class="co">        writeln(&quot;なんだと…&quot;);</span>
+<span class="co">        +/</span>
+<span class="co">    writeln(&quot;hogehoge&quot;);</span>
+<span class="co">    +/</span>
+
+    writeln(<span class="st">&quot;Hello, World!&quot;</span>);
+}
+
+
+<span class="co">/* ネストできないコメント</span>
+<span class="co">ここはコメント</span>
+<span class="co">    /*</span>
+<span class="co">    ここはコメント</span>
+<span class="co">    */</span>
+ここはコメントでない
+*/
+
+<span class="co">/+ ネストできるコメント</span>
+<span class="co">ここはコメント</span>
+<span class="co">    /+</span>
+<span class="co">    ここはコメント</span>
+<span class="co">    +/</span>
+<span class="co">ここはコメント</span>
+<span class="co">+/</span>
+
+<span class="co">/** ドキュメント</span>
+<span class="co">*/</span>
+
+<span class="co">/++ ネスト可能なドキュメント</span>
+<span class="co">+/</span>
+
+<span class="co">// １行コメント</span></code></pre>
+<h1 id="おわりに">おわりに</h1>
+<p>　さて、第一回目の「Hello, World!」の項か終わりました。お疲れ様でした。実は今回はかなり内容が詰まっていて、書いてる途中から、「初心者にはつらいかなあ」と思っていました。プログラムの概念を考えると、今のノイマン型コンピュータを考えるところまで行き着いてしまい、D言語の話になかなか戻ってこれないので、このようなちょっと難しい形式になってしまいました。「猫でもわかるC言語プログラミング」という本が有名ですが、この本の最初の方を読んでいただけると大体理解できると思います。 　次回は数値の計算について書こうと思います。</p>
+<h1 id="キーワード">キーワード</h1>
+<ul>
+<li>dmd</li>
+<li>import</li>
+<li>std.stdio</li>
+<li>main</li>
+<li>関数(function)</li>
+<li>write, writeln, writef, writefln</li>
+<li>型(type)</li>
+<li>値(value)</li>
+<li>数値(integer, int型)</li>
+<li>文字列(string型)</li>
+<li>フォーマット</li>
+<li>コメント</li>
+</ul>
