@@ -391,3 +391,15 @@ or 12
 
 ### 条件演算子
 
+
+## 問題
+
+## おわりに
+
+## キーワード
+
+* 評価(Evaluation)
+* 暗黙の型変換(Implicit)
+* 演算子(Operator)
+* 演算子の優先順位(Priority of Operators, Order of Operators)
+* 演算子の結合規則(Operator Associativity)

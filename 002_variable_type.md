@@ -410,6 +410,8 @@ writeln(std.range.drop(utf32, 2));              // ほげ
 これらについては各々独立した記事を書きます。
 
 
+## 問題
+
 ## おわりに
 
 
@@ -437,8 +439,3 @@ writeln(std.range.drop(utf32, 2));              // ほげ
 * 文字列型(String); `string, wstring, dstring`
 * 派生型(Derived Data Type); 
 * ユーザー定義型(User Defined Type); `enum, struct, union, class, interface`
-* 評価(Evaluation)
-* 暗黙の型変換(Implicit)
-* 演算子(Operator)
-* 演算子の優先順位(Priority of Operators, Order of Operators)
-* 演算子の結合規則(Operator Associativity)
