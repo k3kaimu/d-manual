@@ -321,7 +321,7 @@ writeln(0.0 / 0.0);     // -nan
 それぞれ、`ifloat`なら`float.nan * 1.0i`というように初期化されます。
 
 ~~~~d
-ifloat f = 1.0fi;       //  i を
+ifloat f = 1.0fi;       //  i を末尾につければ虚数型
 ~~~~
 
 ### 複素浮動小数点型(Complex Floating-Point Number)
