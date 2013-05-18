@@ -567,6 +567,8 @@ if文の項でも説明しますが、ここでも簡単に説明しておくと
 よって、`a`が`true`か`false`によって`b`が評価されるかどうかが異なります。
 
 ~~~~d
+int a = 12;
+
 a == 12 || writeln("foo");      // writeln("foo")は評価されない
 a != 12 || writeln("bar");      // writeln("bar")は評価される
 
