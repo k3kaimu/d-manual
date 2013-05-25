@@ -42,9 +42,9 @@
 * 002 変数と型
 * 003 式と演算子
 * 004 標準入力と文字と文字列
-* 005 条件分岐                  if, switch
-* 006 ループ                   do-while, while, for, foreach
-* 007 goto, with文           goto, label, with
+* 005 条件分岐                  if
+* 006 ループ                   do-while, while, for, foreach, break, continue
+* 007 その他の制御文           goto, label, switch, case
 * 008 Slice, Static Array
 * 009 連想配列
 * 010 ポインタ
