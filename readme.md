@@ -39,12 +39,12 @@
 
 ## 掲載リスト(予定含む)
 
-* 001 D言語入門-Hello, World!
-* 002 変数と型
-* 003 式と演算子
-* 004 標準入力と文字と文字列
-* 005 条件分岐                  if
-* 006 ループ                   do-while, while, for, foreach, break, continue
+* [001 D言語入門-Hello, World!](https://github.com/k3kaimu/d-manual/blob/master/hello_world.md)
+* [002 変数と型](https://github.com/k3kaimu/d-manual/blob/master/variable_type.md)
+* [003 式と演算子](https://github.com/k3kaimu/d-manual/blob/master/expr_operator.md)
+* [004 標準入力と文字と文字列](https://github.com/k3kaimu/d-manual/blob/master/standardinput.md)
+* [005 条件分岐](https://github.com/k3kaimu/d-manual/blob/master/if.md)
+* [006 ループ](https://github.com/k3kaimu/d-manual/blob/loop.md)
 * 007 その他の制御文           goto, label, switch, case
 * 008 Slice, Static Array
 * 009 連想配列
