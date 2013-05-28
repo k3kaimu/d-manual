@@ -34,7 +34,7 @@
 以下に記載しているのは、監修や推敲などで記事の執筆を協力してくださった方々
 
 * きょんたん(twiiter: kyonfuee, github: kyontan)
-* 大堀龍一(github: majiang)
+* github: majiang
 
 
 ## 掲載リスト(予定含む)
