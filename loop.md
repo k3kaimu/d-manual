@@ -248,7 +248,7 @@ foreach(ulong i; 0 .. 100)
 
 ### foreach_reverse
 
-`foreach_range`文には、逆順に辿る`foreach_revers`というものがあります。
+`foreach range`文には、逆順に辿る`foreach_reverse`というものがあります。
 
 ~~~~d
 /// test00607.d
