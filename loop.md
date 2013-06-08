@@ -196,20 +196,23 @@ foreach(<identifier>; <exprLower> .. <exprUpper>)
 と、以下は同等
 
 {                                       // 新しいスコープを作る
-    auto <identifier> = <exprLower>;    // autoは型を自動でつけてくれる
+    auto index = <exprLower>;           // autoは型を自動でつけてくれる
     auto exprUpper = <exprUpper>;
-    for(; <identifer> < exprUpper; ++<identifier>)
+    for(; index < exprUpper; ++index){
+        auto <identifier> = index;      // <identifier>はindexのコピー
         <statement>
+    }
 }
 
 さらにwhileで書き直すと
 
 {                                       // 新しいスコープを作る
-    auto <identifier> = <exprLower>;    // autoは型を自動でつけてくれる
+    auto index = <exprLower>;           // autoは型を自動でつけてくれる
     auto exprUpper = <exprUpper>;
-    while(<identifer> < exprUpper){
+    while(index < exprUpper){
+        auto <identifier> = index;      // <identifier>はindexのコピー
         <statement>
-        ++<identifier>;
+        ++index;
     }
 }
 ~~~~
@@ -238,11 +241,66 @@ $ rdmd test00606.d
 
 `foreach range`文は、`for`文より用法が限られますが、単純な範囲を回すループを記述するのに役立ちます。
 
-また、明示的に`<identifier>`の型を記述することも可能です。
+* 明示的に`<identifier>`の型を記述することも可能です。
 
 ~~~~d
 foreach(ulong i; 0 .. 100)
     foo();
+~~~~
+
+* `foreach(ref <identifier>; <exprLower> .. <experUpper>)`とすることで、ループのインデックスを操作可能です。
+
+~~~~d
+foreach(ref <identifier>; <exprLower> .. <exprUpper>)
+    <statement>
+
+と、以下は同等
+
+{                                       // 新しいスコープを作る
+    auto <identifier> = <exprLower>;    // autoは型を自動でつけてくれる
+    auto exprUpper = <exprUpper>;
+    for(; <identifer> < exprUpper; ++<identifier>)
+        <statement>
+}
+
+さらにwhileで書き直すと
+
+{                                       // 新しいスコープを作る
+    auto <identifier> = <exprLower>;    // autoは型を自動でつけてくれる
+    auto exprUpper = <exprUpper>;
+    while(<identifer> < exprUpper){
+        <statement>
+        ++<identifier>;
+    }
+}
+
+例を示すと、以下のようになります。
+
+~~~~d
+/// test00607.d
+import std.stdio;
+
+void main()
+{
+    foreach(i; 0 .. 10){
+        writef("%s, ", i);
+        ++i;                // refナシなので意味なし
+    }
+
+    writeln();
+
+    foreach(ref i; 0 .. 10){
+        writef("%s, ", i);
+        ++i;                // refアリなので見かけ上2ずつ進む
+    }
+
+}
+~~~~
+
+~~~~
+$ rdmd test00607.d
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+0, 2, 4, 6, 8,
 ~~~~
 
 
