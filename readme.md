@@ -35,6 +35,7 @@
 
 * きょんたん(twiiter: kyonfuee, github: kyontan)
 * github: majiang
+* github: shirataki
 
 
 ## 掲載リスト(予定含む)
