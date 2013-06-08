@@ -309,7 +309,7 @@ $ rdmd test00607.d
 `foreach range`文には、逆順に辿る`foreach_reverse`というものがあります。
 
 ~~~~d
-/// test00607.d
+/// test00608.d
 import std.stdio;
 
 void main()
@@ -323,7 +323,7 @@ void main()
 ~~~~
 
 ~~~~d
-$ rdmd test00607.d
+$ rdmd test00608.d
 0
 1
 2
@@ -350,7 +350,7 @@ $ rdmd test00607.d
 つまり、ループから抜け出します。
 
 ~~~~d
-/// test00608.d
+/// test00609.d
 import std.stdio;
 
 void main()
@@ -365,8 +365,7 @@ void main()
 ~~~~
 
 ~~~~
-/// test00608.d
-$ rdmd test00608
+$ rdmd test00609
 0
 1
 2
@@ -429,7 +428,6 @@ void main()
 また、`continue`もラベルを指定することができます。
 
 ~~~~d
-/// test00608.d
 import std.stdio;
 
 void main()
