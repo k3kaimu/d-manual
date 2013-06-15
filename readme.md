@@ -46,7 +46,8 @@
 * [004 標準入力と文字と文字列](https://github.com/k3kaimu/d-manual/blob/master/standardinput.md)
 * [005 条件分岐](https://github.com/k3kaimu/d-manual/blob/master/if.md)
 * [006 ループ](https://github.com/k3kaimu/d-manual/blob/master/loop.md)
-* 007 その他の制御文           goto, label, switch, case
+* [007 その他の制御文](https://github.com/k3kaimu/d-manual/blob/master/other_statements.md)  
+    `goto`, ラベル(label), `switch`, `case`, `default`
 * 008 Slice, Static Array
 * 009 連想配列
 * 010 ポインタ
