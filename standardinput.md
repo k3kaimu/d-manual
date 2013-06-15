@@ -441,7 +441,7 @@ readlnやreadfよりももっと詳細に操作したいなら、`std.stdio.stdi
 しかし、これらを使うには`foreach`や配列への理解が必要なので今回は省略します。
 
 
-## 問題
+## 問題 -> [解答](https://github.com/k3kaimu/d-manual/blob/master/answer.md#004)
 
 * `readln`を使って3行取得して、各行の先頭2文字を削って表示するプログラムを作ってください。  
     ヒント: `readln` -> `popFront()` -> `write`

@@ -415,7 +415,7 @@ writeln(std.range.drop(utf32, 2));              // ほげ
 これらについては各々独立した記事を書きます。
 
 
-## 問題
+## 問題 -> [解答](https://github.com/k3kaimu/d-manual/blob/master/answer.md#002)
 
 * ビッグエンディアンとリトルエンディアンについて調べてみましょう。
 
