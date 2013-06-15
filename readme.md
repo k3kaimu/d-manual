@@ -48,64 +48,65 @@
 * [006 ループ](https://github.com/k3kaimu/d-manual/blob/master/loop.md)
 * [007 その他の制御文](https://github.com/k3kaimu/d-manual/blob/master/other_statements.md)  
     `goto`, ラベル(label), `switch`, `case`, `default`
-* 008 Slice, Static Array
-* 009 連想配列
-* 010 ポインタ
-* 011 関数                    関数の書き方, in, out, ref, pure, nothrow, @safe, @trusted @system
-* 012 デリゲート                 デリゲートとは？
-* 013 UFCS
-* 014 ラムダ
-* 014 構造体と共用体
-* 015 列挙体
-* 016 クラス, インターフェース
-* 017 ガベージコレクタ
-* 018 immutableとconst
-* 019 例外
-* 020 スコープ文
-* 021 assertとenforce
-* 022 単体テスト
-* 023 契約プログラミング
-* 024 モジュール
-* 024 テンプレート入門          テンプレート関数, 構造体, クラス
-* 025 Eponymous Template
-* 025 可変長引数テンプレート
-* 026 is式と__traits
-* 027 static if
-* 028 string-mixin
-* 029 template mixin
-* 030 pragma(msg, )
-* 031 CTFE
-* 032 Compile Time (Meta) Programming
-* 033 Range
-* 034 演算子オーバーロード(1), opAssign, opUnary, opBinary, opBinaryRight
-* 035 演算子オーバーロード(2), opIndex, opIndexAssign, opIndexOpAssign, opSlice, opSliceAssign, opSliceOpAssign
-* 036 演算子オーバーロード(3), opCast, opCall, opCmp, opEquals
-* 037 演算子オーバーロード(4), opDispatch
-* 038 std.algorithm
-* 039 std.range
-* 040 std.bigint
-* 041 std.concurrency
-* 042 std.conv
-* 043 std.datetime
-* 044 std.exception
-* 045 std.format
-* 046 std.functional
-* 047 std.getopt
-* 048 std.variant
-* 049 std.json
-* 050 std.math
-* 051 std.numeric
-* 052 std.parallelism
-* 053 std.process
-* 054 std.random
-* 055 std.regex
-* 056 std.string
-* 057 std.traits
-* 058 std.typecons
-* 059 std.typetuple
-* 060 std.digest...
-* 061 core.simd
-* 062 core.thread
+* Slice, Static Array
+* 連想配列
+* ポインタ
+* 関数                    関数の書き方, in, out, ref, pure, nothrow, @safe, @trusted @system
+* デリゲート                 デリゲートとは？
+* UFCS
+* ラムダ
+* 構造体と共用体
+* 列挙体
+* クラス, インターフェース
+* ガベージコレクタ
+* immutableとconst
+* 例外
+* スコープ文
+* assertとenforce
+* 単体テスト
+* 契約プログラミング
+* モジュール
+* テンプレート入門          テンプレート関数, 構造体, クラス
+* Eponymous Template
+* 可変長引数テンプレート
+* is式と__traits
+* static if
+* string-mixin
+* template mixin
+* pragma(msg, )
+* CTFE
+* Compile Time (Meta) Programming
+* Voldemort Type
+* Range
+* 演算子オーバーロード(1), opAssign, opUnary, opBinary, opBinaryRight
+* 演算子オーバーロード(2), opIndex, opIndexAssign, opIndexOpAssign, opSlice, opSliceAssign, opSliceOpAssign
+* 演算子オーバーロード(3), opCast, opCall, opCmp, opEquals
+* 演算子オーバーロード(4), opDispatch
+* std.algorithm
+* std.range
+* std.bigint
+* std.concurrency
+* std.conv
+* std.datetime
+* std.exception
+* std.format
+* std.functional
+* std.getopt
+* std.variant
+* std.json
+* std.math
+* std.numeric
+* std.parallelism
+* std.process
+* std.random
+* std.regex
+* std.string
+* std.traits
+* std.typecons
+* std.typetuple
+* std.digest...
+* core.simd
+* core.thread
 
 ## 参考文献リスト
 
