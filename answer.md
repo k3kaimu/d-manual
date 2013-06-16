@@ -249,54 +249,25 @@ import std.stdio, std.string;
 
 void main()
 {
-    string line = readln().chomp();
-
     int v1, v2;
-    dchar op;
-    int sw;
+    string op;
 
-    foreach(c; line){
-        switch(c){
-            case '0': .. case '9':
-                if(!sw)
-                    v1 = v1 * 10 + (c - '0');
-                else
-                    v2 = v2 * 10 + (c - '0');
-                break;
-
-            case ' ':
-                continue;
-
-            case '+', '-', '*', '/':
-                if(sw){
-                    writeln("数式がおかしいよ！");
-                    return;
-                }
-
-                op = c;
-                sw = 1;
-                break;
-
-            default:
-                writeln("数式がおかしいよ！");
-                return;
-        }
-    }
+    readf("%s %s %s", &v1, &op, &v2);
 
     switch(op){
-        case '+':
+        case "+":
             writeln(v1 + v2);
             break;
 
-        case '-':
+        case "-":
             writeln(v1 - v2);
             break;
 
-        case '*':
+        case "*":
             writeln(v1 * v2);
             break;
 
-        case '/':
+        case "/":
             writeln(v1 / v2);
             break;
 
