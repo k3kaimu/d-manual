@@ -304,12 +304,64 @@ $ rdmd test00607.d
 ~~~~
 
 
+* イテレート可能な型  
+`foreach range`文で、辿る範囲の型はインクリメント`++`と等価テスト`==`が定義されていればどのような型でも可能です。
+たとえば、`double`などの浮動小数点型や、以下の例中に定義されている`struct Incrementable`は`++`と`==`が可能なので`foreach range`で使えます。
+
+~~~~d
+/// test00608.d
+import std.stdio;
+
+void main()
+{
+    foreach(i; 0.5 .. 5.5)
+        writeln(i);
+
+
+    foreach(e; Incrementable(0) ..  Incrementable(10))
+        writeln(e);
+}
+
+
+struct Incrementable
+{
+    ref typeof(this) opUnary(string s : "++")()
+    {
+        ++_value;
+        return this;
+    }
+
+  private:
+    int _value;
+}
+~~~~
+
+~~~~
+$ rdmd test00608.d
+0.5
+1.5
+2.5
+3.5
+4.5
+Incrementable(0)
+Incrementable(1)
+Incrementable(2)
+Incrementable(3)
+Incrementable(4)
+Incrementable(5)
+Incrementable(6)
+Incrementable(7)
+Incrementable(8)
+Incrementable(9)
+~~~~
+
+
 ### foreach_reverse
 
 `foreach range`文には、逆順に辿る`foreach_reverse`というものがあります。
 
 ~~~~d
-/// test00608.d
+/// test00609.d
 import std.stdio;
 
 void main()
@@ -323,7 +375,7 @@ void main()
 ~~~~
 
 ~~~~d
-$ rdmd test00608.d
+$ rdmd test00609.d
 0
 1
 2
@@ -350,7 +402,7 @@ $ rdmd test00608.d
 つまり、ループから抜け出します。
 
 ~~~~d
-/// test00609.d
+/// test00610.d
 import std.stdio;
 
 void main()
@@ -365,7 +417,7 @@ void main()
 ~~~~
 
 ~~~~
-$ rdmd test00609
+$ rdmd test00610
 0
 1
 2
