@@ -277,3 +277,61 @@ void main()
     }
 }
 ~~~~
+
+## 008
+
+* 問1  
+
+~~~~d
+import std.stdio;
+
+void main()
+{
+    int[] arr = [0, 2, 4, 1, 3, 5];
+
+    foreach(e; arr)
+        writeln(e);
+}
+~~~~
+
+
+* 問2  
+
+~~~~d
+import std.stdio;
+
+void main()
+{
+    int[] arr = [0, 2, 4, 1, 3, 5];
+
+    foreach_reverse(e; arr)
+        writeln(e);
+}
+~~~~
+
+又は
+
+~~~~d
+import std.stdio;
+
+void main()
+{
+    int[] arr = [0, 2, 4, 1, 3, 5];
+
+    for(int i = arr.length -1; i >= 0; --i)
+        writeln(arr[i]);
+}
+~~~~
+
+* 問3  
+
+~~~~d
+import std.stdio;
+
+void main()
+{
+    int[] arr = [0, 2, 4, 1, 3, 5];
+
+    writefln("%([%03d]%|\n%)", arr);
+}
+~~~~
