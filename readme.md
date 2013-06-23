@@ -48,7 +48,7 @@
 * [006 ループ](https://github.com/k3kaimu/d-manual/blob/master/loop.md)
 * [007 その他の制御文](https://github.com/k3kaimu/d-manual/blob/master/other_statements.md)  
     `goto`, ラベル(label), `switch`, `case`, `default`
-* [008 配列](ttps://github.com/k3kaimu/d-manual/blob/master/array.md)
+* [008 配列](https://github.com/k3kaimu/d-manual/blob/master/array.md)
 * 連想配列
 * ポインタ
 * 関数                    関数の書き方, in, out, ref, pure, nothrow, @safe, @trusted @system
