@@ -415,6 +415,28 @@ writeln(std.range.drop(utf32, 2));              // ほげ
 これらについては各々独立した記事を書きます。
 
 
+## 型推論(Type Inference)
+
+たとえば、`int a = 12;`という記述は冗長的だと思いませんか？
+`12`は`int`型のリテラルなのに、`int a`とちゃんと型を宣言する必要があるでしょうか？
+
+そのようなことから、D言語ではいろいろな部分で型推論なされます。
+型推論とは、明示的に型宣言しなくても、その値が生成される式の型から自動的に型を決定する機能です。
+
+もし、初期化子があるのであれば、`int`の代わりに`auto`を使うことで、変数の型が(コンパイル時に)自動的に決定されます。
+
+~~~~d
+auto a = 12;
+pragma(msg, typeof(a)); // int
+
+auto b = "ほげほげ";
+pragma(msg, typeof(b)); // string
+
+auto c = a + 13.5;
+pragma(msg, typeof(c)); // double
+~~~~
+
+
 ## 問題 -> [解答](https://github.com/k3kaimu/d-manual/blob/master/answer.md#002)
 
 * ビッグエンディアンとリトルエンディアンについて調べてみましょう。
@@ -464,3 +486,4 @@ void main()
 * 文字列型(String); `string, wstring, dstring`
 * 派生型(Derived Data Type); 
 * ユーザー定義型(User Defined Type); `enum, struct, union, class, interface`
+* 型推論(Type Inference)
