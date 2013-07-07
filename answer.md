@@ -335,3 +335,110 @@ void main()
     writefln("%([%03d]%|\n%)", arr);
 }
 ~~~~
+
+
+## 009
+
+* 問1  
+
+~~~~d
+import std.conv;
+import std.stdio;
+import std.string;
+
+void main()
+{
+    auto n = readln().chomp().to!size_t();
+    int[string] dict;
+
+    foreach(unused; 0 .. n){
+        string[] splitted = readln().chomp().split();
+        dict[splitted[0]] = splitted[1].to!int;
+    }
+
+    foreach(name; dict.keys.sort)
+        writefln("%-12s\t\t%s", name, dict[name]);
+}
+~~~~
+
+
+以下は別解
+
+~~~~d
+import std.algorithm;
+import std.conv;
+import std.stdio;
+import std.string;
+import std.typecons;
+
+alias ListElem = Tuple!(string, "name",
+                        int,     "value");
+
+void main()
+{
+    auto n = readln().chomp().to!size_t();
+    ListElem[] list;
+
+    foreach(unused; 0 .. n){
+        string[] splitted = readln().chomp().split();
+        list ~= ListElem(splitted[0], splitted[1].to!int());
+    }
+
+    foreach(e; list.sort!"a[0] < b[0]"())
+        writefln("%-12s\t\t%s", e[0], e[1]);
+}
+~~~~
+
+
+* 問2  
+
+~~~~d
+import std.conv;
+import std.stdio;
+import std.string;
+
+void main()
+{
+    auto n = readln().chomp().to!size_t();
+    string[][int] dict;
+
+    foreach(unused; 0 .. n){
+        string[] splitted = readln().chomp().split();
+        dict[splitted[1].to!int] ~= splitted[0];
+    }
+
+    foreach(value; dict.keys.sort){
+        foreach(name; dict[value].sort)
+            writefln("%-12s\t\t%s", name, value);
+    }
+}
+~~~~
+
+
+以下は別解
+
+~~~~d
+import std.algorithm;
+import std.conv;
+import std.stdio;
+import std.string;
+import std.typecons;
+
+alias ListElem = Tuple!(string, "name",
+                        int,     "value");
+
+void main()
+{
+    auto n = readln().chomp().to!size_t();
+    ListElem[] list;
+
+    foreach(unused; 0 .. n){
+        string[] splitted = readln().chomp().split();
+        list ~= ListElem(splitted[0], splitted[1].to!int());
+    }
+
+    list.multiSort!("a[1] < b[1]", "a[0] < b[0]")();
+    foreach(e; list)
+        writefln("%-12s\t\t%s", e[0], e[1]);
+}
+~~~~

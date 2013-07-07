@@ -49,7 +49,7 @@
 * [007 その他の制御文](https://github.com/k3kaimu/d-manual/blob/master/other_statements.md)  
     `goto`, ラベル(label), `switch`, `case`, `default`
 * [008 配列](https://github.com/k3kaimu/d-manual/blob/master/array.md)
-* 連想配列
+* [009 連想配列](https://github.com/k3kaimu/d-manual/blob/master/associative_array.md)
 * ポインタ
 * 関数                    関数の書き方, in, out, ref, pure, nothrow, @safe, @trusted @system
 * デリゲート                 デリゲートとは？
