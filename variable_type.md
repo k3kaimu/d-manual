@@ -415,6 +415,99 @@ writeln(std.range.drop(utf32, 2));              // ほげ
 これらについては各々独立した記事を書きます。
 
 
+## 型修飾子(Type Qualifiers)
+
+型に修飾子を付けることによって、様々な情報を型に付加させることができます。
+
+
+### const
+
+`const`で修飾された型は、その変数経由では変更不可能です。
+`const`は推移的であり、就職された型を構成する型も`const`型になります。
+
+~~~~d
+int a;
+const(int*) p = &a;     // すべての型はconstに暗黙変換可能
+
+//*p += 3;              // Error: cannot modify const expression *p
+                        // constは推移的なので、*pはconst(int)型
+                        // constなデータは書き換え不可なのでエラーがでる
+~~~~
+
+
+### immutable
+
+`immutable`型は、生まれたら死ぬまで絶対に書き換わらない型で、`const`同様に推移的です。
+`immutable`は`const`へ暗黙変換可能でです。
+
+~~~~d
+int a;
+//immutable(int)* p = &a;   //Error: cannot implicitly convert expression (& a) of type int* to immutable(int)*
+
+immutable(int) b;
+immutable(int)* q = &b;
+
+*q += 3;                    // Error: cannot modify immutable expression *q
+~~~~
+
+
+### shared
+
+shared型は、複数のスレッドからアクセスされるために、知らぬ間に書き換わっているかもしれない型であることを表します。
+
+~~~~d
+int a;
+
+//shared(int)* p = &a;      // Error: cannot implicitly convert expression (& a) of type int* to shared(int)*
+shared(int)* q = cast(shared)&a;
+~~~~
+
+
+## 記憶域クラス(Storage Class)
+
+記憶域クラスとは、変数の特性を指定する修飾子のことです。
+
+
+### const
+
+`const(Type)`型と等しくなります。
+
+
+### immutable
+
+`immutable(Type)`型と等しくなります。
+
+
+### shared
+
+`shared(Type)`型と等しくなります。
+
+
+### scope
+
+`scope`と指定された参照変数が、`new`で初期化されているなどの制約をクリアしていれば、スコープから抜ける際にデストラクタが必ず呼び出されるようになります。
+また、そのようなインスタンスはスタックへ割り当てられるようになります。
+
+scopeの意味は、参照がスコープの外に置かれることがないということです。
+つまり、グローバル変数への代入や`return`などは不正です。
+
+~~~~d
+scope foo = new Foo();  // スタックへ割り当て
+~~~~
+
+
+### 関数でのみ有効となる記憶域クラス
+
+その他にも記憶域クラスはありますが、関数引数や関数そのものに対してのみ有効であるので、随時説明していきます。
+以下に、そのような記憶域クラスのリストを挙げておきます。
+
+* `in`
+* `out`
+* `ref`
+* `lazy`
+* `inout`
+
+
 ## 型推論(Type Inference)
 
 たとえば、`int a = 12;`という記述は冗長的だと思いませんか？
@@ -434,6 +527,12 @@ pragma(msg, typeof(b)); // string
 
 auto c = a + 13.5;
 pragma(msg, typeof(c)); // double
+
+const d = 3;
+pragma(msg, typeof(d)); // const(int)
+
+immutable e = 4;        // 記憶域クラスのみでも型推論される
+pragma(msg, typeof(e)); // immutable(int)
 ~~~~
 
 
@@ -486,4 +585,6 @@ void main()
 * 文字列型(String); `string, wstring, dstring`
 * 派生型(Derived Data Type); 
 * ユーザー定義型(User Defined Type); `enum, struct, union, class, interface`
+* 型修飾子(Type Qualifiers)
+* 記憶域クラス(Storage Class)
 * 型推論(Type Inference)
