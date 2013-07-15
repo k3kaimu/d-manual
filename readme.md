@@ -262,11 +262,37 @@
     `std.typecons.wrap`, `std.typecons.unwrap`
 
 ### constとimmutable
+    `immutable`とは？
+    `const`とは？
+    `inout`
+    関数引数での`in`
+
 ### 例外
+    積極的に投げてけ
+    エラーと例外
+    `try`, `catch`, `finally`
+    `scope`文
+    `assert`式と`std.exception.enforce`
+
 ### 単体テスト
+    テストは重要
+    どこにでも書ける
+    `-unittest`
+        `-main`
+
 ### 契約プログラミング
+    関数での契約
+    構造体やクラスでの契約
+
 ### モジュールと名前空間
+    モジュールとパッケージ
+    パッケージと`package.d`
+    名前空間とは？
+    アクセス修飾子
+    `.`演算子
+
 ### テンプレートとコンパイル時編
+#### テンプレートの基本
 #### Eponymous Template
 #### 可変長引数テンプレート
 #### is式と__traits
@@ -279,8 +305,10 @@
 #### Range
 #### 演算子オーバーロード
 
-## 参考文献リスト
+
+## 主な情報源
 
 * [D Programming Language](http://dlang.org/)
 * [プログラミング言語 D 2.0](http://www.kmonos.net/alang/d/)
 * [プログラミング言語D](http://www.amazon.co.jp/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9ED-Andrei-Alexandrescu/dp/4798131105) 翔泳社, 2013/04, Andrei Alexandrescu(著), 中川真宏(監修), 原健治(監修), 長尾高弘(翻訳)
+* 各章の執筆者の頭
