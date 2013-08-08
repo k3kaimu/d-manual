@@ -37,9 +37,10 @@
 
 以下に記載しているのは、監修や推敲などで記事の執筆を協力してくださった方々
 
-* きょんたん(twiiter: kyonfuee, github: kyontan)
+* きょんたん (twiiter: kyonfuee, github: kyontan)
 * github: majiang
 * github: shirataki
+* tom tan (twitter: tm_tn, github: tom-tan)
 
 
 ## 掲載リスト(予定含む)
