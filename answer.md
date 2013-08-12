@@ -9,7 +9,7 @@ import std.stdio;
 
 void main()
 {
-writeln("%s, %s", "Hello", "World!");
+    writeln("%s, %s", "Hello", "World!");
 }
 ~~~~
 
@@ -20,7 +20,7 @@ writeln("%s, %s", "Hello", "World!");
 import std.stdio;
 
 void main(){
-writeln("Hello, World");
+    writeln("Hello, World");
 }
 ~~~~
 
@@ -49,10 +49,10 @@ writeln("Hello, World");
 このようにすることで、例えば`3 + -3`は
 
 ~~~~
-00000011
+  00000011
 + 11111101
 ----------
-100000000
+ 100000000
 
 ->00000000   <- 先頭1bit(MSB)を無視した8bitは0を示す
 ~~~~
@@ -81,20 +81,20 @@ import std.array;
 
 void main()
 {
-string line = readln();
-line.popFront();
-line.popFront();
-write(line);
+    string line = readln();
+    line.popFront();
+    line.popFront();
+    write(line);
 
-line = readln();
-line.popFront();
-line.popFront();
-write(line);
+    line = readln();
+    line.popFront();
+    line.popFront();
+    write(line);
 
-line = readln();
-line.popFront();
-line.popFront();
-write(line);
+    line = readln();
+    line.popFront();
+    line.popFront();
+    write(line);
 }
 ~~~~
 
@@ -129,12 +129,12 @@ write(line);
 
 ~~~~d
 {
-auto index = <exprUpper>;
-auto exprLower = <exprLower>;
-for(; index > exprLower; --index){
-auto <identifier> = index - 1;
-<statement>
-}
+    auto index = <exprUpper>;
+    auto exprLower = <exprLower>;
+    for(; index > exprLower; --index){
+        auto <identifier> = index - 1;
+        <statement>
+    }
 }
 ~~~~
 
@@ -146,13 +146,13 @@ import std.stdio;
 
 void main()
 {
-int sum;
+    int sum;
 
-foreach(i; 0 .. 1000)
-if((i % 3) == 0 || (i % 5) == 0)
-sum += i;
+    foreach(i; 0 .. 1000)
+        if((i % 3) == 0 || (i % 5) == 0)
+            sum += i;
 
-writeln(sum);
+    writeln(sum);
 }
 ~~~~
 
@@ -164,23 +164,23 @@ import std.stdio;
 
 void main()
 {
-int fib = 1;
-int fib_1 = 1;
-int fib_2 = 0;
+    int fib = 1;
+    int fib_1 = 1;
+    int fib_2 = 0;
 
-int sum = 0;
+    int sum = 0;
 
-while(fib < 4_000_000)
-{
-if(fib % 2 == 0)
-sum += fib;
+    while(fib < 4_000_000)
+    {
+        if(fib % 2 == 0)
+        sum += fib;
 
-fib_2 = fib_1;
-fib_1 = fib;
-fib = fib_2 + fib_1;
-}
+        fib_2 = fib_1;
+        fib_1 = fib;
+        fib = fib_2 + fib_1;
+    }
 
-writeln(sum);
+    writeln(sum);
 }
 ~~~~
 
@@ -192,16 +192,16 @@ import std.stdio;
 
 void main()
 {
-int sumPow2;
-int pow2Sum;
+    int sumPow2;
+    int pow2Sum;
 
-foreach(i; 1 .. 101){
-sumPow2 += i;
-pow2Sum += i ^^ 2;
-}
+    foreach(i; 1 .. 101){
+        sumPow2 += i;
+        pow2Sum += i ^^ 2;
+    }
 
-sumPow2 ^^= 2;
-writeln(sumPow2 - pow2Sum);
+    sumPow2 ^^= 2;
+    writeln(sumPow2 - pow2Sum);
 }
 ~~~~
 
@@ -217,22 +217,22 @@ import std.stdio;
 
 void main()
 {
-int cnt;
-int sum;
+    int cnt;
+    int sum;
 
-while(1){
-int n;
-readf("%s\n", &n);
+    while(1){
+        int n;
+        readf("%s\n", &n);
 
-if(n < 0){
-writeln(sum / cnt);
-break;
-}else if(n < 10)
-continue;
-
-sum += n;
-++cnt;
-}
+        if(n < 0){
+            writeln(sum / cnt);
+            break;
+        }else if(n < 10)
+            continue;
+        
+        sum += n;
+        ++cnt;
+    }
 }
 ~~~~
 
@@ -245,63 +245,63 @@ import std.stdio, std.string;
 
 void main()
 {
-int v1, v2;
-string op;
+    int v1, v2;
+    string op;
 
-readf("%s %s %s", &v1, &op, &v2);
+    readf("%s %s %s", &v1, &op, &v2);
 
-switch(op){
-case "+":
-writeln(v1 + v2);
-break;
+    switch(op){
+        case "+":
+            writeln(v1 + v2);
+            break;
 
-case "-":
-writeln(v1 - v2);
-break;
+        case "-":
+            writeln(v1 - v2);
+            break;
 
-case "*":
-writeln(v1 * v2);
-break;
+        case "*":
+            writeln(v1 * v2);
+            break;
 
-case "/":
-writeln(v1 / v2);
-break;
+        case "/":
+            writeln(v1 / v2);
+            break;
 
-default:
-writeln("数式がおかしいよ！");
-return;
-}
+        default:
+            writeln("数式がおかしいよ！");
+            return;
+    }
 }
 ~~~~
 
 ## 008
 
-* 問1
+* 問1  
 
 ~~~~d
 import std.stdio;
 
 void main()
 {
-int[] arr = [0, 2, 4, 1, 3, 5];
+    int[] arr = [0, 2, 4, 1, 3, 5];
 
-foreach(e; arr)
-writeln(e);
+    foreach(e; arr)
+        writeln(e);
 }
 ~~~~
 
 
-* 問2
+* 問2  
 
 ~~~~d
 import std.stdio;
 
 void main()
 {
-int[] arr = [0, 2, 4, 1, 3, 5];
+    int[] arr = [0, 2, 4, 1, 3, 5];
 
-foreach_reverse(e; arr)
-writeln(e);
+    foreach_reverse(e; arr)
+        writeln(e);
 }
 ~~~~
 
@@ -312,30 +312,30 @@ import std.stdio;
 
 void main()
 {
-int[] arr = [0, 2, 4, 1, 3, 5];
+    int[] arr = [0, 2, 4, 1, 3, 5];
 
-for(int i = arr.length -1; i >= 0; --i)
-writeln(arr[i]);
+    for(int i = arr.length -1; i >= 0; --i)
+        writeln(arr[i]);
 }
 ~~~~
 
-* 問3
+* 問3  
 
 ~~~~d
 import std.stdio;
 
 void main()
 {
-int[] arr = [0, 2, 4, 1, 3, 5];
+    int[] arr = [0, 2, 4, 1, 3, 5];
 
-writefln("%([%03d]%|\n%)", arr);
+    writefln("%([%03d]%|\n%)", arr);
 }
 ~~~~
 
 
 ## 009
 
-* 問1
+* 問1  
 
 ~~~~d
 import std.conv;
@@ -344,16 +344,16 @@ import std.string;
 
 void main()
 {
-auto n = readln().chomp().to!size_t();
-int[string] dict;
+    auto n = readln().chomp().to!size_t();
+    int[string] dict;
 
-foreach(unused; 0 .. n){
-string[] splitted = readln().chomp().split();
-dict[splitted[0]] = splitted[1].to!int;
-}
+    foreach(unused; 0 .. n){
+        string[] splitted = readln().chomp().split();
+        dict[splitted[0]] = splitted[1].to!int;
+    }
 
-foreach(name; dict.keys.sort)
-writefln("%-12s\t\t%s", name, dict[name]);
+    foreach(name; dict.keys.sort)
+        writefln("%-12s\t\t%s", name, dict[name]);
 }
 ~~~~
 
@@ -368,25 +368,25 @@ import std.string;
 import std.typecons;
 
 alias ListElem = Tuple!(string, "name",
-int,     "value");
+                        int,     "value");
 
 void main()
 {
-auto n = readln().chomp().to!size_t();
-ListElem[] list;
+    auto n = readln().chomp().to!size_t();
+    ListElem[] list;
 
-foreach(unused; 0 .. n){
-string[] splitted = readln().chomp().split();
-list ~= ListElem(splitted[0], splitted[1].to!int());
-}
+    foreach(unused; 0 .. n){
+        string[] splitted = readln().chomp().split();
+        list ~= ListElem(splitted[0], splitted[1].to!int());
+    }
 
-foreach(e; list.sort!"a[0] < b[0]"())
-writefln("%-12s\t\t%s", e[0], e[1]);
+    foreach(e; list.sort!"a[0] < b[0]"())
+        writefln("%-12s\t\t%s", e[0], e[1]);
 }
 ~~~~
 
 
-* 問2
+* 問2  
 
 ~~~~d
 import std.conv;
@@ -395,18 +395,18 @@ import std.string;
 
 void main()
 {
-auto n = readln().chomp().to!size_t();
-string[][int] dict;
+    auto n = readln().chomp().to!size_t();
+    string[][int] dict;
 
-foreach(unused; 0 .. n){
-string[] splitted = readln().chomp().split();
-dict[splitted[1].to!int] ~= splitted[0];
-}
+    foreach(unused; 0 .. n){
+        string[] splitted = readln().chomp().split();
+        dict[splitted[1].to!int] ~= splitted[0];
+    }
 
-foreach(value; dict.keys.sort){
-foreach(name; dict[value].sort)
-writefln("%-12s\t\t%s", name, value);
-}
+    foreach(value; dict.keys.sort){
+        foreach(name; dict[value].sort)
+            writefln("%-12s\t\t%s", name, value);
+    }
 }
 ~~~~
 
@@ -421,20 +421,20 @@ import std.string;
 import std.typecons;
 
 alias ListElem = Tuple!(string, "name",
-int,     "value");
+                        int,     "value");
 
 void main()
 {
-auto n = readln().chomp().to!size_t();
-ListElem[] list;
+    auto n = readln().chomp().to!size_t();
+    ListElem[] list;
 
-foreach(unused; 0 .. n){
-string[] splitted = readln().chomp().split();
-list ~= ListElem(splitted[0], splitted[1].to!int());
-}
+    foreach(unused; 0 .. n){
+        string[] splitted = readln().chomp().split();
+        list ~= ListElem(splitted[0], splitted[1].to!int());
+    }
 
-list.multiSort!("a[1] < b[1]", "a[0] < b[0]")();
-foreach(e; list)
-writefln("%-12s\t\t%s", e[0], e[1]);
+    list.multiSort!("a[1] < b[1]", "a[0] < b[0]")();
+    foreach(e; list)
+        writefln("%-12s\t\t%s", e[0], e[1]);
 }
 ~~~~

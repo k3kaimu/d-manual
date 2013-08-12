@@ -185,7 +185,7 @@ int[40] staticArray;
 int[] slice3 = staticArray[0 .. $-10];  // 静的配列staticArrayの前から30個のスライス
 
 int[] emptySlice1 = slice3[$ .. $],     // 長さ0のスライス
-emptySlice2 = slice3[0 .. 0];     // 長さ0のスライス
+      emptySlice2 = slice3[0 .. 0];     // 長さ0のスライス
 
 slice3 = staticArray[];                 // staticArray[0 .. $]と同じ
 ~~~~
@@ -198,7 +198,7 @@ slice3 = staticArray[];                 // staticArray[0 .. $]と同じ
 
 ~~~~d
 int[] arr1 = new int[1024],
-arr2 = new int[1024];
+      arr2 = new int[1024];
 
 arr1[] = 10;                    // 全要素に10を代入
 arr2[] -= 100;                  // 全要素から100を引く
@@ -235,7 +235,7 @@ assert(slice1.length == 6);             // もちろん、slice1の大きさは�
 
 arr[0] = -3;                            // しかし、arrの先頭要素を書き換えても
 assert(slice1[0] == -2);                // slice1の先頭要素に影響はない。
-// arr.length = 10;で新しい領域にarrの内容がコピーされ、arrはそれを指している。
+                                        // arr.length = 10;で新しい領域にarrの内容がコピーされ、arrはそれを指している。
 ~~~~
 
 スライス`T[]`は、ポインタ`T*`とサイズ`size_t`のペアであると考えられます。
@@ -251,15 +251,15 @@ assert(slice1[0] == -2);                // slice1の先頭要素に影響はな�
 
 ~~~~d
 int[3] stArr1 = [0, 1, 2],
-stArr2 = [1, 1, 1],
-stArr3 = [0, 1, 2];
+       stArr2 = [1, 1, 1],
+       stArr3 = [0, 1, 2];
 
 writeln(stArr1 != stArr2);      // true     要素が違う
 writeln(stArr1 == stArr3);      // true     要素は全部同じ
 
 int[] slice1 = [0, 1, 2],
-slice2 = [1, 1, 1],
-slice3 = [0, 1, 2];
+      slice2 = [1, 1, 1],
+      slice3 = [0, 1, 2];
 
 writeln(slice1 != slice2);      // true     要素が違う
 writeln(slice1 == slice3);      // true     要素は全部同じ
@@ -290,15 +290,15 @@ Dでは、配列の大小関係も比較できます。
 
 ~~~~d
 int[3] stArr1 = [0, 1, 2],
-stArr2 = [0, 2, 1];
+       stArr2 = [0, 2, 1];
 int[2] stArr3 = [0, 1];
 
 writeln(stArr1 < stArr2);       // true
 writeln(stArr1 > stArr3);       // true
 
 int[] slice1 = [0, 1, 2],
-slice2 = [0, 2, 1],
-slice3 = [0, 1];
+      slice2 = [0, 2, 1],
+      slice3 = [0, 1];
 
 writeln(slice1 < slice2);       // true
 writeln(slice1 > slice3);       // true
@@ -310,7 +310,7 @@ writeln(stArr1 < slice2);       // もちろん、静的配列とスライスの
 
 ~~~~d
 string str1 = "Google",
-str2 = "Goggles";
+       str2 = "Goggles";
 
 writeln(str1 > str2);           // true
 ~~~~
@@ -331,41 +331,41 @@ import std.stdio, std.string, std.array, std.typecons;
 
 void main()
 {
-// `e`はスライスの要素の値で、`foreach_reverse`なので最終要素からイテレートする
-foreach_reverse(e; [0, 1, 2, 3])
-writeln(e);
+    // `e`はスライスの要素の値で、`foreach_reverse`なので最終要素からイテレートする
+    foreach_reverse(e; [0, 1, 2, 3])
+        writeln(e);
 
 
-int[5] arr = 10;
+    int[5] arr = 10;
 
-// `i`はインデックス、`e`は要素の値。もちろん、`i`は`0`から`arr.length-1`まで。
-// `ref e`となっているので、`e`を通して`arr`の内容を書き換え可能。
-// 逆を言えば、`ref`がついていなければ、foreach文内で`e`を通して`arr`の書き換えは不可能。
-// また、`arr`自体をforeach文の中で書き換えるのは不正
-foreach(i, ref e; arr){
-writefln("arr[%s] : %s", i, e);
-e = i;
-}
+    // `i`はインデックス、`e`は要素の値。もちろん、`i`は`0`から`arr.length-1`まで。
+    // `ref e`となっているので、`e`を通して`arr`の内容を書き換え可能。
+    // 逆を言えば、`ref`がついていなければ、foreach文内で`e`を通して`arr`の書き換えは不可能。
+    // また、`arr`自体をforeach文の中で書き換えるのは不正
+    foreach(i, ref e; arr){
+        writefln("arr[%s] : %s", i, e);
+        e = i;
+    }
 
-writeln(arr);       // [0, 1, 2, 3, 4]
+    writeln(arr);       // [0, 1, 2, 3, 4]
 
 
-int[] arr2 = new int[32];
-arr2[] = 10;
+    int[] arr2 = new int[32];
+    arr2[] = 10;
 
-// `i`にも`ref`が付いているので、イテレートするインデックスを操作可能。
-// この例の場合は、`i`は`0, 4, 8, 12, 16, 20, 24, 28`となる。
-foreach(ref i, ref e; arr2){
-writeln(i);
+    // `i`にも`ref`が付いているので、イテレートするインデックスを操作可能。
+    // この例の場合は、`i`は`0, 4, 8, 12, 16, 20, 24, 28`となる。
+    foreach(ref i, ref e; arr2){
+        writeln(i);
 
-e = i;
-i += 3;
-}
+        e = i;
+        i += 3;
+    }
 
-writeln(arr2);      // [0, 10, 10, 10, 4, 10, 10, 10,
-//  8, 10, 10, 10, 12, 10, 10, 10,
-// 16, 10, 10, 10, 20, 10, 10, 10,
-// 24, 10, 10, 10, 28, 10, 10, 10]
+    writeln(arr2);      // [0, 10, 10, 10, 4, 10, 10, 10,
+                        //  8, 10, 10, 10, 12, 10, 10, 10,
+                        // 16, 10, 10, 10, 20, 10, 10, 10,
+                        // 24, 10, 10, 10, 28, 10, 10, 10]
 }
 ~~~~
 
@@ -400,7 +400,7 @@ arr[4] : 10
 int[] arr = new int[10];
 
 foreach(e; arr)
-arr ~= 1;
+    arr ~= 1;
 ~~~~
 
 
@@ -411,7 +411,7 @@ arr ~= 1;
 int[] arr = new int[10];
 
 foreach(ref i, e; arr)
-writef("%d ", ++i);       // 1 3 5 7 9
+    writef("%d ", ++i);       // 1 3 5 7 9
 
 writeln();
 ~~~~
@@ -431,31 +431,31 @@ import std.array, std.stdio;
 
 void main()
 {
-int[] arr = [0, 1, 2, 3];
+    int[] arr = [0, 1, 2, 3];
 
-writeln(arr.empty);     // false    arrは空でない
-writeln(arr.front);     // 0        arrの先頭要素は0
-writeln(arr.back);      // 3        arrの最終要素は3
+    writeln(arr.empty);     // false    arrは空でない
+    writeln(arr.front);     // 0        arrの先頭要素は0
+    writeln(arr.back);      // 3        arrの最終要素は3
 
-int[] arr2 = arr.save;  // arrをpopFront(), popBack()しても、arr2に影響はない
-// スライスでは、ただ単なる代入(arr2 = arr)と等価
+    int[] arr2 = arr.save;  // arrをpopFront(), popBack()しても、arr2に影響はない
+                            // スライスでは、ただ単なる代入(arr2 = arr)と等価
 
-arr.popFront();         // arrを一つ進める -> arr = arr[1 .. $];と等価
-writeln(arr);           // [1, 2, 3]
-writeln(arr.empty);     // false
-writeln(arr.front);     // 1
-writeln(arr.back);      // 3
+    arr.popFront();         // arrを一つ進める -> arr = arr[1 .. $];と等価
+    writeln(arr);           // [1, 2, 3]
+    writeln(arr.empty);     // false
+    writeln(arr.front);     // 1
+    writeln(arr.back);      // 3
 
-arr.popBack();          // arrの後ろを一つ縮める -> arr = arr[0 .. $-1]に等価
-writeln(arr);           // [1, 2]
-writeln(arr.empty);     // false
-writeln(arr.front);     // 1
-writeln(arr.back);      // 2
+    arr.popBack();          // arrの後ろを一つ縮める -> arr = arr[0 .. $-1]に等価
+    writeln(arr);           // [1, 2]
+    writeln(arr.empty);     // false
+    writeln(arr.front);     // 1
+    writeln(arr.back);      // 2
 
-arr.popFront();
-arr.popFront();
-writeln(arr);           // []
-writeln(arr.empty);     // true     arrは空
+    arr.popFront();
+    arr.popFront();
+    writeln(arr);           // []
+    writeln(arr.empty);     // true     arrは空
 }
 ~~~~
 
@@ -469,15 +469,15 @@ import std.algorithm, std.range;
 
 auto evenPassFilter(T, U)(T[] array, U n)
 {
-return array.filter!"a%2 == 0"()
-.zip(repeat(n))
-.map!"a[0] * a[1]"();
+    return array.filter!"a%2 == 0"()
+          .zip(repeat(n))
+          .map!"a[0] * a[1]"();
 }
 
 
 void main()
 {
-writeln([0, 1, 2, 3].evenPassFilter(2.5));     // [0, 5]
+    writeln([0, 1, 2, 3].evenPassFilter(2.5));     // [0, 5]
 }
 ~~~~
 
@@ -499,7 +499,7 @@ int* p = cast(int*)GC.malloc(int.sizeof * 10);  // ヒープからint型10要素
 int[] slice = p[0 .. 10];                       // ポインタpからスライスを作成
 
 writeln(slice.ptr == p);                        // true
-// スライスのポインタは、pと同じなので
+                                                // スライスのポインタは、pと同じなので
 
 slice = slice[1 .. $];
 writeln(slice.ptr == p + 1);                    // true
@@ -507,8 +507,8 @@ writeln(slice.ptr == p + 1);                    // true
 int[10] stArray;
 slice = stArray[];                              // 静的配列 -> スライスへの変換
 writeln(stArray.ptr == slice.ptr);              // true
-// 静的配列をスライスへ変換することは、
-// そのスタック領域へのスライスであるということの証明
+                                                // 静的配列をスライスへ変換することは、
+                                                // そのスタック領域へのスライスであるということの証明
 ~~~~
 
 
@@ -527,7 +527,7 @@ int[10] stArray;
 writeln(stArray.length);                // 10
 
 pragma(msg, stArray.length);            // 10u (コンパイル時間に出力)
-// 静的配列であればコンパイル時定数
+                                        // 静的配列であればコンパイル時定数
 ~~~~
 
 
@@ -537,7 +537,7 @@ pragma(msg, stArray.length);            // 10u (コンパイル時間に出力)
 
 ~~~~d
 int[] slice = new int[10],
-slice2 = slice.dup;
+      slice2 = slice.dup;
 
 writeln(slice == slice2);
 writeln(slice.ptr != slice2.ptr);
@@ -593,7 +593,7 @@ writeln(sort(arr));     // [1, 2, 3]
 writeln(arr);           // [1, 2, 3]
 
 arr.sort!"a > b"();     // [3, 2, 1]
-// 降順並び替え
+                        // 降順並び替え
 writeln(arr);
 ~~~~
 
@@ -638,10 +638,10 @@ arr = new int[10];
 int* before = arr.ptr;
 
 foreach(i; 0 .. arr.capacity - arr.length)
-arr ~= i;               // メモリの再確保は起こらない
+    arr ~= i;               // メモリの再確保は起こらない
 
 assert(before == arr.ptr);  // 追加前と追加後ではポインタは変わっていない
-// つまり、最確保されていない
+                            // つまり、最確保されていない
 ~~~~
 
 
@@ -664,7 +664,7 @@ assert(cap - arr.length >= 5);              //追加可能な要素は5以上
 
 ~~~~d
 int[] arr = new int[10],
-arr2 = arr;
+      arr2 = arr;
 arr[] = 1;
 writeln(arr2);                  // [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 
@@ -672,18 +672,18 @@ size_t cap = arr.capacity;
 
 arr = arr[0 .. 5];
 assert(arr.capacity == 0);      // arrを拡大することは、arr2を破壊することにつながる
-// よって、capacityは0
+                                // よって、capacityは0
 
 arr.assumeSafeAppend();
 assert(arr.capacity == cap);    // 縮小前のcapacityと同じ
 
 arr.length = 6;
 writeln(arr);                   // [1, 1, 1, 1, 1, 0]
-// 新しい領域はT.initで初期化
+                                // 新しい領域はT.initで初期化
 writeln(arr2);                  // [1, 1, 1, 1, 1, 0, 1, 1, 1, 1]
-// arrやarr2に代入していないのに、arr2[5]が0に書き換わっている
-// プログラマが意図していないメモリの書き換えになっている
-// つまり、assumeSafeAppendはちゃんと管理しなければ安全でない
+                                // arrやarr2に代入していないのに、arr2[5]が0に書き換わっている
+                                // プログラマが意図していないメモリの書き換えになっている
+                                // つまり、assumeSafeAppendはちゃんと管理しなければ安全でない
 ~~~~
 
 
@@ -709,8 +709,8 @@ writeln(arr3d[0][0].length);    // 3
 
 ## 問題 -> [解答](https://github.com/k3kaimu/d-manual/blob/master/answer.md#008)
 
-* 問1
-`int`型の配列`arr`を適当に6要素初期化し、その内容を1要素ずつ改行して表示するプログラムを作ってください。
+* 問1  
+`int`型の配列`arr`を適当に6要素初期化し、その内容を1要素ずつ改行して表示するプログラムを作ってください。  
 たとえば、`[0, 2, 4, 1, 3, 5]`と初期化されているなら以下のように表示すること。
 
 ~~~~
@@ -722,10 +722,10 @@ writeln(arr3d[0][0].length);    // 3
 5
 ~~~~
 
-* 問2
+* 問2  
 問2のプログラムとは逆順で表示させるようにしてください。`foreach`文を使ったなら`for`文でやってみましょう。
 
-* 問3
+* 問3  
 `writefln`や`writef`のフォーマット指定は、詳細に指定可能です。たとえば、問2のプログラムであれば以下のように書けます。
 
 ~~~~d
@@ -733,9 +733,9 @@ import std.stdio;
 
 void main()
 {
-int[] arr = [0, 2, 4, 1, 3, 5];
+    int[] arr = [0, 2, 4, 1, 3, 5];
 
-writefln("%(%s\n%)", arr);
+    writefln("%(%s\n%)", arr);
 }
 ~~~~
 
@@ -758,7 +758,7 @@ writefln("%(%s\n%)", arr);
 ~~~~
 
 
-* 問4
+* 問4  
 `new int[10];`とすることで、10要素の配列を確保し、各要素にインデックス値`idx`の10倍の値`idx * 10`を格納し、表示するプログラムを書いてください。
 出力のフォーマットはどのような形式でも構いません。
 

@@ -19,41 +19,41 @@ import std.stdio;
 
 void main()
 {
-int[string] aa = ["homu" : 1, "mami" : 2];
+    int[string] aa = ["homu" : 1, "mami" : 2];
 
-writeln(aa["homu"]);        // 1
-writeln(aa["mami"]);        // 2
-//writeln(aa["saya"]);      // core.exception.RangeError@test00901(9): Range violation
-// 存在しないキーにアクセスしたから、エラーが出た.
+    writeln(aa["homu"]);        // 1
+    writeln(aa["mami"]);        // 2
+    //writeln(aa["saya"]);      // core.exception.RangeError@test00901(9): Range violation
+                                // 存在しないキーにアクセスしたから、エラーが出た.
 
-aa["foo"] = 12;             // キー"foo"に値`12`を格納
-aa["bar"] = 13;
-writeln(aa["foo"]);         // 12
-writeln(aa["bar"]);         // 13
+    aa["foo"] = 12;             // キー"foo"に値`12`を格納
+    aa["bar"] = 13;
+    writeln(aa["foo"]);         // 12
+    writeln(aa["bar"]);         // 13
 
-aa["foo"] = 15;             // 再度代入
-writeln(aa["foo"]);         // 15
+    aa["foo"] = 15;             // 再度代入
+    writeln(aa["foo"]);         // 15
 
-size_t len = aa.length;     // 現在格納している要素数
-writeln(len);               // 4
+    size_t len = aa.length;     // 現在格納している要素数
+    writeln(len);               // 4
 
-bool b = aa.remove("foo");  // "foo"を削除, removeはaaが"foo"を持っていたかどうかを返す
-writeln(b);                 // true
-len = aa.length;
-writeln(len);               // 3
+    bool b = aa.remove("foo");  // "foo"を削除, removeはaaが"foo"を持っていたかどうかを返す
+    writeln(b);                 // true
+    len = aa.length;
+    writeln(len);               // 3
 
-aa = null;                  // nullを代入すると、初期化される
-len = aa.length;
-writeln(len);               // 0
+    aa = null;                  // nullを代入すると、初期化される
+    len = aa.length;
+    writeln(len);               // 0
 
-auto aa2 = aa;              // 連想配列は「凄いポインタ」なので、代入はポインタ値の代入に等しい
-aa2["home"] = 2;            // aa2の"home"の書き換え
-writeln(aa["home"]);        // 2
-// aaも書き換わる
+    auto aa2 = aa;              // 連想配列は「凄いポインタ」なので、代入はポインタ値の代入に等しい
+    aa2["home"] = 2;            // aa2の"home"の書き換え
+    writeln(aa["home"]);        // 2
+                                // aaも書き換わる
 
-aa2["mado"] = 100;          // aa2に"mado"を追加
-writeln(aa["mado"]);        // 100
-// aaにも"mado"が追加されている
+    aa2["mado"] = 100;          // aa2に"mado"を追加
+    writeln(aa["mado"]);        // 100
+                                // aaにも"mado"が追加されている
 }
 ~~~~
 
@@ -88,20 +88,20 @@ import std.exception : enforce;
 
 void main()
 {
-auto madoMagi = ["mado": 1, "homu": 2,
-"saya": 3, "anko": 4];
+    auto madoMagi = ["mado": 1, "homu": 2,
+                     "saya": 3, "anko": 4];
 
-// if文と組み合わせて使うと便利
-if(auto p = "mami" in madoMagi)             // false
-writefln("マミさん(%s)は生きています。", *p);
-else
-writeln("マミさんは、マミられたようです");
+    // if文と組み合わせて使うと便利
+    if(auto p = "mami" in madoMagi)             // false
+        writefln("マミさん(%s)は生きています。", *p);
+    else
+        writeln("マミさんは、マミられたようです");
 
-madoMagi.remove("saya");
+    madoMagi.remove("saya");
 
 
-if("saya" !in madoMagi)                     // true
-writeln("さやかちゃんは魔女化したようです");
+    if("saya" !in madoMagi)                     // true
+        writeln("さやかちゃんは魔女化したようです");
 }
 ~~~~
 
@@ -149,13 +149,13 @@ auto aa2 = aa;
 
 aa2[0] = 12;
 writeln(aa);                // 12
-// aa2を書き換えると、aa3も書き換わってしまう
+                            // aa2を書き換えると、aa3も書き換わってしまう
 
 aa2 = aa.dup;
 
 aa2[0] = 13;
 writeln(aa[0]);             // 12
-// aa2を書き換えても、aaには影響はない
+                            // aa2を書き換えても、aaには影響はない
 ~~~~
 
 
@@ -183,11 +183,11 @@ writeln(aa.get(10, -1));        // -1
 
 ~~~~d
 auto madoMagi = ["mado": 1, "homu": 2,
-"saya": 3, "anko": 4];
+                 "saya": 3, "anko": 4];
 
 writeln(madoMagi.keys);
-// ["homu", "saya", "mado", "anko"]
-// 実際に必ずこのような順番になるかはわからない
+    // ["homu", "saya", "mado", "anko"]
+    // 実際に必ずこのような順番になるかはわからない
 ~~~~
 
 
@@ -198,11 +198,11 @@ writeln(madoMagi.keys);
 
 ~~~~d
 auto madoMagi = ["mado": 1, "homu": 2,
-"saya": 3, "anko": 4];
+                 "saya": 3, "anko": 4];
 
 writeln(madoMagi.values);
-// [2, 3, 1, 4]
-// 実際に必ずこのような順番になるかはわからない
+    // [2, 3, 1, 4]
+    // 実際に必ずこのような順番になるかはわからない
 ~~~~
 
 
@@ -213,11 +213,11 @@ writeln(madoMagi.values);
 
 ~~~~d
 auto madoMagi = ["mado": 1, "homu": 2,
-"saya": 3, "anko": 4];
+                 "saya": 3, "anko": 4];
 
 auto keyRng = madoMagi.byKey;
 //keyRng.front = "majo";        // .frontは左辺値を返すので経由で書き換え可能だが、
-// 危険なので書き換えてはいけない。
+                                // 危険なので書き換えてはいけない。
 
 writeln(keyRng);                // ["homu", "saya", "mado", "anko"]
 ~~~~
@@ -230,11 +230,11 @@ writeln(keyRng);                // ["homu", "saya", "mado", "anko"]
 
 ~~~~d
 auto madoMagi = ["mado": 1, "homu": 2,
-"saya": 3, "anko": 4];
+                 "saya": 3, "anko": 4];
 
 writeln(madoMagi.byValue);      // [2, 3, 1, 4]
-// ["homu", "saya", "mado", "anko"]
-// 実際に必ずこのような順番になるかはわからない
+    // ["homu", "saya", "mado", "anko"]
+    // 実際に必ずこのような順番になるかはわからない
 
 auto valueRng = madoMagi.byValue;
 valueRng.front = 100;
@@ -252,14 +252,14 @@ writeln(madoMagi);              // ["homu":100, "saya":100, "mado":1, "anko":4]
 
 ~~~~d
 auto madoMagi = ["mado": 1, "homu": 2,
-"saya": 3, "anko": 4];
+                 "saya": 3, "anko": 4];
 
 writeln(madoMagi);  // ["homu":2, "saya":3, "mado":1, "anko":4]
 
 madoMagi.rehash();
 
 writeln(madoMagi);  // ["homu":2, "saya":3, "anko":4, "mado":1]
-// 最適化されたので、並び順が上と異なっている！
+                    // 最適化されたので、並び順が上と異なっている！
 ~~~~
 
 
@@ -275,15 +275,15 @@ writeln(madoMagi);  // ["homu":2, "saya":3, "anko":4, "mado":1]
 
 ~~~~d
 auto madoMagi = ["mado": 1, "homu": 2,
-"saya": 3, "anko": 4, "mami": 5];
+                 "saya": 3, "anko": 4, "mami": 5];
 
 foreach(k, v; madoMagi)
-writefln("%s : %s", k, v);
+    writefln("%s : %s", k, v);
 
 writeln();
 
 foreach(k, ref v; madoMagi)
-v = 100;
+    v = 100;
 
 writefln("%-(%s : %s%|\n%)", madoMagi);
 
@@ -311,15 +311,15 @@ mami : 100
 
 ~~~~d
 auto madoMagi = ["mado": 1, "homu": 2,
-"saya": 3, "anko": 4, "mami": 5];
+                 "saya": 3, "anko": 4, "mami": 5];
 
 foreach(k; madoMagi.keys)
-writefln("%s : %s", k, madoMagi[k]);
+    writefln("%s : %s", k, madoMagi[k]);
 
 writeln();
 
 foreach(k; madoMagi.keys)
-madoMagi[k] = 100;
+    madoMagi[k] = 100;
 
 writefln("%-(%s : %s%|\n%)", madoMagi);
 ~~~~
@@ -331,15 +331,15 @@ writefln("%-(%s : %s%|\n%)", madoMagi);
 
 ~~~~d
 auto madoMagi = ["mado": 1, "homu": 2,
-"saya": 3, "anko": 4, "mami": 5];
+                 "saya": 3, "anko": 4, "mami": 5];
 
 foreach(k; madoMagi.byKey)
-writefln("%s : %s", k, madoMagi[k]);
+    writefln("%s : %s", k, madoMagi[k]);
 
 writeln();
 
 foreach(k; madoMagi.byKey)
-madoMagi[k] = 100;
+    madoMagi[k] = 100;
 
 writefln("%-(%s : %s%|\n%)", madoMagi);
 ~~~~
@@ -352,10 +352,10 @@ writefln("%-(%s : %s%|\n%)", madoMagi);
 
 ~~~~d
 auto madoMagi = ["mado": 1, "homu": 2,
-"saya": 3, "anko": 4, "mami": 5];
+                 "saya": 3, "anko": 4, "mami": 5];
 
 foreach(v; madoMagi.values)
-writeln(v);
+    writeln(v);
 ~~~~
 
 
@@ -365,15 +365,15 @@ writeln(v);
 
 ~~~~d
 auto madoMagi = ["mado": 1, "homu": 2,
-"saya": 3, "anko": 4, "mami": 5];
+                 "saya": 3, "anko": 4, "mami": 5];
 
 foreach(v; madoMagi.byValue)
-writeln(v);
+    writeln(v);
 
 writeln();
 
 foreach(ref v; madoMagi.byValue)
-v = 100;
+    v = 100;
 
 writefln("%-(%s : %s%|\n%)", madoMagi);
 ~~~~
@@ -396,7 +396,7 @@ int opCmp(Object)
 
 ## 問題 -> [解答](https://github.com/k3kaimu/d-manual/blob/master/answer.md#009)
 
-* 問題1
+* 問題1  
 
 入力として、人の名前とある数字がN行与えられる。先頭行はNがいくらかを示している。人名か重なることはなく、数字は重なっている可能性がある。たとえば、以下のように。
 
@@ -415,7 +415,7 @@ nakamura    11
 fuzimiya    89
 ~~~~
 
-このようなリストが与えられた場合に、名前をアルファベットでソートした順番(五十音順ではない)で数字も一緒に出力するようなプログラムを作成してください。
+このようなリストが与えられた場合に、名前をアルファベットでソートした順番(五十音順ではない)で数字も一緒に出力するようなプログラムを作成してください。  
 参考として、例のリストが入力された場合の正しい出力をいかに示しておきます。
 この出力例でのフォーマットは`writefln("%-12s\t\t%s", name, value);`となっていますが、異なったフォーマットでも構いません。
 
@@ -434,10 +434,10 @@ usagi                   81
 ~~~~
 
 
-* 問題2
+* 問題2  
 
 問題1では、アルファベット順でしたが、今度は数字の順番で並べてみましょう。もし、同じ数字に複数人いる場合には、その中でもアルファベット順で出力してください。
-つまり、例に対する出力は以下のようになります。
+つまり、例に対する出力は以下のようになります。  
 (ヒント: 数字ごとに人名リストを作る`string[][int]`という連想配列に格納してみると…)
 
 ~~~~

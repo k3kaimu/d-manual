@@ -11,24 +11,24 @@
 ~~~~d
 size_t sum;
 for(size_t i = 10; i != 0; --i)
-sum += i;
+    sum += i;
 ~~~~
 
 ~~~~asm
-LD A,0
-LD B,10
+        LD A,0
+        LD B,10
 LOOP:   ADD A,B
-DJNZ LOOP
+        DJNZ LOOP
 ~~~~
 
 ~~~~d
-size_t sum = 0;         // Z80アセンブラでのAレジスタ
-size_t cnt = 10;        // Z80アセンブラでのBレジスタ
+    size_t sum = 0;         // Z80アセンブラでのAレジスタ
+    size_t cnt = 10;        // Z80アセンブラでのBレジスタ
 
-Lloop:                    // ラベル
-sum += cnt;             // ADD A,B
-if(--cnt)               // この2行は
-goto Lloop;         // DJNZ LOOPに相当
+  Lloop:                    // ラベル
+    sum += cnt;             // ADD A,B
+    if(--cnt)               // この2行は
+        goto Lloop;         // DJNZ LOOPに相当
 ~~~~
 
 最後のD言語のコードで出現した`Lloop:`や`goto Lloop;`というのがラベルや`goto`文というものです。
@@ -45,29 +45,29 @@ import std.stdio;
 
 void main()
 {
-size_t cnt = 4;
-size_t index;
+    size_t cnt = 4;
+    size_t index;
 
-LloopA:
-if(--cnt)
-writeln("A: ", cnt);
-else
-goto Lend;  // ラベルがネストされたブロックにあったとしてもジャンプできる
+  LloopA:
+    if(--cnt)
+        writeln("A: ", cnt);
+    else
+        goto Lend;  // ラベルがネストされたブロックにあったとしてもジャンプできる
 
-index = 0;
+    index = 0;
 
-LloopB:
-if(index == cnt)
-goto LloopA;
-else{
-writeln("\tB: ", index++);
-goto LloopB;
-}
+  LloopB:
+    if(index == cnt)
+        goto LloopA;
+    else{
+        writeln("\tB: ", index++);
+        goto LloopB;
+    }
 
-{
-// ネストされたブロック内にあるラベル
-Lend: {}
-}
+    {
+      // ネストされたブロック内にあるラベル
+      Lend: {}
+    }
 }
 ~~~~
 
@@ -77,12 +77,12 @@ Lend: {}
 import std.stdio;
 
 void main(){
-foreach_reverse(cnt; 1 .. 4){
-writeln("A: ", cnt);
-
-foreach(i; 0 .. cnt)
-writeln("\tB: ", i);
-}
+    foreach_reverse(cnt; 1 .. 4){
+        writeln("A: ", cnt);
+        
+        foreach(i; 0 .. cnt)
+            writeln("\tB: ", i);
+    }
 }
 ~~~~
 
@@ -97,37 +97,37 @@ TDPLを読む限りでは、`goto`文は、変数宣言を飛び越えること�
 ~~~~d
 void main()
 {
-goto Label;
-int x;
-Lable: {}
+    goto Label;
+    int x;
+  Lable: {}
 }
 ~~~~
 
-しかし上記のコードのように、現在のdmdの実装では変数宣言は飛び越えれてしまいます。
+しかし上記のコードのように、現在のdmdの実装では変数宣言は飛び越えれてしまいます。  
 ([Bugzilla:4101](http://d.puremagic.com/issues/show_bug.cgi?id=4101)など)
 
 `try`, `catch`, `finally`は、正しくコンパイルエラーを出してくれます。
 
 ~~~~d
 void main(){
-//goto LtoTry;        // Error
-//goto LtoCatch;      // Error
-//goto LtoFinally;    // Error
+    //goto LtoTry;        // Error
+    //goto LtoCatch;      // Error
+    //goto LtoFinally;    // Error
 
-try{
-LtoTry: {}
-goto Lend;
-}
-catch(Exception){
-LtoCatch: {}
-goto Lend;
-}
-finally{
-LtoFinally: {}
-//goto Lend;      // Error
-}
+    try{
+      LtoTry: {}
+        goto Lend;
+    }
+    catch(Exception){
+      LtoCatch: {}
+        goto Lend;
+    }
+    finally{
+      LtoFinally: {}
+        //goto Lend;      // Error
+    }
 
-Lend: {}
+  Lend: {}
 }
 ~~~~
 
@@ -141,57 +141,57 @@ import std.stdio, std.string, std.array;
 
 void main()
 {
-auto str = readln().chomp();
-byte sign = 1;
-int value;
+    auto str = readln().chomp();
+    byte sign = 1;
+    int value;
 
-if(!str.empty && str.front == '-'){
-sign = -1;
-str.popFront();
-}
+    if(!str.empty && str.front == '-'){
+        sign = -1;
+        str.popFront();
+    }
 
-foreach(c; str){
-if(c == '0')
-value = value * 16;
-else if(c == '1')
-value = value * 16 + 1;
-else if(c == '2')
-value = value * 16 + 2;
-else if(c == '3')
-value = value * 16 + 3;
-else if(c == '4')
-value = value * 16 + 4;
-else if(c == '5')
-value = value * 16 + 5;
-else if(c == '6')
-value = value * 16 + 6;
-else if(c == '7')
-value = value * 16 + 7;
-else if(c == '8')
-value = value * 16 + 8;
-else if(c == '9')
-value = value * 16 + 9;
-else if(c == 'a' || c == 'A')
-value = value * 16 + 10;
-else if(c == 'b' || c == 'B')
-value = value * 16 + 11;
-else if(c == 'c' || c == 'C')
-value = value * 16 + 12;
-else if(c == 'd' || c == 'D')
-value = value * 16 + 13;
-else if(c == 'e' || c == 'E')
-value = value * 16 + 14;
-else if(c == 'f' || c == 'F')
-value = value * 16 + 15;
-else{
-writeln("Error !!!");
-break;
-}
-}
+    foreach(c; str){
+        if(c == '0')
+            value = value * 16;
+        else if(c == '1')
+            value = value * 16 + 1;
+        else if(c == '2')
+            value = value * 16 + 2;
+        else if(c == '3')
+            value = value * 16 + 3;
+        else if(c == '4')
+            value = value * 16 + 4;
+        else if(c == '5')
+            value = value * 16 + 5;
+        else if(c == '6')
+            value = value * 16 + 6;
+        else if(c == '7')
+            value = value * 16 + 7;
+        else if(c == '8')
+            value = value * 16 + 8;
+        else if(c == '9')
+            value = value * 16 + 9;
+        else if(c == 'a' || c == 'A')
+            value = value * 16 + 10;
+        else if(c == 'b' || c == 'B')
+            value = value * 16 + 11;
+        else if(c == 'c' || c == 'C')
+            value = value * 16 + 12;
+        else if(c == 'd' || c == 'D')
+            value = value * 16 + 13;
+        else if(c == 'e' || c == 'E')
+            value = value * 16 + 14;
+        else if(c == 'f' || c == 'F')
+            value = value * 16 + 15;
+        else{
+            writeln("Error !!!");
+            break;
+        }
+    }
 
-value *= sign;
+    value *= sign;
 
-writeln(value);
+    writeln(value);
 }
 ~~~~
 
@@ -202,37 +202,37 @@ import std.stdio, std.string, std.array;
 
 void main()
 {
-auto str = readln().chomp();
-byte sign = 1;
-int value;
+    auto str = readln().chomp();
+    byte sign = 1;
+    int value;
 
-if(!str.empty && str.front == '-'){
-sign = -1;
-str.popFront();
-}
+    if(!str.empty && str.front == '-'){
+        sign = -1;
+        str.popFront();
+    }
 
-foreach(c; str){
-switch(c){
-case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9':
-value = value * 16 + (c - '0');
-break;
+    foreach(c; str){
+        switch(c){
+          case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9':
+            value = value * 16 + (c - '0');
+            break;
 
-case 'a', 'b', 'c', 'd', 'e', 'f':
-value = value * 16 + (c - 'a' + 10);
-break;
+          case 'a', 'b', 'c', 'd', 'e', 'f':
+            value = value * 16 + (c - 'a' + 10);
+            break;
 
-case 'A', 'B', 'C', 'D', 'E', 'F':
-value = value * 16 + (c - 'A' + 10);
-break;
+          case 'A', 'B', 'C', 'D', 'E', 'F':
+            value = value * 16 + (c - 'A' + 10);
+            break;
 
-default:
-writeln("Error !!!");
-}
-}
+          default:
+            writeln("Error !!!");
+        }
+    }
 
-value *= sign;
+    value *= sign;
 
-writeln(value);
+    writeln(value);
 }
 ~~~~
 
@@ -248,37 +248,37 @@ import std.stdio, std.string, std.array;
 
 void main()
 {
-auto str = readln().chomp();
-byte sign = 1;
-int value;
+    auto str = readln().chomp();
+    byte sign = 1;
+    int value;
 
-if(!str.empty && str.front == '-'){
-sign = -1;
-str.popFront();
-}
+    if(!str.empty && str.front == '-'){
+        sign = -1;
+        str.popFront();
+    }
 
-foreach(c; str){
-switch(c){
-case '0': .. case '9':
-value = value * 16 + (c - '0');
-break;
+    foreach(c; str){
+        switch(c){
+          case '0': .. case '9':
+            value = value * 16 + (c - '0');
+            break;
 
-case 'a': .. case 'f':
-value = value * 16 + (c - 'a' + 10);
-break;
+          case 'a': .. case 'f':
+            value = value * 16 + (c - 'a' + 10);
+            break;
 
-case 'A': .. case 'F':
-value = value * 16 + (c - 'A' + 10);
-break;
+          case 'A': .. case 'F':
+            value = value * 16 + (c - 'A' + 10);
+            break;
 
-default:
-writeln("Error !!!");
-}
-}
+          default:
+            writeln("Error !!!");
+        }
+    }
 
-value *= sign;
+    value *= sign;
 
-writeln(value);
+    writeln(value);
 }
 ~~~~
 
@@ -289,26 +289,26 @@ writeln(value);
 ~~~~d
 int x;
 switch(x){
-case 0:
-goto case;
+  case 0:
+    goto case;
 
-case 1:
-goto case;
+  case 1:
+    goto case;
 
-case 2:
-goto case 4;
+  case 2:
+    goto case 4;
 
-case 3:
-goto case 8;
+  case 3:
+    goto case 8;
 
-case 4:
-goto case 3;
+  case 4:
+    goto case 3;
 
-case 5: .. case 10:
-goto default;
+  case 5: .. case 10:
+    goto default;
 
-default:
-writeln("Sw End");
+  default:
+    writeln("Sw End");
 }
 ~~~~
 
@@ -319,8 +319,8 @@ writeln("Sw End");
 
 ## 問題 -> [解答](https://github.com/k3kaimu/d-manual/blob/master/answer.md#007)
 
-* 問1
-入力として`<整数> <四則演算子> <整数>`のような文字列を受け取り、出力としてその式の結果を返すプログラムを作ってください。たとえば、`123 + 456`という文字列が入力されれば、`579`を出力するのようにしてください。
+* 問1  
+入力として`<整数> <四則演算子> <整数>`のような文字列を受け取り、出力としてその式の結果を返すプログラムを作ってください。たとえば、`123 + 456`という文字列が入力されれば、`579`を出力するのようにしてください。  
 ヒント: `readf("%s %s %s", &v1, &op, &v2);`
 
 * 問題募集中

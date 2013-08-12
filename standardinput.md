@@ -18,9 +18,9 @@ import std.stdio;
 
 void main()
 {
-string str = readln();
+    string str = readln();
 
-write(str);
+    write(str);
 }
 ~~~~
 
@@ -32,7 +32,7 @@ write(str);
 オウム返しされましたか？
 おめでとうございます！
 これであなたは晴れて真のプログラマになりました。
-入力のない今までのプログラムには、1メートル程度の価値しかありません。
+入力のない今までのプログラムには、1メートル程度の価値しかありません。  
 (ちなみに、出力のないプログラムには1ミリの価値もありません。もしろCPU時間を無駄に消費するゴミです)
 
 2行目も欲しい場合には、2回呼び出せばいいのは想像できますよね。
@@ -43,11 +43,11 @@ import std.stdio;
 
 void main()
 {
-string line1 = readln();
-string line2 = readln();
+    string line1 = readln();
+    string line2 = readln();
 
-write(line2);
-write(line1);
+    write(line2);
+    write(line1);
 }
 ~~~~
 
@@ -96,11 +96,11 @@ import std.stdio;
 
 void main()
 {
-writefln("'%1$s' => %1$d(%1$08X)", 'a');
-writefln("'%1$s' => %1$d(%1$08X)", 'A');
-writefln("'%1$s' => %1$d(%1$08X)", '@');
-writefln("'%1$s' => %1$d(%1$08X)", '&');
-writefln("'%1$s' => %1$d(%1$08X)", 'あ');
+    writefln("'%1$s' => %1$d(%1$08X)", 'a');
+    writefln("'%1$s' => %1$d(%1$08X)", 'A');
+    writefln("'%1$s' => %1$d(%1$08X)", '@');
+    writefln("'%1$s' => %1$d(%1$08X)", '&');
+    writefln("'%1$s' => %1$d(%1$08X)", 'あ');
 }
 ~~~~
 
@@ -134,11 +134,11 @@ import std.stdio, std.string;
 
 void main()
 {
-string line1 = readln();
-string line2 = readln();
+    string line1 = readln();
+    string line2 = readln();
 
-write(chomp(line1));
-write(line2);
+    write(chomp(line1));
+    write(line2);
 }
 ~~~~
 
@@ -153,11 +153,11 @@ import std.stdio;
 
 void main()
 {
-char ln = '\n';     // \n で改行を表す。
-write("Foo", ln, "Bar\n");
+    char ln = '\n';     // \n で改行を表す。
+    write("Foo", ln, "Bar\n");
 
-write("foo\r\n");   // OSによっては"\r\n"の2文字だったり
-write("foo\r");     // '\r'だけだったりする。
+    write("foo\r\n");   // OSによっては"\r\n"の2文字だったり
+    write("foo\r");     // '\r'だけだったりする。
 }
 ~~~~
 
@@ -185,24 +185,24 @@ import std.stdio;
 
 void main()
 {
-string str =   "foo \n あ";
-wstring wstr = "foo \n あ"w;
-dstring dstr = "foo \n あ"d;
+    string str =   "foo \n あ";
+    wstring wstr = "foo \n あ"w;
+    dstring dstr = "foo \n あ"d;
 
-writeln(str);
-writeln(wstr);
-writeln(dstr);
+    writeln(str);
+    writeln(wstr);
+    writeln(dstr);
 }
 ~~~~
 
 ~~~~
 $ rdmd example00403
-foo
-あ
-foo
-あ
-foo
-あ
+foo 
+ あ
+foo 
+ あ
+foo 
+ あ
 ~~~~
 
 
@@ -217,13 +217,13 @@ import std.stdio;
 
 void main()
 {
-string str =   "山田太郎";
-wstring wstr = "鈴木次郎"w;
-dstring dstr = "斎藤三郎"d;
+    string str =   "山田太郎";
+    wstring wstr = "鈴木次郎"w;
+    dstring dstr = "斎藤三郎"d;
 
-writeln(str[0]);
-writeln(wstr[0]);
-writeln(dstr[0]);
+    writeln(str[0]);
+    writeln(wstr[0]);
+    writeln(dstr[0]);
 }
 ~~~~
 
@@ -243,13 +243,13 @@ import std.array, std.stdio;
 
 void main()
 {
-string str =   "山田太郎";
-wstring wstr = "鈴木次郎"w;
-dstring dstr = "斎藤三郎"d;
+    string str =   "山田太郎";
+    wstring wstr = "鈴木次郎"w;
+    dstring dstr = "斎藤三郎"d;
 
-writeln(str.front);
-writeln(wstr.front);
-writeln(dstr.front);
+    writeln(str.front);
+    writeln(wstr.front);
+    writeln(dstr.front);
 }
 ~~~~
 
@@ -282,19 +282,19 @@ import std.array, std.stdio;
 
 void main()
 {
-string str = "山田太郎";
+    string str = "山田太郎";
 
-writefln("%s : %s", str.front, str);
-str.popFront();
-writefln("%s : %s", str.front, str);
-str.popFront();
-writefln("%s : %s", str.front, str);
-str.popFront();
-writefln("%s : %s", str.front, str);
+    writefln("%s : %s", str.front, str);
+    str.popFront();
+    writefln("%s : %s", str.front, str);
+    str.popFront();
+    writefln("%s : %s", str.front, str);
+    str.popFront();
+    writefln("%s : %s", str.front, str);
 
-writeln(str.empty);     // 文字列が空か？ => false
-str.popFront();
-writeln(str.empty);     // 文字列が空か？ => true
+    writeln(str.empty);     // 文字列が空か？ => false
+    str.popFront();
+    writeln(str.empty);     // 文字列が空か？ => true
 }
 ~~~~
 
@@ -332,9 +332,9 @@ import std.stdio;
 
 void main()
 {
-string str = "yamada taro";
+    string str = "yamada taro";
 
-writeln(str[5-1 .. 9]); // da ta
+    writeln(str[5-1 .. 9]); // da ta
 }
 ~~~~
 
@@ -369,13 +369,13 @@ import std.stdio;
 
 void main()
 {
-int n1;
+    int n1;
 
-write("好きな数値を1つ入れてください----");
+    write("好きな数値を1つ入れてください----");
 
-readf("%s", &n1);
+    readf("%s", &n1);
 
-writefln("あなたが入力した数値は%sですよね", n1);
+    writefln("あなたが入力した数値は%sですよね", n1);
 }
 ~~~~
 
@@ -412,14 +412,14 @@ import std.stdio;
 
 void main()
 {
-int a = 12;
-int* p = &a;
+    int a = 12;
+    int* p = &a;
 
-writeln("aの値: ", a);
+    writeln("aの値: ", a);
 
-*p = 12;    // ポインタの指す住所への代入
-writeln("ポインタが指す値: ", *p);
-writeln("aの値: ", a);
+    *p = 12;    // ポインタの指す住所への代入
+    writeln("ポインタが指す値: ", *p);
+    writeln("aの値: ", a);
 }
 ~~~~
 
@@ -443,25 +443,25 @@ readlnやreadfよりももっと詳細に操作したいなら、`std.stdio.stdi
 
 ## 問題 -> [解答](https://github.com/k3kaimu/d-manual/blob/master/answer.md#004)
 
-* `readln`を使って3行取得して、各行の先頭2文字を削って表示するプログラムを作ってください。
-ヒント: `readln` -> `popFront()` -> `write`
+* `readln`を使って3行取得して、各行の先頭2文字を削って表示するプログラムを作ってください。  
+    ヒント: `readln` -> `popFront()` -> `write`
 
 * `writeln("%2$s - %1$x", 10, 16);`の表示の結果を予想してください。
 
-* 次のプログラムはどのような出力をするか予想してください。
+* 次のプログラムはどのような出力をするか予想してください。  
 
 ~~~~d
 import std.stdio;
 
 void main()
 {
-int a = 1, b = 2;
-int* p = &a, q = &b;
+    int a = 1, b = 2;
+    int* p = &a, q = &b;
 
-p = &(++*q);
+    p = &(++*q);
 
-writeln(*p);
-writeln(*q);
+    writeln(*p);
+    writeln(*q);
 }
 ~~~~
 
