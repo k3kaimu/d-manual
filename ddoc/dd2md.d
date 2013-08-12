@@ -2,7 +2,14 @@
 dd(Ddoc)ファイルをmd(markdown)形式に変換するスクリプト
 
 dd2md (input.dd) (output.md)
-    (input.dd): 入力のddファイル(Ddoc) 
+    (input.dd): 入力のddファイル
+    (output.md): 出力のmdファイル. 引数として与えられなければinput.mdとなる
+
+Examples:
+----
+./dd2md hello_world.dd
+./dd2md function.dd function_dd.md
+----
 */
 
 import std.array;
