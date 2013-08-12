@@ -13,6 +13,7 @@ UL_circle = <ul style="list-style-type: circle">$0</ul>
 UL_square = <ul style="list-style-type: square">$0</ul>
 LINK =  [$0]($0)
 LINK2 = [$+]($1)
+ANCHOR = <a name = "$1">$+</a>
 D_CODE =
 ~~~~d
 $0
