@@ -22,22 +22,15 @@ import std.random;
 import std.format;
 
 
-enum markdown_ddoc = import("markdown.ddoc");
-
-
 void main(string[] args)
 {
     immutable input = args[1],
               output = (args.length > 2) ? args[2] : (input.stripExtension() ~ ".md"),
               tempDir = .tempDir() ~ std.path.dirSeparator,
               rndStr = rndGen.front.to!string(),
-              markdownDdocPath = tempDir ~ "markdown_" ~ rndStr ~ ".ddoc",
+              markdownDdocPath = "markdown.ddoc",
               dmdOutputFileName = "dmdoutput_" ~ rndStr,
               dmdOutputFilePath = tempDir ~ dmdOutputFileName;
-
-    // markdown.ddocをtempDirに出力
-    std.file.write(markdownDdocPath, markdown_ddoc);
-    scope(exit) std.file.remove(markdownDdocPath);
 
     // dmdでddからmdファイルの生成
     auto app = appender!string();
