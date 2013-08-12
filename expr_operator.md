@@ -53,66 +53,66 @@ import std.stdio;
 
 void writeType(T, string op, U)()
 {
-    writeln(typeof(mixin("T.init " ~ op ~ " U.init")).stringof);
+writeln(typeof(mixin("T.init " ~ op ~ " U.init")).stringof);
 }
 
 void main()
 {
-    writeType!(   byte, "+",    byte)();    // int
-    writeType!(   byte, "+",   ubyte)();    // int
-    writeType!(  ubyte, "+",   ubyte)();    // int
-    
-    writeln();
-    
-    writeType!(  short, "+",   short)();    // int
-    writeType!(  short, "+",  ushort)();    // int
-    writeType!( ushort, "+",  ushort)();    // int
+writeType!(   byte, "+",    byte)();    // int
+writeType!(   byte, "+",   ubyte)();    // int
+writeType!(  ubyte, "+",   ubyte)();    // int
 
-    writeln();
+writeln();
 
-    writeType!(    int, "+",     int)();    //  int
-    writeType!(    int, "+",    uint)();    // uint
-    writeType!(   uint, "+",    uint)();    // uint
+writeType!(  short, "+",   short)();    // int
+writeType!(  short, "+",  ushort)();    // int
+writeType!( ushort, "+",  ushort)();    // int
 
-    writeln();
+writeln();
 
-    writeType!(   long, "+",    long)();    //  long
-    writeType!(   long, "+",   ulong)();    // ulong
-    writeType!(  ulong, "+",   ulong)();    // ulong
+writeType!(    int, "+",     int)();    //  int
+writeType!(    int, "+",    uint)();    // uint
+writeType!(   uint, "+",    uint)();    // uint
 
-    writeln();
+writeln();
 
-    writeType!(    int, "+",    long)();    //  long
-    writeType!(    int, "+",   ulong)();    // ulong
-    writeType!(   uint, "+",    long)();    //  long
-    writeType!(   uint, "+",   ulong)();    // ulong
+writeType!(   long, "+",    long)();    //  long
+writeType!(   long, "+",   ulong)();    // ulong
+writeType!(  ulong, "+",   ulong)();    // ulong
 
-    writeln();
+writeln();
 
-    writeType!(  float, "+",   float)();    //  float
-    writeType!(  float, "+",  ifloat)();    // cfloat
-    writeType!( ifloat, "+",  ifloat)();    // ifloat
+writeType!(    int, "+",    long)();    //  long
+writeType!(    int, "+",   ulong)();    // ulong
+writeType!(   uint, "+",    long)();    //  long
+writeType!(   uint, "+",   ulong)();    // ulong
 
-    writeln();
+writeln();
 
-    writeType!(   real, "+",   float)();    //  real
-    writeType!(   real, "+",  ifloat)();    // creal
-    writeType!(  ireal, "+",  ifloat)();    // ireal
+writeType!(  float, "+",   float)();    //  float
+writeType!(  float, "+",  ifloat)();    // cfloat
+writeType!( ifloat, "+",  ifloat)();    // ifloat
 
-    writeln();
+writeln();
 
-    writeType!(  float, "+",  cfloat)();    // cfloat
-    writeType!( ifloat, "+",  cfloat)();    // cfloat
-    writeType!( cfloat, "+",  cfloat)();    // cfloat
+writeType!(   real, "+",   float)();    //  real
+writeType!(   real, "+",  ifloat)();    // creal
+writeType!(  ireal, "+",  ifloat)();    // ireal
 
-    writeln();
+writeln();
 
-    writeType!( ifloat, "*",  ifloat)();    // float
+writeType!(  float, "+",  cfloat)();    // cfloat
+writeType!( ifloat, "+",  cfloat)();    // cfloat
+writeType!( cfloat, "+",  cfloat)();    // cfloat
 
-    writeln();
+writeln();
 
-    writeType!(   long, "+",   float)();    //  float
-    writeType!(   long, "+",  ifloat)();    // cfloat
+writeType!( ifloat, "*",  ifloat)();    // float
+
+writeln();
+
+writeType!(   long, "+",   float)();    //  float
+writeType!(   long, "+",  ifloat)();    // cfloat
 }
 ````
 
@@ -138,32 +138,32 @@ void main()
 
 * 規則2: 演算子について、以下の規則は番号の小さいものから適応される。
 
-1. どちらか片方が複素数型(浮動小数点型)である。  
-    そのうち最大の型にどちらの項も暗黙変換され、結果はその型となる。
+1. どちらか片方が複素数型(浮動小数点型)である。
+そのうち最大の型にどちらの項も暗黙変換され、結果はその型となる。
 
-2. どちらも虚数型(浮動小数点型)であり、積, 商の演算子である。  
-    そのうち最大の型にどちらの項も暗黙変換され、結果はその大きさの実数型となる。
+2. どちらも虚数型(浮動小数点型)であり、積, 商の演算子である。
+そのうち最大の型にどちらの項も暗黙変換され、結果はその大きさの実数型となる。
 
-3. どちらも虚数型(浮動小数点型)であり、和, 差の演算子である。  
-    そのうち最大の型にどちらの項も暗黙変換され、結果はその大きさの虚数型となる。
+3. どちらも虚数型(浮動小数点型)であり、和, 差の演算子である。
+そのうち最大の型にどちらの項も暗黙変換され、結果はその大きさの虚数型となる。
 
-4. どちらか片方が虚数型(浮動小数点型)である。  
-    そのうち最大の型にどちらの項も暗黙変換され、結果はその大きさの複素型となる。
+4. どちらか片方が虚数型(浮動小数点型)である。
+そのうち最大の型にどちらの項も暗黙変換され、結果はその大きさの複素型となる。
 
-5. どちらか片方が浮動小数点型である。  
-    そのうち最大の型にどちらの項も暗黙変換され、結果はその大きさの浮動小数点型となる。
+5. どちらか片方が浮動小数点型である。
+そのうち最大の型にどちらの項も暗黙変換され、結果はその大きさの浮動小数点型となる。
 
-6. どちらか片方が`ulong`型である。  
-    もう片方も`ulong`型に暗黙変換され、結果も`ulong`型。
+6. どちらか片方が`ulong`型である。
+もう片方も`ulong`型に暗黙変換され、結果も`ulong`型。
 
-7. どちらか片方が`long`型である。  
-    もう片方も`long`型に暗黙変換され、結果も`long`型。
+7. どちらか片方が`long`型である。
+もう片方も`long`型に暗黙変換され、結果も`long`型。
 
-8. どちらか片方が`uint`型である。  
-    もう片方も`uint`型に暗黙変換され、結果も`uint`型。
+8. どちらか片方が`uint`型である。
+もう片方も`uint`型に暗黙変換され、結果も`uint`型。
 
-9. その他の整数同士の演算  
-    両方とも`int`型に暗黙変換され、結果も`int`型。
+9. その他の整数同士の演算
+両方とも`int`型に暗黙変換され、結果も`int`型。
 
 規則2はややこしいかもしれませんが、複素数や虚数が式に現れなければ、5～9のみを意識すればよく、それらの基礎は規則1に従っているので理解しやすいと思います。
 
@@ -263,7 +263,7 @@ cfloat c = 1 + 1i;
 writeln(++c);       // 2+1i
 
 writeln(++c++);     // NG; Error: c++ is not an lvalue
-                    // ++(c++)と解釈されるため
+// ++(c++)と解釈されるため
 
 writeln((++c)++);   // OK
 ````
@@ -271,7 +271,7 @@ writeln((++c)++);   // OK
 
 ### 算術演算子
 
-* 加算(Addition), 減算(Subtraction)  
+* 加算(Addition), 減算(Subtraction)
 
 加算と減算は特に言うことは無いと思います。
 加算の演算子`+`と、減算の演算子`-`の優先順位と結合規則は同じで、優先順位6の左→右への結合規則です。
@@ -279,7 +279,7 @@ writeln((++c)++);   // OK
 
 ~~~~d
 int a = 1,
-    b = 2;
+b = 2;
 
 writeln(a + b);     // 3
 writeln(a - b);     // -1
@@ -291,7 +291,7 @@ writeln(a - b + c); // (a - b) + c と解釈
 ~~~~
 
 
-* 乗算(Multiplication), 除算(Division)  
+* 乗算(Multiplication), 除算(Division)
 
 乗算や除算は優先順位が5と、加算や減算よりも優先されるようになっています。
 結合規則は、左→右です。
@@ -299,7 +299,7 @@ writeln(a - b + c); // (a - b) + c と解釈
 
 ~~~~d
 int a = 1,
-    b = 2;
+b = 2;
 
 writeln(a * b);     // 2
 writeln(a / b);     // 0
@@ -311,7 +311,7 @@ writeln(a / b * c); // (a / b) * c と解釈
 ~~~~
 
 
-* 剰余(Modulo)  
+* 剰余(Modulo)
 
 剰余演算子は、割り算での余りに相当します。
 最後の例のように、浮動小数点数の演算では丸め誤差が存在するため、思った答えと違うものが出る可能性があります。
@@ -334,7 +334,7 @@ writeln(3 % 0.6);   // 0.6(誤差があるため)
 ~~~~
 
 
-* 累乗(Power)  
+* 累乗(Power)
 
 プログラミングでは時々累乗を使うので、言語機能として累乗演算子が定義されています。
 機能としては、`std.math.pow`と同じです(`std.math.pow`を呼んでるだけなので)。
@@ -673,11 +673,11 @@ a, b        14                      →
 
 ## 問題 -> [解答](https://github.com/k3kaimu/d-manual/blob/master/answer.md#003)
 
-* シフト演算子の`>>`が、符号を維持できる理由は？  
-    ヒント: 2の補数でGoogleで検索
+* シフト演算子の`>>`が、符号を維持できる理由は？
+ヒント: 2の補数でGoogleで検索
 
-* シフト演算子で`>>>`はあるのに`<<<`がない理由は？  
-    ヒント: 2の補数でGoogleで検索
+* シフト演算子で`>>>`はあるのに`<<<`がない理由は？
+ヒント: 2の補数でGoogleで検索
 
 * 問題募集中
 

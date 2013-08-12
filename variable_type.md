@@ -26,14 +26,14 @@ import std.stdio;
 
 void main()
 {
-    int a = 1 + 2;
-    writeln(a);
+int a = 1 + 2;
+writeln(a);
 
-    a = 3 + 1;
-    writeln(a);
+a = 3 + 1;
+writeln(a);
 
-    a = a + 2;
-    writeln(a);
+a = a + 2;
+writeln(a);
 }
 ````
 
@@ -59,9 +59,9 @@ $ rdmd src.d
 
 ~~~~d
 int a = 12,
-    b = a + 1,
-    c = a + b,
-    d;
+b = a + 1,
+c = a + b,
+d;
 ~~~~
 
 という風にも書けます。
@@ -99,37 +99,37 @@ int a = 0;
 
 void main()
 {
-    // ここはmain関数のスコープ
+// ここはmain関数のスコープ
 
-    double a = 1;       // グローバルなシンボルを上書きすることは可能
+double a = 1;       // グローバルなシンボルを上書きすることは可能
 
-    writeln(a);         // 1; このスコープのa
-    writeln(.a);        // 0; グローバルなa
+writeln(a);         // 1; このスコープのa
+writeln(.a);        // 0; グローバルなa
 
-    {
-        //ここはmainより1つ内側のスコープ
+{
+//ここはmainより1つ内側のスコープ
 
-        //string a;     // グローバルでないシンボルを上書きすることはできない
-        string b = "foo";
+//string a;     // グローバルでないシンボルを上書きすることはできない
+string b = "foo";
 
-        writeln(a);     // 1
-        writeln(.a);    // 0
-        writeln(b);     // foo
+writeln(a);     // 1
+writeln(.a);    // 0
+writeln(b);     // foo
 
-        // string型のbの寿命はここまで
-    }
+// string型のbの寿命はここまで
+}
 
-    {
-        //writeln(b);   // このスコープから、上のスコープのbを見ることはできない
-    }
+{
+//writeln(b);   // このスコープから、上のスコープのbを見ることはできない
+}
 
-    //writeln(b);       // 外側のスコープから、内側のbは見れない
-    uint b;             // 内側のbは見えないから、bをシンボルとして定義してもよい
+//writeln(b);       // 外側のスコープから、内側のbは見れない
+uint b;             // 内側のbは見えないから、bをシンボルとして定義してもよい
 
-    foo();              // グローバルスコープにあるシンボルは、ソースコードで下にあっても使える
-    writeln(bar);       // 同上
+foo();              // グローバルスコープにあるシンボルは、ソースコードで下にあっても使える
+writeln(bar);       // 同上
 
-    // double型のaやuint型のbの寿命はここまで
+// double型のaやuint型のbの寿命はここまで
 }
 
 
@@ -138,7 +138,7 @@ int bar = 12;
 
 void foo()
 {
-    //writeln(b);       // 0; main関数のuint型のbも、string型のbも見えない
+//writeln(b);       // 0; main関数のuint型のbも、string型のbも見えない
 }
 ~~~~
 
@@ -248,7 +248,7 @@ writeln(b); // false
 * ucent     : 128bitの符号なし整数(将来のために名前だけ付けられてる)
 
 * size_t    : ポインタ値が十分に入る大きさの符号なし整数型
-              32bit環境だと32bit(uint), 64bit環境だと64bit(ulong)
+32bit環境だと32bit(uint), 64bit環境だと64bit(ulong)
 
 * ptrdiff_t : size_tと同じ大きさの符号あり整数型
 ~~~~
@@ -267,12 +267,12 @@ writeln(a);             // 0
 ulong b = -1;
 
 writeln(b);             // 18446744073709551615
-                        // -1 は int型 だが、int -> long -> ulongと暗黙に変換される。
-                        // longからulongへの変換によってこのようになる。
+// -1 は int型 だが、int -> long -> ulongと暗黙に変換される。
+// longからulongへの変換によってこのようになる。
 
 writeln(1uL - 2uL);     // 18446744073709551615
-                        // 1uL は ulong型の1なので、
-                        // 上のbと同様に負の数を表せず、このようになる。
+// 1uL は ulong型の1なので、
+// 上のbと同様に負の数を表せず、このようになる。
 
 writeln(1u);            // 数値の後ろに u とつけると uint型
 writeln(1U);            // 大文字で U とつけても同じ
@@ -393,9 +393,9 @@ writeln(std.range.drop(utf32, 2));              // ほげ
 * T[N]      : T型を連続してN要素集めた型。静的配列(Static Array)
 * V[K]      : K型の値に対してV型の値が1:1で対応する型。連想配列(Associative Array)
 * R function(T...)
-            : T...型を受け取ってR型の値を返す関数ポインタ型
+: T...型を受け取ってR型の値を返す関数ポインタ型
 * R delegate(T...)
-            : T...型を受け取ってR型の値を返すデリゲート(委譲)型
+: T...型を受け取ってR型の値を返すデリゲート(委譲)型
 ~~~~
 
 これらの型については後ほど個々に詳しく書きます。
@@ -430,8 +430,8 @@ int a;
 const(int*) p = &a;     // すべての型はconstに暗黙変換可能
 
 //*p += 3;              // Error: cannot modify const expression *p
-                        // constは推移的なので、*pはconst(int)型
-                        // constなデータは書き換え不可なのでエラーがでる
+// constは推移的なので、*pはconst(int)型
+// constなデータは書き換え不可なのでエラーがでる
 ~~~~
 
 
@@ -545,7 +545,7 @@ pragma(msg, typeof(e)); // immutable(int)
 ~~~~d
 void main()
 {
-    intt a;         // intでないのに注意
+intt a;         // intでないのに注意
 }
 ~~~~
 
@@ -583,7 +583,7 @@ void main()
 * 複素数浮動小数点型(Complex Floating-Point Number); `cfloat, cdouble, creal`
 * 文字型(Charactor); `char, wchar, dchar`
 * 文字列型(String); `string, wstring, dstring`
-* 派生型(Derived Data Type); 
+* 派生型(Derived Data Type);
 * ユーザー定義型(User Defined Type); `enum, struct, union, class, interface`
 * 型修飾子(Type Qualifiers)
 * 記憶域クラス(Storage Class)

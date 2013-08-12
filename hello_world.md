@@ -32,7 +32,7 @@ import std.stdio;
 
 void main()
 {
-    writeln("Hello, world!");
+writeln("Hello, world!");
 }
 ````
 
@@ -110,7 +110,7 @@ D言語で書かれたプログラムは、 **`main`** という関数(`function
 ````d
 OutputType fName(InputType1 arg1, InputType2 arg2, ...)
 {
-    function Body
+function Body
 }
 ````
 
@@ -132,7 +132,7 @@ OutputType fName(InputType1 arg1, InputType2 arg2, ...)
 ### 5行目
 
 ````d
-    writeln("Hello, world!");
+writeln("Hello, world!");
 ````
 
 この行は、「`writeln`という関数に`"Hello, world!"`を引数として渡して、呼び出す」という意味です。
@@ -169,7 +169,7 @@ import std.stdio;
 
 void main()
 {
-    writeln("Hello, ", "World! ", 123);
+writeln("Hello, ", "World! ", 123);
 }
 ````
 
@@ -201,9 +201,9 @@ import std.stdio;
 
 void main()
 {
-    write("Hello, ");
-    write("World! ");
-    writeln(123);
+write("Hello, ");
+write("World! ");
+writeln(123);
 }
 ````
 
@@ -216,7 +216,7 @@ void main()
 ````d
 void main()
 {
-    foo();
+foo();
 }
 
 
@@ -230,7 +230,7 @@ void foo(){}
 
 void main()
 {
-    foo();
+foo();
 }
 ````
 
@@ -241,8 +241,8 @@ void foo(){}
 
 void main()
 {
-    foo();
-    foo();
+foo();
+foo();
 }
 ````
 
@@ -256,8 +256,8 @@ import std.stdio;
 
 void main()
 {
-    writefln("%d : %d", 1, 2);
-    writefln("%s : %s", 2, 4);
+writefln("%d : %d", 1, 2);
+writefln("%s : %s", 2, 4);
 }
 ````
 
@@ -280,7 +280,7 @@ import std.stdio;
 
 void main()
 {
-    writefln("%x : %X", 200, 200);
+writefln("%x : %X", 200, 200);
 }
 ````
 
@@ -296,7 +296,7 @@ import std.stdio;
 
 void main()
 {
-    writefln("%s", "これは文字列");
+writefln("%s", "これは文字列");
 }
 ````
 
@@ -312,7 +312,7 @@ import std.stdio;
 
 void main()
 {
-    writefln("%d", "これは文字列");
+writefln("%d", "これは文字列");
 }
 ````
 
@@ -354,35 +354,35 @@ object.Exception@C:\D\dmd2\src\phobos\std\format.d(2154): Incorrect format speci
 import stds.stdio;
 
 /** main関数
- * Hello, World!と出力
- */
+* Hello, World!と出力
+*/
 void main()
 {
-    /+
-    writeln("fugafuga");
-        /+
-        writeln("なんだと…");
-        +/
-    writeln("hogehoge");
-    +/
+/+
+writeln("fugafuga");
+/+
+writeln("なんだと…");
++/
+writeln("hogehoge");
++/
 
-    writeln("Hello, World!");
+writeln("Hello, World!");
 }
 
 
 /* ネストできないコメント
 ここはコメント
-    /*
-    ここはコメント
-    */
+/*
+ここはコメント
+*/
 ここはコメントでない
 */
 
 /+ ネストできるコメント
 ここはコメント
-    /+
-    ここはコメント
-    +/
+/+
+ここはコメント
++/
 ここはコメント
 +/
 
@@ -397,14 +397,14 @@ void main()
 
 ## 問題 -> [解答](https://github.com/k3kaimu/d-manual/blob/master/answer.md#001)
 
-* 次のソースコードの`<a>`と`<b>`の部分に適切なものを入れて、`Hello, World!`と表示するプログラムを作ってください。  
+* 次のソースコードの`<a>`と`<b>`の部分に適切なものを入れて、`Hello, World!`と表示するプログラムを作ってください。
 
 ~~~~d
 import std.stdio;
 
 void main()
 {
-    writeln("%s, %s", <a>, <b>);
+writeln("%s, %s", <a>, <b>);
 }
 ~~~~
 
@@ -413,22 +413,22 @@ void main()
 
 ~~~~d
 vood main{
-    writeln("Hello, World");
+writeln("Hello, World");
 }
 ~~~~
 
 
-* つぎのソースコードをコンパイルして、エラーメッセージを読んでみましょう。プログラミングではエラーメッセージに慣れることが上達するための近道です。  
+* つぎのソースコードをコンパイルして、エラーメッセージを読んでみましょう。プログラミングではエラーメッセージに慣れることが上達するための近道です。
 
 ~~~~d
 void main(){
-    writeln("foo");
+writeln("foo");
 }
 ~~~~
 
 ~~~~d
 void main(){
-    writeln("foo");
+writeln("foo");
 
 ~~~~
 

@@ -34,36 +34,36 @@ import std.stdio, std.string;
 
 void main()
 {
-    write("あなたは喉が渇いている？(Y/N)---");
-    bool isThirsty = readln().chomp() == "Y";
+write("あなたは喉が渇いている？(Y/N)---");
+bool isThirsty = readln().chomp() == "Y";
 
-    if(isThirsty){
-        write("自販機がある？(Y/N)---");
-        bool isPlaced = readln().chomp() == "Y";
+if(isThirsty){
+write("自販機がある？(Y/N)---");
+bool isPlaced = readln().chomp() == "Y";
 
-        if(isPlaced){
-            write("あなたの所持金は？[円]---");
-            int pocketMoney;
-            readf("%s\n", &pocketMoney);
+if(isPlaced){
+write("あなたの所持金は？[円]---");
+int pocketMoney;
+readf("%s\n", &pocketMoney);
 
-            write("あなたが欲しい飲み物の値段は？[円]---");
-            int price = void;
-            readf("%s\n", &price);
+write("あなたが欲しい飲み物の値段は？[円]---");
+int price = void;
+readf("%s\n", &price);
 
-            if(price <= pocketMoney){
-                writeln("あなたは自販機で買ってしまった。");
-                writefln("もう%s[円]しかない。", pocketMoney - price);
-            }else{
-                writeln("あなたは購入できなかった。");
-                writeln("次第に渇きが我慢できないほどになってきた。");
-                writeln("数時間後、そこには意識のないあなたの姿が…");
-            }
-        }else{
-            writeln("次第に渇きが我慢できないほどになってきた。");
-            writeln("数時間後、そこには意識のないあなたの姿が…");
-        }
-    }else
-        writeln("のどが渇いている気がしたが、ちゃんと考えればそうでもなかった。");
+if(price <= pocketMoney){
+writeln("あなたは自販機で買ってしまった。");
+writefln("もう%s[円]しかない。", pocketMoney - price);
+}else{
+writeln("あなたは購入できなかった。");
+writeln("次第に渇きが我慢できないほどになってきた。");
+writeln("数時間後、そこには意識のないあなたの姿が…");
+}
+}else{
+writeln("次第に渇きが我慢できないほどになってきた。");
+writeln("数時間後、そこには意識のないあなたの姿が…");
+}
+}else
+writeln("のどが渇いている気がしたが、ちゃんと考えればそうでもなかった。");
 }
 ~~~~
 
@@ -84,10 +84,10 @@ void main()
 ~~~~d
 bool condition = isThirsty;
 if(condition)
-    文1
+文1
 
 if(!condition)
-    文2
+文2
 ~~~~
 
 このように、`else`節中の文は、`if`で文が実行されなかった場合に実行されます。
@@ -95,7 +95,7 @@ if(!condition)
 
 ~~~~d
 if(isThirsty)
-    writeln("自販機など存在しない世界線だった！！！");
+writeln("自販機など存在しない世界線だった！！！");
 ~~~~
 
 また、上記例のように、実行したい文が1つだけであれば、わざわざブロック文`{}`で囲まずに書けます。
@@ -104,28 +104,28 @@ if(isThirsty)
 
 ~~~~d
 if(isA)
-    <ThenStatementA>
+<ThenStatementA>
 else if(isB)
-    <ThenStatementB>
+<ThenStatementB>
 else if(isC)
-    <ThenStatementC>
+<ThenStatementC>
 else
-    <ElseStatementOther>
+<ElseStatementOther>
 ~~~~
 
 これは以下に等価です。
 
 ~~~~d
 if(isA)
-    <ThenStatementA>
+<ThenStatementA>
 else
-    if(isB)
-        <ThenStatementB>
-    else
-        if(isC)
-            <ThenStatementC>
-        else
-            <ElseStatementOther>
+if(isB)
+<ThenStatementB>
+else
+if(isC)
+<ThenStatementC>
+else
+<ElseStatementOther>
 ~~~~
 
 考えてみれば簡単なことですよね。
@@ -143,12 +143,12 @@ int a = -12;            //マイナスも非ゼロなのでtrue
 string str = "";
 
 if(a)
-    writeln("aは0以外");
+writeln("aは0以外");
 
 if(str)
-    writeln("strは空でない");
+writeln("strは空でない");
 else
-    writeln("strは空である");
+writeln("strは空である");
 ~~~~
 
 
@@ -160,9 +160,9 @@ string型の値が、文字列の長さが非ゼロであれば`true`となる�
 string str = func();
 
 if(str)
-    writeln(str);
+writeln(str);
 else
-    writeln("空");
+writeln("空");
 ~~~~
 
 プログラムの説明は、いい練習問題になるので省略しますが、
@@ -170,9 +170,9 @@ else
 
 ~~~~d
 if(string str = func())
-    writeln(str);
+writeln(str);
 else
-    writeln("空");
+writeln("空");
 ~~~~
 
 なにが嬉しいかというと、`str`の使用出来る範囲が`if`文中だけになることが嬉しいのです。
@@ -188,12 +188,12 @@ else
 
 ~~~~d
 if(isA){
-    if(isB)
-        writeln("OK");
-    else if(isC)
-        writeln("OK");
+if(isB)
+writeln("OK");
+else if(isC)
+writeln("OK");
 }else if(isC)
-    writeln("OK");
+writeln("OK");
 ~~~~
 
 さて、復習です。
@@ -203,7 +203,7 @@ if(isA){
 
 ~~~~d
 if((isA && isB) || isC)
-    writeln("OK");
+writeln("OK");
 ~~~~
 
 
@@ -215,38 +215,38 @@ if((isA && isB) || isC)
 import std.stdio;
 
 void main(){
-    int a = 12;
+int a = 12;
 
-    if(a == 12)
-        writeln("aは12");
-    else
-        writeln("aは12じゃない");
-        a = 5;
+if(a == 12)
+writeln("aは12");
+else
+writeln("aは12じゃない");
+a = 5;
 
-    if(a != 12)
-        writeln("aは12じゃない");
-    else
-        writeln("aは12");
+if(a != 12)
+writeln("aは12じゃない");
+else
+writeln("aは12");
 }
 ~~~~
 
 
 * ブール代数という数学の分野があります。次の2式は完全に同じことを記述しているのですが、ブール代数によってそれが本当か判定してみましょう。
 
-    + (a && c) || (b && c)  
-      (a || b) && c  
++ (a && c) || (b && c)
+(a || b) && c
 
-    + (a && b) || a  
-      a  
++ (a && b) || a
+a
 
-    + (a || b) && a  
-      a  
++ (a || b) && a
+a
 
-    + !(a && b)  
-      (!a || !b)  
++ !(a && b)
+(!a || !b)
 
-    + !(a || b)  
-      (!a && !b)  
++ !(a || b)
+(!a && !b)
 
 
 ## おわりに

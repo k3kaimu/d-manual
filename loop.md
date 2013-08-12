@@ -14,15 +14,15 @@ import std.stdio;
 
 void main()
 {
-    int n = 1, sum;
+int n = 1, sum;
 
-    while(sum < 100){      // (sum < 100) がtrueの間は繰り返す
-        sum += n;
-        ++n;
-    }
-    
-    writeln(n-1);
-    writeln(sum);
+while(sum < 100){      // (sum < 100) がtrueの間は繰り返す
+sum += n;
+++n;
+}
+
+writeln(n-1);
+writeln(sum);
 }
 ~~~~
 
@@ -49,10 +49,10 @@ import std.stdio;
 
 void main()
 {
-    while(false)
-        writeln("foooooooo");
+while(false)
+writeln("foooooooo");
 
-    writeln("bar");
+writeln("bar");
 }
 ~~~~
 
@@ -69,7 +69,7 @@ bar
 
 ~~~~d
 while(1)            //while(true)でもOK
-    <statement>
+<statement>
 ~~~~
 
 無限ループは後述する`for`で`for(;;)`とも書かれたりします。
@@ -87,11 +87,11 @@ import std.stdio;
 
 void main()
 {
-    int i;
+int i;
 
-    do
-        writeln(i);
-    while((++i) < 5);
+do
+writeln(i);
+while((++i) < 5);
 }
 ~~~~
 
@@ -123,13 +123,13 @@ import std.stdio;
 
 void main()
 {
-    int n, sum;
+int n, sum;
 
-    for(n = 1, sum = 0; sum < 100; ++n)
-        sum += n;
+for(n = 1, sum = 0; sum < 100; ++n)
+sum += n;
 
-    writeln(n-1);
-    writeln(sum);
+writeln(n-1);
+writeln(sum);
 }
 ~~~~
 
@@ -147,16 +147,16 @@ $ rdmd test00604
 
 ~~~~d
 {                   //新しいスコープを作る
-    初期化子;
-    while(条件式){
-        <statement>
-        更新式;
-    }
+初期化子;
+while(条件式){
+<statement>
+更新式;
+}
 }
 ~~~~
 
 初期化式と書かずに初期化子と書いたのには理由があって、初期化子では変数の宣言ができます。
-次の`for`文を使ったループの記述は、C言語の至る所で見る典型的な`for`の使い方です。  
+次の`for`文を使ったループの記述は、C言語の至る所で見る典型的な`for`の使い方です。
 (D言語では、後述する`foreach`を普通は使います)
 
 ~~~~d
@@ -165,8 +165,8 @@ import std.stdio;
 
 void main()
 {
-    for(int i = 0; i < 5; ++i)
-        writeln(i);
+for(int i = 0; i < 5; ++i)
+writeln(i);
 }
 ~~~~
 
@@ -191,29 +191,29 @@ $ rdmd test00605
 
 ~~~~d
 foreach(<identifier>; <exprLower> .. <exprUpper>)
-    <statement>
+<statement>
 
 と、以下は同等
 
 {                                       // 新しいスコープを作る
-    auto index = <exprLower>;           // autoは型を自動でつけてくれる
-    auto exprUpper = <exprUpper>;
-    for(; index < exprUpper; ++index){
-        auto <identifier> = index;      // <identifier>はindexのコピー
-        <statement>
-    }
+auto index = <exprLower>;           // autoは型を自動でつけてくれる
+auto exprUpper = <exprUpper>;
+for(; index < exprUpper; ++index){
+auto <identifier> = index;      // <identifier>はindexのコピー
+<statement>
+}
 }
 
 さらにwhileで書き直すと
 
 {                                       // 新しいスコープを作る
-    auto index = <exprLower>;           // autoは型を自動でつけてくれる
-    auto exprUpper = <exprUpper>;
-    while(index < exprUpper){
-        auto <identifier> = index;      // <identifier>はindexのコピー
-        <statement>
-        ++index;
-    }
+auto index = <exprLower>;           // autoは型を自動でつけてくれる
+auto exprUpper = <exprUpper>;
+while(index < exprUpper){
+auto <identifier> = index;      // <identifier>はindexのコピー
+<statement>
+++index;
+}
 }
 ~~~~
 
@@ -225,12 +225,12 @@ import std.stdio;
 
 void main()
 {
-    int sum;
+int sum;
 
-    foreach(i; 1 .. 11) //[1, 11)
-        sum += i;
+foreach(i; 1 .. 11) //[1, 11)
+sum += i;
 
-    writeln(sum);
+writeln(sum);
 }
 ~~~~
 
@@ -245,33 +245,33 @@ $ rdmd test00606.d
 
 ~~~~d
 foreach(ulong i; 0 .. 100)
-    foo();
+foo();
 ~~~~
 
 * `foreach(ref <identifier>; <exprLower> .. <experUpper>)`とすることで、ループのインデックスを操作可能です。
 
 ~~~~d
 foreach(ref <identifier>; <exprLower> .. <exprUpper>)
-    <statement>
+<statement>
 
 と、以下は同等
 
 {                                       // 新しいスコープを作る
-    auto <identifier> = <exprLower>;    // autoは型を自動でつけてくれる
-    auto exprUpper = <exprUpper>;
-    for(; <identifer> < exprUpper; ++<identifier>)
-        <statement>
+auto <identifier> = <exprLower>;    // autoは型を自動でつけてくれる
+auto exprUpper = <exprUpper>;
+for(; <identifer> < exprUpper; ++<identifier>)
+<statement>
 }
 
 さらにwhileで書き直すと
 
 {                                       // 新しいスコープを作る
-    auto <identifier> = <exprLower>;    // autoは型を自動でつけてくれる
-    auto exprUpper = <exprUpper>;
-    while(<identifer> < exprUpper){
-        <statement>
-        ++<identifier>;
-    }
+auto <identifier> = <exprLower>;    // autoは型を自動でつけてくれる
+auto exprUpper = <exprUpper>;
+while(<identifer> < exprUpper){
+<statement>
+++<identifier>;
+}
 }
 
 例を示すと、以下のようになります。
@@ -282,17 +282,17 @@ import std.stdio;
 
 void main()
 {
-    foreach(i; 0 .. 10){
-        writef("%s, ", i);
-        ++i;                // refナシなので意味なし
-    }
+foreach(i; 0 .. 10){
+writef("%s, ", i);
+++i;                // refナシなので意味なし
+}
 
-    writeln();
+writeln();
 
-    foreach(ref i; 0 .. 10){
-        writef("%s, ", i);
-        ++i;                // refアリなので見かけ上2ずつ進む
-    }
+foreach(ref i; 0 .. 10){
+writef("%s, ", i);
+++i;                // refアリなので見かけ上2ずつ進む
+}
 
 }
 ~~~~
@@ -304,7 +304,7 @@ $ rdmd test00607.d
 ~~~~
 
 
-* イテレート可能な型  
+* イテレート可能な型
 `foreach range`文で、辿る範囲の型はインクリメント`++`と等価テスト`==`が定義されていればどのような型でも可能です。
 たとえば、`double`などの浮動小数点型や、以下の例中に定義されている`struct Incrementable`は`++`と`==`が可能なので`foreach range`で使えます。
 
@@ -314,25 +314,25 @@ import std.stdio;
 
 void main()
 {
-    foreach(i; 0.5 .. 5.5)
-        writeln(i);
+foreach(i; 0.5 .. 5.5)
+writeln(i);
 
 
-    foreach(e; Incrementable(0) ..  Incrementable(10))
-        writeln(e);
+foreach(e; Incrementable(0) ..  Incrementable(10))
+writeln(e);
 }
 
 
 struct Incrementable
 {
-    ref typeof(this) opUnary(string s : "++")()
-    {
-        ++_value;
-        return this;
-    }
+ref typeof(this) opUnary(string s : "++")()
+{
+++_value;
+return this;
+}
 
-  private:
-    int _value;
+private:
+int _value;
 }
 ~~~~
 
@@ -366,11 +366,11 @@ import std.stdio;
 
 void main()
 {
-    foreach(i; 0 .. 5)
-        writeln(i);
+foreach(i; 0 .. 5)
+writeln(i);
 
-    foreach_reverse(i; 0 .. 5)
-        writeln(i);
+foreach_reverse(i; 0 .. 5)
+writeln(i);
 }
 ~~~~
 
@@ -407,12 +407,12 @@ import std.stdio;
 
 void main()
 {
-    foreach(i; 0 .. 100){
-        if(i > 10)
-            break;
+foreach(i; 0 .. 100){
+if(i > 10)
+break;
 
-        writeln(i);
-    }
+writeln(i);
+}
 }
 ~~~~
 
@@ -439,12 +439,12 @@ import std.stdio;
 
 void main()
 {
-  LbreakLabel0:
-    while(1)
-      LbreakLabel1:
-        while(1)
-            while(1)
-                break LbreakLabel0;
+LbreakLabel0:
+while(1)
+LbreakLabel1:
+while(1)
+while(1)
+break LbreakLabel0;
 }
 ~~~~
 
@@ -458,16 +458,16 @@ void main()
 ~~~~d
 void main()
 {
-    int sum;
+int sum;
 
-    for(int i = 0; i <= 50; ++i){
-        if(i % 2 != 0)
-            continue;
+for(int i = 0; i <= 50; ++i){
+if(i % 2 != 0)
+continue;
 
-        sum += i;
-    }
+sum += i;
+}
 
-    writeln(sum);
+writeln(sum);
 }
 ~~~~
 
@@ -484,13 +484,13 @@ import std.stdio;
 
 void main()
 {
-  LcontinueLabel:
-    do{
-        while(1)
-          LcontinueLabel1:
-            while(1)
-                continue LcontinueLabel;
-    }while(0);
+LcontinueLabel:
+do{
+while(1)
+LcontinueLabel1:
+while(1)
+continue LcontinueLabel;
+}while(0);
 }
 ~~~~
 
@@ -503,7 +503,7 @@ void main()
 
 * 1000未満の自然数で、3の倍数もしくは5の倍数の総和を計算するプログラムをループを使って作ってください。(Project Euler Problem 1より)
 
-* フィボナッチ数列`1, 2, 3, 5, 8, ...`を考える。数列の項の値が400万以下の偶数である項の合計を求めるプログラムを作ってください。(Project Euler Problem 2より)  
+* フィボナッチ数列`1, 2, 3, 5, 8, ...`を考える。数列の項の値が400万以下の偶数である項の合計を求めるプログラムを作ってください。(Project Euler Problem 2より)
 
 * 最初の100個の自然数の2乗の総和と、総和の2乗の差を出力するプログラムを`for`を使って作ってください。その後、`foreach`を使用するように書き換えてみましょう。(Project Euler Problem 6より)
 
