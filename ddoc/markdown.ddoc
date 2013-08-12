@@ -20,3 +20,7 @@ $0
 ~~~~
 DDOC = $(BODY)
 IDENTITY = $0
+DMANUAL_REPO_URL = https://github.com/k3kaimu/d-manual
+DMANUAL_REPO_RAW_URL = https://raw.github.com/k3kaimu/d-manual
+DMANUAL_IMG_URL = $(DMANUAL_REPO_RAW_URL)/master/img
+DMANUAL_ARTICLE_URL = $(DMANUAL_REPO_URL)/blob/master
