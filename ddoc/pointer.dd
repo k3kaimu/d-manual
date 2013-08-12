@@ -94,7 +94,7 @@ if(!p)                  // !p は true
 
 /*  以下は例外の内容
 object.Error: Access Violation
-$(IDENTITY ----------------)
+----------------
 0x00402021 in _imp__LeaveCriticalSection
 0x0040947C in _NULL_IMPORT_DESCRIPTOR
 0x004094B7 in _NULL_IMPORT_DESCRIPTOR
