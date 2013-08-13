@@ -438,7 +438,7 @@ const(int*) p = &a;     // すべての型はconstに暗黙変換可能
 ### immutable
 
 `immutable`型は、生まれたら死ぬまで絶対に書き換わらない型で、`const`同様に推移的です。
-`immutable`は`const`へ暗黙変換可能でです。
+`immutable`は`const`へ暗黙変換可能です。
 
 ~~~~d
 int a;
