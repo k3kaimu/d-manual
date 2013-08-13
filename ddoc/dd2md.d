@@ -28,9 +28,10 @@ import std.regex;
 void main(string[] args)
 {
     immutable input = args[1],
+              inputBase = input.baseName(),
               output = (args.length > 2) ? args[2] : (input.stripExtension() ~ ".md"),
               rndStr = rndGen.front.to!string(),
-              inputTemp = tempDir ~ input.stripExtension() ~ "_" ~ rndStr ~ ".dd",
+              inputTemp = tempDir ~ inputBase.stripExtension() ~ "_" ~ rndStr ~ ".dd",
               markdownDdocPath = "markdown.ddoc",
               dmdOutputFileName = "dmdoutput_" ~ rndStr,
               dmdOutputFilePath = tempDir ~ dmdOutputFileName;
