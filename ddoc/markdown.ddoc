@@ -1,16 +1,16 @@
-B =     **$0**
-I =     *$0*
-S =     ~~$0~~
-
-OL_1 =    <ol type="1">$0</ol>
-OL_a =  <ol type="a">$0</ol>
-OL_A =  <ol type="A">$0</ol>
-OL_i =  <ol type="i">$0</ol>
-OL_I =  <ol type="I">$0</ol>
-UL_none = <ul style="list-style-type: none">$0</ul>
-UL_disc = <ul style="list-style-type: disc">$0</ul>
-UL_circle = <ul style="list-style-type: circle">$0</ul>
-UL_square = <ul style="list-style-type: square">$0</ul>
+S = <s>$0</s>
+OL_type = <ol type="$1">$+</ol>
+OL_1 = $(OL_type 1, $0)
+OL_a = $(OL_type a, $0)
+OL_A = $(OL_type A, $0)
+OL_i = $(OL_type i, $0)
+OL_I = $(OL_type I, $0)
+LI_style = <li style="list-style-type: $1">$+</li>
+UL_style = <ul style="list-style-type: $1">$+</ul>
+UL_none = $(UL_style none, $0)
+UL_disc = <$(UL_style disc, $0)
+UL_circle = $(UL_style circle, $0)
+UL_square = $(UL_style square, $0)
 LINK =  [$0]($0)
 LINK2 = [$+]($1)
 ANCHOR = <a name = "$1">$+</a>
@@ -20,6 +20,9 @@ $0
 ~~~~
 DDOC = $(BODY)
 IDENTITY = $0
+HEAD = $1
+TAIL = $+
+FONT = <font $1="$2">$(TAIL $+)</font>
 DMANUAL_REPO_URL = https://github.com/k3kaimu/d-manual
 DMANUAL_REPO_RAW_URL = https://raw.github.com/k3kaimu/d-manual
 DMANUAL_IMG_URL = $(DMANUAL_REPO_RAW_URL)/master/img
