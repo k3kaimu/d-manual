@@ -1645,28 +1645,6 @@ int delegate(int) accum(int a)
 }
 ~~~~~~~~~~~~~~~~~~
 
-ちなみに、ラムダでも`function`や`delegate`の指定ができます。
-
-~~~~d
-int delegate(int) accum(int a)
-{
-    return delegate (int b) => a + b;
-}
-~~~~~~~~~~~~~~~~~~
-
-また、`pure`や`nothrow`, `@safe`などの関数属性は、リテラル表現では推論されますが、次のように指定することも可能です。
-
-~~~~d
-int delegate(int) accum(int a)
-{
-    return delegate int(int b) nothrow @safe { return a + b; };
-    return delegate (int b) nothrow @safe { return a + b; };
-    return (int b) nothrow @safe { return a + b; };
-    return (int b) nothrow @safe => a + b;
-    return (b) nothrow @safe => a + b;
-}
-~~~~~~~~~~~~~~~~~~
-
 おまけとして、`accum`をもっと短くすると、次のような面白い書き方になります。
 
 ~~~~d
@@ -1684,6 +1662,57 @@ void delegate() d1 = {},
                 d2 = {;},
                 d3 = (){};
 ~~~~~~~~~~~~~~~~~~
+
+
+ラムダでも`function`や`delegate`の指定ができます。
+
+~~~~d
+int delegate(int) accum(int a)
+{
+    return delegate (int b) => a + b;
+}
+~~~~~~~~~~~~~~~~~~
+
+
+`pure`や`nothrow`, `@safe`などの関数属性は、リテラル表現では推論されますが、次のように指定することも可能です。
+
+~~~~d
+int delegate(int) accum(int a)
+{
+    return delegate int(int b) nothrow @safe { return a + b; };
+    return delegate (int b) nothrow @safe { return a + b; };
+    return (int b) nothrow @safe { return a + b; };
+    return (int b) nothrow @safe => a + b;
+    return (b) nothrow @safe => a + b;
+}
+~~~~~~~~~~~~~~~~~~
+
+
+セーフ関数の中でメモリセーフでない関数や機能を使いたい場合には、`@trusted`付きのリテラルを使うのが習慣のようです。
+
+~~~~d
+int unsafe();           // セーフでない操作
+
+void foo() /*@safe*/    // 関数全体でみるとメモリ安全なのに、unsafeがあるから@safeになれない
+{
+    //... unsafeの操作がメモリ安全になるような操作
+
+    auto a = unsafe();
+    
+    //... unsafeの操作がメモリ安全になるような操作
+}
+
+
+void bar() @safe        // メモリ安全でない操作を行ってても、関数全体でみればメモリ安全だからOK
+{
+    //... unsafeの操作がメモリ安全になるような操作
+
+    auto a = () @trusted => unsafe();
+
+    //... unsafeの操作がメモリ安全になるような操作
+}
+~~~~
+
 
 [Goto: 問題8 「関数型スタイルなD」](#Q8)  
 
@@ -2012,11 +2041,11 @@ void main()
 ## 終わりに
 
 実はこの関数の章は、文章量では、他の章に対して3倍(対：式と演算子)～15倍(対：ポインタ)もの量を誇っています。
-<small>正直に言うと、書いていて一番疲れました。</small>
 それほど関数というのは複雑なのです。
 ですが、これからは嫌というほど書いていくことになるので、自然と身につくと思います。
 
-次は、「エラーと例外」です
+次は、「エラーと例外」です。
+この章の`nothrow`などで出てきた「例外」という機能を紹介します。
 
 
 ## キーワード

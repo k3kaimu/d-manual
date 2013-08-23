@@ -1647,28 +1647,6 @@ int delegate(int) accum(int a)
 }
 ~~~~~~~~~~~~~~~~~~
 
-ちなみに、ラムダでも`function`や`delegate`の指定ができます。
-
-~~~~$(D_CODE_ATTR)
-int delegate(int) accum(int a)
-{
-    return delegate (int b) => a + b;
-}
-~~~~~~~~~~~~~~~~~~
-
-また、`pure`や`nothrow`, `@safe`などの関数属性は、リテラル表現では推論されますが、次のように指定することも可能です。
-
-~~~~$(D_CODE_ATTR)
-int delegate(int) accum(int a)
-{
-    return delegate int(int b) nothrow @safe { return a + b; };
-    return delegate (int b) nothrow @safe { return a + b; };
-    return (int b) nothrow @safe { return a + b; };
-    return (int b) nothrow @safe => a + b;
-    return (b) nothrow @safe => a + b;
-}
-~~~~~~~~~~~~~~~~~~
-
 おまけとして、`accum`をもっと短くすると、次のような面白い書き方になります。
 
 ~~~~$(D_CODE_ATTR)
@@ -1686,6 +1664,57 @@ void delegate() d1 = {},
                 d2 = {;},
                 d3 = (){};
 ~~~~~~~~~~~~~~~~~~
+
+
+ラムダでも`function`や`delegate`の指定ができます。
+
+~~~~$(D_CODE_ATTR)
+int delegate(int) accum(int a)
+{
+    return delegate (int b) => a + b;
+}
+~~~~~~~~~~~~~~~~~~
+
+
+`pure`や`nothrow`, `@safe`などの関数属性は、リテラル表現では推論されますが、次のように指定することも可能です。
+
+~~~~$(D_CODE_ATTR)
+int delegate(int) accum(int a)
+{
+    return delegate int(int b) nothrow @safe { return a + b; };
+    return delegate (int b) nothrow @safe { return a + b; };
+    return (int b) nothrow @safe { return a + b; };
+    return (int b) nothrow @safe => a + b;
+    return (b) nothrow @safe => a + b;
+}
+~~~~~~~~~~~~~~~~~~
+
+
+セーフ関数の中でメモリセーフでない関数や機能を使いたい場合には、`@trusted`付きのリテラルを使うのが習慣のようです。
+
+~~~~d
+int unsafe();           // セーフでない操作
+
+void foo() /*@safe*/    // 関数全体でみるとメモリ安全なのに、unsafeがあるから@safeになれない
+{
+    //... unsafeの操作がメモリ安全になるような操作
+
+    auto a = unsafe();
+    
+    //... unsafeの操作がメモリ安全になるような操作
+}
+
+
+void bar() @safe        // メモリ安全でない操作を行ってても、関数全体でみればメモリ安全だからOK
+{
+    //... unsafeの操作がメモリ安全になるような操作
+
+    auto a = () @trusted => unsafe();
+
+    //... unsafeの操作がメモリ安全になるような操作
+}
+~~~~
+
 
 [Goto: 問題8 「関数型スタイルなD」](#Q8)  
 
