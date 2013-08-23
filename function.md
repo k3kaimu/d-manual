@@ -2009,13 +2009,15 @@ void main()
     例えば、`std.algorithm.map`を見てみましょう。
 
     ~~~~d
-    import std.algorithm, std.conv;
+    import std.algorithm,
+           std.conv,
+           std.stdio;
 
     void main(){
         auto r = [0, 1, 2];
 
         writeln(r.map!(a => a + 1)());          // [1, 2, 3]
-        writeln(r.map!(a => a.to!string()));    // ["1", "2", "3"]
+        writeln(r.map!(a => a.to!string()));    // ["0", "1", "2"]
     }
     ~~~~~~~~~~~~~~~~~~
 
