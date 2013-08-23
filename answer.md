@@ -438,3 +438,217 @@ void main()
         writefln("%-12s\t\t%s", e[0], e[1]);
 }
 ~~~~
+
+
+## [011](function.md)
+
+* [問1](function.md#Q1)
+
+~~~~d
+import std.conv, std.stdio, std.string;
+
+int readInt()
+{
+    return readln().chomp().to!int();
+}
+~~~~
+
+* [問2](fuction.md#Q2)
+
+~~~~d
+int sum(int[] arr) pure nothrow @safe
+{
+    int s;
+
+    foreach(e; arr)
+        s += e;
+
+    return s;
+}
+~~~~
+
+もし、`std.algorithm.reduce`を使うなら、以下のようになります。
+
+~~~~d
+import std.algorithm;
+
+int sum(int[] arr) pure nothrow @safe
+{
+    return reduce!"a + b"(0, arr);
+}
+~~~~
+
+
+* [問3](function.md#Q3)
+
+`return 0;`など、適当な値を返すよりも、`assert(0);`を入れておく方が良いプログラムになります。
+
+~~~~d
+import std.stdio;
+
+int g1 = 1,
+    g2 = 10,
+    g3 = 20;
+
+
+int getGlobalValue(size_t idx) nothrow @safe
+{
+    switch(idx){
+        case 1:
+            return g1;
+
+        case 2:
+            return g2;
+
+        case 3:
+            return g3;
+
+        default:
+    }
+
+    assert(0);
+}
+
+
+void main()
+{
+    writeln(getGlobalValue(1));
+    writeln(getGlobalValue(10));
+    writeln(getGlobalValue(20));
+}
+~~~~
+
+
+* [問4](function.md#Q4)
+
+`return;`で`main`関数を終わらせれば良い。
+
+~~~~d
+import std.getopt;
+import std.stdio;
+
+
+immutable appInfo = `example:
+$ add --a=12 --b=13
+a + b = 25
+
+$ add --b=1, --a=3
+a + b = 4`;
+
+
+void main(string[] args) @safe
+{
+    int a, b;
+    bool h_sw;              // argsに-h, --helpが出現したかどうか
+
+    getopt(args,
+        "a", &a,
+        "b", &b,
+        "h|help", &h_sw);
+
+    if(h_sw){
+        writeln(appInfo);
+        return;
+    }
+
+    writeln("a + b = ", a + b);
+}
+~~~~
+
+
+* [問5](function.md#Q5)
+
+~~~~d
+int gt(int a, bool b = false) nothrow @safe
+{
+    static int sum;
+
+    if(b)
+        sum = 0;
+
+    sum += a;
+    return sum;
+}
+~~~~
+
+
+* [問6](function.md#Q6)
+
+~~~~d
+int taggedGt(string tag, int a, bool clear = false, bool delete_ = false) nothrow @safe
+{
+    static int[string] sum;
+
+    if(clear)
+        sum[tag] = 0;
+
+    if(delete_){
+        sum.remove(tag);
+        return a;
+    }else{
+        sum[tag] += a;
+        return sum[tag];
+    }
+}
+~~~~
+
+
+* [問7](function.md#Q7)
+
+~~~~d
+auto createCounter() pure nothrow @safe
+{
+    size_t a;
+    
+    size_t counter(){
+        return ++a;
+    }
+
+    return &counter;
+}
+~~~~
+
+もし、ラムダを使うなら次のほうが短い。
+
+~~~~d
+auto createCounter() pure nothrow @safe
+{
+    size_t a;
+
+    return () => ++a;
+}
+~~~~
+
+
+* [問8](function.md#Q8)
+
+1.
+
+~~~~d
+import std.algorithm;
+
+int sumOfEven(int[] arr) pure nothrow @safe
+{
+    return reduce!"a + b"(0, arr.filter!"!(a&1)"());
+}
+~~~~
+
+2.
+
+~~~~d
+import std.algorithm;
+import std.math;
+
+int getApprxEqElm(int[] arr, int needle) pure @safe
+{
+    int f(int a, int b) nothrow @safe
+    {
+        int diffA = abs(a - needle),
+            diffB = abs(b - needle);
+
+        return diffA > diffB ? b : a;
+    }
+
+    return reduce!f(arr);
+}
+~~~~

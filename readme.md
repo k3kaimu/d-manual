@@ -189,7 +189,7 @@
         ポインタの初期値とゼロ値
         特別なポインタ`void*`とスライス`void[]`
 
-### 関数
+### [011 関数](https://github.com/k3kaimu/d-manual/blob/master/function.md)
     関数とは？
     関数の基礎
         宣言の書き方と関数本体

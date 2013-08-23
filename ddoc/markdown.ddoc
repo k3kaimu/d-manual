@@ -1,4 +1,5 @@
 S = <s>$0</s>
+RED = $0
 OL_type = <ol type="$1">$+</ol>
 OL_1 = $(OL_type 1, $0)
 OL_a = $(OL_type a, $0)
@@ -22,8 +23,13 @@ DDOC = $(BODY)
 IDENTITY = $0
 HEAD = $1
 TAIL = $+
-FONT = <font $1="$2">$(TAIL $+)</font>
+FONT = $(TAIL $+)
 DMANUAL_REPO_URL = https://github.com/k3kaimu/d-manual
 DMANUAL_REPO_RAW_URL = https://raw.github.com/k3kaimu/d-manual
 DMANUAL_IMG_URL = $(DMANUAL_REPO_RAW_URL)/master/img
 DMANUAL_ARTICLE_URL = $(DMANUAL_REPO_URL)/blob/master
+DMANUAL_ARTICLE_EXT = md
+DMANUAL_BuildPathToArticle = $(DMANUAL_ARTICLE_URL)/$0.$(DMANUAL_ARTICLE_EXT)
+CODE_ATTR = $1
+D_CODE_ATTR = $(CODE_ATTR d)
+BUGZILLA_ISSUE_URL = http://d.puremagic.com/issues/show_bug.cgi?id=$0

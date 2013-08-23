@@ -36,7 +36,7 @@ void main(string[] args)
               dmdOutputFileName = "dmdoutput_" ~ rndStr,
               dmdOutputFilePath = tempDir ~ dmdOutputFileName;
 
-    std.file.write(inputTemp, std.regex.replace(std.file.readText(input), regex(`^---+`, "gm"), "$$(IDENTITY $0)"));
+    std.file.write(inputTemp, std.file.readText(input).replace(regex(`^---+`, "gm"), "$$(IDENTITY $0)"));
     scope(exit) std.file.remove(inputTemp);
 
     // dmdでddからmdファイルの生成
