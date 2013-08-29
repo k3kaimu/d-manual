@@ -61,9 +61,9 @@ void main()
     writeType!(   byte, "+",    byte)();    // int
     writeType!(   byte, "+",   ubyte)();    // int
     writeType!(  ubyte, "+",   ubyte)();    // int
-    
+
     writeln();
-    
+
     writeType!(  short, "+",   short)();    // int
     writeType!(  short, "+",  ushort)();    // int
     writeType!( ushort, "+",  ushort)();    // int
