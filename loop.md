@@ -20,7 +20,7 @@ void main()
         sum += n;
         ++n;
     }
-    
+
     writeln(n-1);
     writeln(sum);
 }
