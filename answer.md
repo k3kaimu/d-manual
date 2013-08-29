@@ -229,7 +229,7 @@ void main()
             break;
         }else if(n < 10)
             continue;
-        
+
         sum += n;
         ++cnt;
     }
@@ -599,7 +599,7 @@ int taggedGt(string tag, int a, bool clear = false, bool delete_ = false) nothro
 auto createCounter() pure nothrow @safe
 {
     size_t a;
-    
+
     size_t counter(){
         return ++a;
     }
