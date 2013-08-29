@@ -79,7 +79,7 @@ import std.stdio;
 void main(){
     foreach_reverse(cnt; 1 .. 4){
         writeln("A: ", cnt);
-        
+
         foreach(i; 0 .. cnt)
             writeln("\tB: ", i);
     }

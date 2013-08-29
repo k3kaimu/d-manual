@@ -150,7 +150,7 @@ int foo(int a)
                 return a;
         }
     }
-    
+
     // ここには絶対到達しない
     assert(0);
 }
@@ -417,7 +417,7 @@ void main()
         pragma(msg, typeof(p));     // inout(int)[]
 
         r[] = p[] * q[];
-        
+
         return p;
     }
 
@@ -425,7 +425,7 @@ void main()
     void main()
     {
         int[] result = new int[3];
-        
+
         immutable imm = [0, 1, 2];
         const cns = [3, 4, 5];
         int[] mut = [6, 7, 8];
@@ -494,7 +494,7 @@ void main()
     int moveFront(ref int[] arr)
     {
         auto dst = arr[0];
-        
+
         arr = arr[1 .. $];
         return dst;
     }
@@ -1167,7 +1167,7 @@ void foo() nothrow
 
 
 ### UDA(User Defined Attribute)
-    
+
 ToDo: [UDAの章へ](https://github.com/k3kaimu/d-manual/blob/master/uda.md)
 
 
@@ -1698,7 +1698,7 @@ void foo() /*@safe*/    // 関数全体でみるとメモリ安全なのに、un
     //... unsafeの操作がメモリ安全になるような操作
 
     auto a = unsafe();
-    
+
     //... unsafeの操作がメモリ安全になるような操作
 }
 
