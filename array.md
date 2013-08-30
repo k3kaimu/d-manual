@@ -582,7 +582,7 @@ int[] arr = [3, 1, 2];
 writeln(arr.sort);       // [1, 2, 3]
 ~~~~
 
-現在は、`std.algorithm.sort`を使うのがよいとされています。(要出典)
+`sort`プロパティは[廃止予定](http://dlang.org/deprecate.html#.sort and .reverse properties for arrays-for)なので、`std.algorithm.sort`を使うのがよいでしょう。
 
 ~~~~d
 import std.algorithm;
@@ -610,7 +610,7 @@ writeln(arr.reverse);       // [3, 2, 1]
 writeln(arr.reverse);       // [1, 2, 3]
 ~~~~
 
-`array.sort`同様に、現在は`std.algorithm.reverse`を使うのがよいとされています。(要出典)
+`sort`プロパティと同様に[廃止予定](http://dlang.org/deprecate.html#.sort and .reverse properties for arrays-for)なので、`std.algorithm.reverse`を使うのがよいでしょう。
 
 ~~~~d
 import std.algorithm;
