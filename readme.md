@@ -204,39 +204,28 @@ dekyllは、jekyllやHakyllに似た静的サイト生成ツールで、マク�
 
 ### [011 関数](https://github.com/k3kaimu/d-manual/blob/master/function.md)
     関数とは？
+        関数による処理のまとめ
     関数の基礎
         宣言の書き方と関数本体
         関数の引数
     デフォルト引数
     引数の記憶域クラス
-        const
-        immutable
-        inout
-        in
-        out
-        ref
-        scope
-        lazy
-        shared
     可変個引数関数
-        同じ型の引数を可変個取りたい場合
-        異なる型の引数を可変個取りたい場合
+    オブジェクトｗｐ形成する引数
     返値型推論
     関数の属性
-        プロパティ関数
-        関数の安全性
-        pure
-        nothrow
-        inout
-    関数オーバーロード
-    関数ポインタ
-    static変数
+        プロパティ関数`@property`
+        関数のメモリ安全性
+        純粋関数`pure`
+        例外を投げない関数`nothrow`
+        UDA(User Defined Attribute)
+        `const`, `immutable`, `inout`, `abstract`, `final`
+    関数オーバーロード(多重定義, overload)
+    ローカル`static`変数
     ネスト関数
+    関数ポインタ
     デリゲート
-    リテラル
-        関数リテラル
-        デリゲートリテラル
-        ラムダ関数
+    関数のリテラルとラムダ
     UFCS(Uniform Function Call Syntax)
     CTFE(Compile Time Function Execution)
 
