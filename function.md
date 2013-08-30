@@ -2,7 +2,7 @@
 
 ## 関数とは？
 
-**関数**(function)は、
+<b>関数</b>(function)は、
 
 1. データを受け取って、
 2. データの加工や、何か処理を行い、
@@ -10,8 +10,8 @@
 
 ものです。
 
-関数が受け取るデータのことを、**引数**(argument)といい、
-関数が返す結果を**返り値**または**戻り値**(return value)といいます。
+関数が受け取るデータのことを、<b>引数</b>(argument)といい、
+関数が返す結果を<b>返り値</b>または<b>戻り値</b>(return value)といいます。
 
 数学での関数`f(x, y, z, ...)`は、引数が同じであれば、常に同じ結果を返します。
 しかし、プログラムの関数はそうではありません。
@@ -71,7 +71,7 @@ ReturnType functionName(ParameterList)
 }
 ~~~~~~~~~~~~~~~~~~
 
-**関数本体**(`FunctionBody`)は省略して、**関数プロトタイプ**のみにすることができます。
+<b>関数本体</b>(`FunctionBody`)は省略して、<b>関数プロトタイプ</b>のみにすることができます。
 その場合には、`{FunctionBody}`の代わりに`;`を付けておきます。
 
 ~~~~d
@@ -150,7 +150,7 @@ int foo(int a)
                 return a;
         }
     }
-
+    
     // ここには絶対到達しない
     assert(0);
 }
@@ -238,8 +238,8 @@ void main()
 
 ### 関数の引数
 
-関数は引数を受け取りますが、関数宣言で書かれている`int a`や`int b`を**仮引数**(parameter)といいます。
-逆に、`addInt(4, 5)`とした場合の`4`や`5`は**実引数**(argument)といわれます。
+関数は引数を受け取りますが、関数宣言で書かれている`int a`や`int b`を<b>仮引数</b>(parameter)といいます。
+逆に、`addInt(4, 5)`とした場合の`4`や`5`は<b>実引数</b>(argument)といわれます。
 
 関数本体が無い場合、もしくは仮引数を関数本体で使わない場合には、仮引数を省略して型だけにすることもできます。
 
@@ -325,7 +325,7 @@ bool getAndTest(int* p, size_t idx = 0, int v)
 */
 
 // デフォルト値は2つ以上の引数にも設定可能
-int getValue2d(int** p, size_t i = 0, size_t j = 0)
+int getValue2d(int<b> p, size_t i = 0, size_t j = 0)
 {
     return p[i][j];
 }
@@ -347,7 +347,7 @@ void main()
     // idxを省略して呼び出すと、idxは0であると解釈される
     writeln(getValue(p));           // 9
 
-    int** pp = &p;
+    int</b> pp = &p;
     writeln(getValue2d(pp));          // 9
 }
 ~~~~~~~~~~~~~~~~~~
@@ -393,9 +393,9 @@ void main()
     [`immutable`型の解説](https://github.com/k3kaimu/d-manual/blob/master/variable_type.md#immutable)
 
     ~~~~d
-    immutable(int)* getValue(immutable int** p)
+    immutable(int)* getValue(immutable int<b> p)
     {
-        //*p += 3;                  // pはimmutable(int**)型、*pはimmutable(int*)型なので書き換え不可
+        //*p += 3;                  // pはimmutable(int</b>)型、*pはimmutable(int*)型なので書き換え不可
 
         return *p;                  // *pはimmutable(int*)型なので、immutable(int)*型として返せる
     }
@@ -417,7 +417,7 @@ void main()
         pragma(msg, typeof(p));     // inout(int)[]
 
         r[] = p[] * q[];
-
+        
         return p;
     }
 
@@ -425,7 +425,7 @@ void main()
     void main()
     {
         int[] result = new int[3];
-
+        
         immutable imm = [0, 1, 2];
         const cns = [3, 4, 5];
         int[] mut = [6, 7, 8];
@@ -494,7 +494,7 @@ void main()
     int moveFront(ref int[] arr)
     {
         auto dst = arr[0];
-
+        
         arr = arr[1 .. $];
         return dst;
     }
@@ -995,9 +995,9 @@ void main()
 この安全性についての属性は、3つあります。
 
 
-+ **セーフ関数**`@safe`
++ <b>セーフ関数</b>`@safe`
 
-    **セーフ関数**(safe function)は、その関数内でのすべての操作がメモリ的に安全な関数です。
+    <b>セーフ関数</b>(safe function)は、その関数内でのすべての操作がメモリ的に安全な関数です。
     そのため、次のような制約があります。
 
     - インラインアセンブラは書けない
@@ -1041,11 +1041,11 @@ void main()
     ~~~~~~~~~~~~~~~~~~
 
 
-+ **信頼済み関数**`@trusted`
++ <b>信頼済み関数</b>`@trusted`
 
     時々、関数内ではメモリセーフではない操作を行なっているけれども関数全体としてみれば安全であるような関数をセーフ関数から呼びたくなります。
     この場合、`@trusted`という属性を付加させれば、その関数はプログラマによって信頼された関数であるとコンパイラに伝えることができます。
-    これを**信頼済み関数**(trusted function)と呼びます
+    これを<b>信頼済み関数</b>(trusted function)と呼びます
 
     信頼済み関数では、操作の静的な制約はありませんが、メモリ安全であることをプログラマが保証しなければいけません。
 
@@ -1064,9 +1064,9 @@ void main()
     ~~~~~~~~~~~~~~~~~~
 
 
-+ **システム関数**`@system`
++ <b>システム関数</b>`@system`
 
-    通常の関数、つまりは`@safe`でも`@trusted`でもない関数は、属性に`@system`がついてなくても**システム関数**(system function)となります。
+    通常の関数、つまりは`@safe`でも`@trusted`でもない関数は、属性に`@system`がついてなくても<b>システム関数</b>(system function)となります。
     システム関数は、セーフ関数のような静的な制約もありませんし、信頼済み関数のようにプログラマがメモリ安全性を保証する必要もありません。
     そのため、メモリ安全でないコードを書くことができます。
 
@@ -1167,7 +1167,7 @@ void foo() nothrow
 
 
 ### UDA(User Defined Attribute)
-
+    
 ToDo: [UDAの章へ](https://github.com/k3kaimu/d-manual/blob/master/uda.md)
 
 
@@ -1250,7 +1250,7 @@ void main()
 
 
 同一名称の関数が異なるモジュールに属している際には、コンパイラによる最適な関数の選択方法は複雑になります。
-関数の呼び出しがあると、コンパイラはまずはモジュール毎にその関数の**オーバーロード集合**(overload set)を形成します。
+関数の呼び出しがあると、コンパイラはまずはモジュール毎にその関数の<b>オーバーロード集合</b>(overload set)を形成します。
 次のステージでは、それぞれのモジュールでもっともマッチする関数を選択します。
 前ステージでのマッチする関数の合計がただ一つの場合、つまりは、ただひとつのモジュールだけしかマッチしなければ、そのマッチした関数が呼ばれます。
 そうでなければ(複数のモジュールでマッチしたのなら)、コンパイルエラーとなります。
@@ -1543,7 +1543,7 @@ auto accum(int a)
 }
 ~~~~~~~~~~~~~~~~~~
 
-実は、`accum`は関数ポインタを返すのではなくて、**デリゲート**(delegate)というものを返しています。
+実は、`accum`は関数ポインタを返すのではなくて、<b>デリゲート</b>(delegate)というものを返しています。
 試しに、返り値の推論をやめて`int function(int) accum(int a)`と書けばコンパイルエラーになりますね。
 
 ~~~~
@@ -1698,7 +1698,7 @@ void foo() /*@safe*/    // 関数全体でみるとメモリ安全なのに、un
     //... unsafeの操作がメモリ安全になるような操作
 
     auto a = unsafe();
-
+    
     //... unsafeの操作がメモリ安全になるような操作
 }
 

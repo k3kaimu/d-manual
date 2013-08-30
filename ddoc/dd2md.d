@@ -22,6 +22,7 @@ import std.path;
 import std.process;
 import std.stdio;
 import std.random;
+import std.range;
 import std.regex;
 
 
@@ -46,5 +47,62 @@ void main(string[] args)
     scope(exit) std.file.remove(dmdOutputFilePath);
 
     // 出力されたファイルの<(&lt;), >(&gt;), &(&amp;)を置換し、そのままターゲットに出力
-    std.file.write(output, std.file.readText(dmdOutputFilePath).replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&").find('\n').find!(a => !a.isWhite)());
+    std.file.write(output, dmdOutputFilePath.readText()
+                                            .replace("&lt;", "<")
+                                            .replace("&gt;", ">")
+                                            .replace("&amp;", "&")
+                                            .find('\n')
+                                            .find!(a => !a.isWhite)()
+                                            .to!dstring()
+                                            .boldReplaceToHTMLTag()
+                                            .to!string());
+}
+
+
+auto tails(R)(R range)
+{
+    static struct Result()          // template: for inference of member function attributes.
+    {
+        R front() @property { return _r; }
+        void popFront() { _r.popFront(); }
+        bool empty() { return _r.empty; }
+
+      private:
+        R _r;
+    }
+
+
+    return Result!()(range);
+}
+
+unittest{
+    assert(equal(tails([0, 1, 2]), [[0, 1, 2], [1, 2], [2]]));
+    assert(tails!(int[])([]).empty);
+}
+
+
+dstring boldReplaceToHTMLTag(dstring input)
+{
+    auto r = input.tails;
+    auto app = appender!dstring();
+    bool isInBoldTag;
+
+    while(!r.empty)
+    {
+        auto e = r.front;
+
+        // D言語のソースコード中に`**p`が出現することはないだろう…という前提
+        if(e.startsWith("**")){
+            app.put(isInBoldTag ? "</b>" : "<b>");
+            isInBoldTag = !isInBoldTag;
+            
+            r.popFrontN(2);
+            continue;
+        }else
+            app.put(e[0]);
+
+        r.popFront();
+    }
+
+    return app.data;
 }
