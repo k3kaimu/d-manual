@@ -582,7 +582,7 @@ int[] arr = [3, 1, 2];
 writeln(arr.sort);       // [1, 2, 3]
 ~~~~
 
-現在は、`std.algorithm.sort`を使うのがよいとされています。(要出典)
+`sort`プロパティは[廃止予定](#仕様)なので、`std.algorithm.sort`を使うのがよいでしょう。
 
 ~~~~d
 import std.algorithm;
@@ -610,7 +610,7 @@ writeln(arr.reverse);       // [3, 2, 1]
 writeln(arr.reverse);       // [1, 2, 3]
 ~~~~
 
-`array.sort`同様に、現在は`std.algorithm.reverse`を使うのがよいとされています。(要出典)
+`sort`プロパティと同様に`reverse`プロパティも[廃止予定](#仕様)なので、`std.algorithm.reverse`を使うのがよいでしょう。
 
 ~~~~d
 import std.algorithm;
@@ -805,3 +805,4 @@ Dの連想配列はスライスと同様に、他の言語とは違って言語�
 * 静的配列              [日本語](http://www.kmonos.net/alang/d/arrays.html#static-arrays) [英語](http://dlang.org/arrays.html#static-arrays)
 * 動的配列(スライスのこと)     [日本語](http://www.kmonos.net/alang/d/arrays.html#dynamic-arrays) [英語](http://dlang.org/arrays.html#dynamic-arrays)
 * `foreach`文            [日本語](http://www.kmonos.net/alang/d/statement.html#ForeachStatement) [英語](http://dlang.org/statement.html#ForeachStatement)
+* `sort` と `reverse` の廃止について [英語](http://dlang.org/deprecate.html#.sort and .reverse properties for arrays)
