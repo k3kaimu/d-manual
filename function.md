@@ -1177,7 +1177,7 @@ ToDo: [UDAの章へ](https://github.com/k3kaimu/d-manual/blob/master/uda.md)
 
 ToDo: [共用体の章へ](https://github.com/k3kaimu/d-manual/blob/master/union.md)
 ToDo: [構造体の章へ](https://github.com/k3kaimu/d-manual/blob/master/struct.md)
-ToDo: [クラスの章へ]https://github.com/k3kaimu/d-manual/blob/master/class.md
+ToDo: [クラスの章へ](https://github.com/k3kaimu/d-manual/blob/master/class.md)
 
 
 ## 関数オーバーロード(多重定義, overload)
