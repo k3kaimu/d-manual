@@ -361,7 +361,7 @@ D言語で文字型を使用すると、その文字はUTF-8かUTF-16, UTF-32で
 
 こちらも文字型を同じようにUTF-8, UTF-16, UTF-32でエンコードされていると仮定されます。
 ですから、Unicode以外でエンコーディングされた文字列を格納するなら、`ubyte[]`や`immutable(ubyte)[]`, `ushort[]`, `immutable(ushort)[]`, `uint[]`, `immutable(uint)[]`を使用するべきなのです。
-(ですが、私はそのようなコードを見たことがありません)(要出典)
+(例えば `std.encoding` モジュールでは、ASCIIコードの文字列を表現するのに `immutable(ubyte)[]` が使用されています)
 
 ~~~~d
 //import std.utf;       追加でこの2つをimportする
