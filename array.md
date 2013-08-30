@@ -610,7 +610,7 @@ writeln(arr.reverse);       // [3, 2, 1]
 writeln(arr.reverse);       // [1, 2, 3]
 ~~~~
 
-`sort`プロパティと同様に[廃止予定](http://dlang.org/deprecate.html#.sort and .reverse properties for arrays)なので、`std.algorithm.reverse`を使うのがよいでしょう。
+`sort`プロパティと同様に`reverse`プロパティも[廃止予定](http://dlang.org/deprecate.html#.sort and .reverse properties for arrays)なので、`std.algorithm.reverse`を使うのがよいでしょう。
 
 ~~~~d
 import std.algorithm;
