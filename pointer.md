@@ -53,7 +53,7 @@ D言語では、ポインタの値はアドレス値に等しいので、ポイ�
 つまり、`int* p`に対して`p + 3`はpから12バイト(3 * 4バイト)先のintを指すことになります。
 よって、`p[n] == *(p + n)`なのです。
 
-![pointer_and_array](https://raw.github.com/k3kaimu/d-manual/master/img/pointer_md_PointerAndArray.png)
+![pointer_and_array_relationship](https://raw.github.com/k3kaimu/d-manual/master/img/pointer_and_array_relationship.png)
 
 
 ### ポインタと左辺値
