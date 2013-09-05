@@ -994,9 +994,10 @@ void main()
 D言語には、
 - 未定義動作を引き起こさないこと(<b>メモリ安全性</b>といいます)を保証する
 - メモリ安全性を保証できない場合でも、そのようなコードを検証しやすくする
+
 ための仕組みが用意されています。
 
-関数に後述する属性を付けることでこの仕組みを利用することができ、未定義動作が原因の不可解で再現性のないバグを防ぐことができます。
+関数に後述する属性を付けることでこの仕組みを利用することができ、未定義動作が原因の不可解で再現性のないバグを防ぐことができます。  
 メモリ安全性についての属性は3つあり、付けられた属性によって、関数を以下のように分類することができます。
 
 + <b>セーフ関数</b>`@safe`
@@ -1017,11 +1018,11 @@ D言語には、
     - ローカル変数や関数引数へのアドレスの取得ができない
     - `__gshared`な変数を触ることができない
 
-    <small>正確には、以下を参照:
-    [関数#safe-functions - プログラミング言語 D (日本語訳)](http://www.kmonos.net/alang/d/function.html#safe-functions)
-    [Functions#safe-functions - D Programming Language](http://dlang.org/function.html#safe-functions)
-    [SafeD - プログラミング言語 D (日本語訳)](http://www.kmonos.net/alang/d/safed.html)
-    [SafeD - D Programming Language](http://dlang.org/safed.html)</small>
+    <small>正確には、以下を参照:  
+    [関数#safe-functions - プログラミング言語 D (日本語訳)](http://www.kmonos.net/alang/d/function.html#safe-functions)  
+    [Functions#safe-functions - D Programming Language](http://dlang.org/function.html#safe-functions)  
+    [SafeD - プログラミング言語 D (日本語訳)](http://www.kmonos.net/alang/d/safed.html)  
+    [SafeD - D Programming Language](http://dlang.org/safed.html)</small>  
 
 
     セーフ関数はコンパイル時に解析され、セーフ関数であるのにメモリ安全でない操作をしている場合には、コンパイルエラーとなります。
@@ -1056,7 +1057,7 @@ D言語には、
     ~~~~d
     int foo(int[] arr) @trusted
     {
-        return arr.ptr[arr.length - 1];            // ポインタが指している要素以外に触っているので、fooはセーフ関数になれない
+        return arr.ptr[arr.length - 1];   // ポインタが指している要素以外に触っているので、fooはセーフ関数になれない
                                 // しかし、プログラマが保証するならば、信頼済み関数になれる
     }
 
