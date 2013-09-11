@@ -422,8 +422,11 @@ writeln(std.range.drop(utf32, 2));              // ほげ
 
 ### const
 
-`const`で修飾された型は、その変数経由では変更不可能です。
+`const`で修飾された型の値は、その参照経由では変更不可能です。
 `const`は推移的であり、修飾された型を構成する型も`const`型になります。
+あくまでも「`const`な参照経由では変更不可能」なだけなので、ある程度の型であれば`const`型以外へも暗黙変換可能です。
+
+ここでいう「ある程度の型」とは、値型である`int`や`ulong`, 参照を持つがその参照経由で変更ができない`const(T)*, `immutable(T)*`などです。
 
 ~~~~d
 int a;
@@ -432,22 +435,48 @@ const(int*) p = &a;     // すべての型はconstに暗黙変換可能
 //*p += 3;              // Error: cannot modify const expression *p
                         // constは推移的なので、*pはconst(int)型
                         // constなデータは書き換え不可なのでエラーがでる
+
+int *q = &a;            // constでないポインタ
+*q = 13;                // 書き換え可能
+
+p = q;                  // 非const型からconst型へは暗黙変換可能
+//q = p;                // 逆は不可能
 ~~~~
 
 
 ### immutable
 
 `immutable`型は、生まれたら死ぬまで絶対に書き換わらない型で、`const`同様に推移的です。
-`immutable`は`const`へ暗黙変換可能です。
+`const`へ暗黙変換可能ですが、非`immutable`かつ非`const`型以外へは暗黙変換不可能です。
+また`const`型と同様に、値型である`int`や`ulong`, 参照を持つが`immutable`への参照である`immutable(T)*`などは`immutable`型へ暗黙変換可能です。
 
 ~~~~d
 int a;
 //immutable(int)* p = &a;   //Error: cannot implicitly convert expression (& a) of type int* to immutable(int)*
+                            // &aはint*なのでimmutable型へは暗黙変換不可
 
 immutable(int) b;
-immutable(int)* q = &b;
 
-*q += 3;                    // Error: cannot modify immutable expression *q
+immutable(int*) p = &b;     // OK
+                            // immutable(int)*からimmutable(int*)への暗黙変換は可能
+
+immutable(int)* r = &b;
+//*r += 3;                  // Error: cannot modify immutable expression *r
+                            // immutable型は変更不可能
+~~~~
+
+`immutable`も`const`も推移的なので、`immutable(const(int)*)`は`immutable(int*)`に等価です。例を示しておきましょう。
+
+~~~~
+immutable(immutable(T))     ->      immutable(T)
+immutable(const(T))         ->      immutable(T)
+const(immutable(T))         ->      immutable(T)
+const(const(T))             ->      const(T)
+
+immutable(immutable(T)*)    ->      immutable(T*)
+immutable(const(T)*)        ->      immutable(T*)
+const(immutable(T)*)        ->      変化しない
+const(const(T)*)            ->      const(T*)
 ~~~~
 
 
@@ -472,27 +501,45 @@ shared(int)* q = cast(shared)&a;
 
 `const(Type)`型と等しくなります。
 
+~~~~d
+const int a = 12;       // const(int) a = 12;と書くのと等しい
+~~~~
+
 
 ### immutable
 
 `immutable(Type)`型と等しくなります。
+
+~~~~d
+immutable int a = 12;   // immutable(int) a = 12;と等しい
+~~~~
 
 
 ### shared
 
 `shared(Type)`型と等しくなります。
 
+~~~~d
+shared int a = 12;
+~~~~
+
 
 ### scope
 
-`scope`と指定された参照変数が、`new`で初期化されているなどの制約をクリアしていれば、スコープから抜ける際にデストラクタが必ず呼び出されるようになります。
-また、そのようなインスタンスはスタックへ割り当てられるようになります。
+`scope`の意味は、その参照がスコープの外に置かれることがないということです。
+つまり、グローバル変数への代入や`return`を使って関数外へ送ることは不正です。
 
-scopeの意味は、参照がスコープの外に置かれることがないということです。
-つまり、グローバル変数への代入や`return`などは不正です。
+またその仕様から、｀scope`変数を`new`を用いてクラスのインスタンスで初期化していれば、そのインスタンスはスコープを抜ける際に破棄されるという仕様もありますが、この機能は後ほど非推奨な機能となりますので、クラスの場合には`std.typecons.scoped`を使いましょう。
 
 ~~~~d
-scope foo = new Foo();  // スタックへ割り当て
+class Foo{ this(){}; }
+
+scope foo = new Foo();  // スタックへ割り当てられる
+                        // スコープを抜けると同時に破棄される
+
+// クラスに対するscopeは、そのうち「非推奨な機能」となるためstd.typecons.Scopedを使うとよい
+import std.typecons;
+auto bar = scoped!Foo();
 ~~~~
 
 
