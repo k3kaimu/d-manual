@@ -213,7 +213,7 @@ dekyllは、jekyllやHakyllに似た静的サイト生成ツールで、マク�
     デフォルト引数
     引数の記憶域クラス
     可変個引数関数
-    オブジェクトｗｐ形成する引数
+    オブジェクトを形成する引数
     返値型推論
     関数の属性
         プロパティ関数`@property`
@@ -226,7 +226,7 @@ dekyllは、jekyllやHakyllに似た静的サイト生成ツールで、マク�
     ローカル`static`変数
     ネスト関数
     関数ポインタ
-    デリゲート
+    デリゲート`delegate`
     関数のリテラルとラムダ
     UFCS(Uniform Function Call Syntax)
     CTFE(Compile Time Function Execution)
