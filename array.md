@@ -707,6 +707,73 @@ writeln(arr3d[0][0].length);    // 3
 ~~~~
 
 
+## 配列操作のまとめ
+
+よく使用する配列操作を纏めておきます。
+実際には、配列とレンジの両方を活用することで効率的なプログラムが書けます。
+
+~~~~d
+import std.algorithm;
+import std.array;
+
+void main()
+{
+    {
+        int[] arr = new int[1024];      // 宣言と初期化と確保
+    }
+    {
+        int[] arr;                      // 宣言とデフォルト初期化
+        arr.length = 1024;              // 拡張
+    }
+    
+    int[] arr;
+    arr = new int[1024];
+
+    size_t n = arr.length;              // 配列の大きさの取得
+
+    n = 5;
+
+    auto e = arr[n];                    // インデックスによるアクセス
+    arr[n] = e + 5;
+
+    int* p = &arr[n];                   // n番目の要素へのポインタ
+    p = arr.ptr;                        // 先頭要素へのポインタ
+
+    auto arr2 = arr[n .. n + 8];        // 配列のn要素目から8個だけの配列を取得
+
+    arr ~= e;                           // 末尾に単一要素を追加
+    arr ~= arr2;                        // 末尾に他の配列を追加
+
+    arr.popBack();                      // 末尾の単一要素削除
+    arr = arr[0 .. $ - n];              // 末尾のn個の要素削除
+
+    arr.insertInPlace(0, e);            // 先頭に単一要素の追加
+    arr = [e] ~ arr;                    // 同上
+    arr.insertInPlace(0, arr2);         // 先頭に他の配列を追加
+    arr = arr2 ~ arr;                   // 同上
+
+    arr.popFront();                     // 先頭の単一要素削除
+    arr = arr[n .. $];                  // 先頭のn個の要素削除
+
+    arr.insertInPlace(n, e);            // n番目に単一要素を追加
+    arr.insertInPlace(n, arr2);         // n番目に配列を追加
+
+    arr = arr.remove(n);                // n番目の単一要素を削除
+
+    import std.typecons;
+    arr = arr.remove(tuple(n, n + 5));  // n～n+4番目までの要素を削除
+
+    arr.sort();                         // 昇順ソート(std.algorithm.sort)
+    arr.sort!"a > b"();                 // 降順ソート(std.algorithm.sort)
+
+    arr.sort;                           // 昇順ソート(プロパティ)
+
+    arr.reverse();                      // 配列の反転(std.algorithm.reverse)
+    arr.reverse;                        // 配列の反転(プロパティ)
+}
+~~~~~
+
+
 ## 問題 -> [解答](https://github.com/k3kaimu/d-manual/blob/master/answer.md#008)
 
 * 問1  
