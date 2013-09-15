@@ -472,7 +472,6 @@ void main()
     ~~~~~~~~~~~~~~~~~~
 
     ただし、現在のdmd(dmd 2.063.2)では、この`scope`は機能していないようで、上記のようなコードもコンパイルが通ってしまいます。
-    $(SMALL (`scope` storage classがdeprecatedになるというのはどうなったのか…？))
 
     bugzilla
     - [Issue 6931]($(BUGZILLA_ISSUE_URL 6931))

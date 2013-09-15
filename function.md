@@ -470,7 +470,6 @@ void main()
     ~~~~~~~~~~~~~~~~~~
 
     ただし、現在のdmd(dmd 2.063.2)では、この`scope`は機能していないようで、上記のようなコードもコンパイルが通ってしまいます。
-    <small>(`scope` storage classがdeprecatedになるというのはどうなったのか…？)</small>
 
     bugzilla
     - [Issue 6931](http://d.puremagic.com/issues/show_bug.cgi?id=6931)
