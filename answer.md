@@ -333,6 +333,66 @@ void main()
 ~~~~
 
 
+# <a name="string">文字列</a>
+
+* 問1  
+
+~~~~d
+import std.ascii;
+import std.stdio;
+
+void main()
+{
+    foreach(i; 0 .. char.max+1)
+        if(isPrintable(cast(char)i))
+            writefln("0x%x : %s", i, cast(char)i);
+}
+~~~~
+
+
+* 問2  
+
+~~~~d
+import std.conv;
+import std.stdio;
+import std.string;
+
+void main()
+{
+    immutable num1 = readln.chomp.to!int,
+              num2 = readln.chomp.to!int;
+
+    writeln(num1 + num2);
+}
+~~~~
+
+
+* 問3  
+
+~~~~d
+import std.array;
+import std.conv;
+import std.regex;
+import std.stdio;
+import std.string;
+
+void main()
+{
+    auto r = regex(r"(?:-|\+)?[0-9](?:[0-9],[0-9]|,[0-9]|[0-9])*(?:\.[0-9]+)?", "g");
+    auto doc = readln.chomp;
+
+    real sum = 0;
+
+    foreach(c; doc.match(r)){
+        writeln(c);
+        sum += c.hit.replace(",", "").to!real;
+    }
+
+    writefln("%.3f", sum);
+}
+~~~~
+
+
 ## <a name="associative_array">連想配列</a>
 
 * 問1  

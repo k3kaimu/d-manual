@@ -115,20 +115,7 @@ dekyllは、jekyllやHakyllに似た静的サイト生成ツールで、マク�
         コンマ演算子
     付録 演算子の優先順位と結合規則
 
-### [004 標準入力と文字と文字列](https://github.com/k3kaimu/d-manual/blob/master/standardinput.md)
-    std.stdio.readln
-        まずは使ってみる
-        readlnの詳細
-    文字と文字列とは？
-        文字コード
-        改行文字と制御文字
-        文字列の簡単な操作をする
-    readf
-        まずは使ってみる
-        ポインタとは？
-    これら以外の標準入力からの取得
-
-### [005 条件分岐](https://github.com/k3kaimu/d-manual/blob/master/if.md)
+### [004 条件分岐](if.md)
     文のいろいろ
     条件分岐とは？
     if文
