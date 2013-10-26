@@ -1,6 +1,6 @@
 # 問題の回答
 
-## 001
+## <a name="hello_world">D言語入門-Hello, World</a>
 
 * 問1
 
@@ -27,14 +27,14 @@ void main(){
 * 問3 解答なし
 
 
-## 002
+## <a name="variable_type">変数と型</a>
 
 * 問1 解答省略
 
 * 問2 解答なし
 
 
-## 003
+## <a name="expr_operator">式と演算子</a>
 
 * 問1
 
@@ -71,7 +71,7 @@ void main(){
 よって、オーバーフローにならない限りは、値の符号は変わらないことがわかります。
 
 
-## 004
+## <a name="standardinput">標準入力と文字と文字列</a>
 
 * 問1
 
@@ -113,12 +113,12 @@ void main()
 3
 ~~~~
 
-## 005
+## <a name="if">条件分岐</a>
 
 * 問1 ブロックに注意
 
 
-## 006
+## <a name="loop">ループ</a>
 
 * 問1
 
@@ -236,7 +236,7 @@ void main()
 }
 ~~~~
 
-## 007
+## <a name="other_statements">その他の制御文</a>
 
 * 問1
 
@@ -274,7 +274,7 @@ void main()
 }
 ~~~~
 
-## 008
+## <a name="array">配列</a>
 
 * 問1  
 
@@ -333,7 +333,7 @@ void main()
 ~~~~
 
 
-## 009
+## <a name="associative_array">連想配列</a>
 
 * 問1  
 
@@ -440,7 +440,7 @@ void main()
 ~~~~
 
 
-## [011](function.md)
+## [<a name="function">関数</a>](function.md)
 
 * [問1](function.md#Q1)
 

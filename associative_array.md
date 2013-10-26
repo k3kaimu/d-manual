@@ -394,7 +394,7 @@ int opCmp(Object)
 しかし、これらをプログラマが定義すると、プログラマ定義の方式でハッシュ, 比較されます。
 
 
-## 問題 -> [解答](https://github.com/k3kaimu/d-manual/blob/master/answer.md#009)
+## 問題 -> [解答](https://github.com/k3kaimu/d-manual/blob/master/answer.md#associative_array)
 
 * 問題1  
 

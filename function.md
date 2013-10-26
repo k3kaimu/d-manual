@@ -1828,7 +1828,7 @@ void main()
 
 ## 問題
 
-[解答](https://github.com/k3kaimu/d-manual/blob/master/answer.md#011)
+[解答](https://github.com/k3kaimu/d-manual/blob/master/answer.md#function)
 
 + <a name = "Q1">問題1 「readIntを実装しよう」</a>  
 

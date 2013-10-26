@@ -671,7 +671,7 @@ a, b        14                      →
 ~~~~
 
 
-## 問題 -> [解答](https://github.com/k3kaimu/d-manual/blob/master/answer.md#003)
+## 問題 -> [解答](https://github.com/k3kaimu/d-manual/blob/master/answer.md#expr_operator)
 
 * シフト演算子の`>>`が、符号を維持できる理由は？  
     ヒント: 2の補数でGoogleで検索

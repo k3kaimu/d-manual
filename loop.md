@@ -495,7 +495,7 @@ void main()
 ~~~~
 
 
-## 問題 -> [解答](https://github.com/k3kaimu/d-manual/blob/master/answer.md#006)
+## 問題 -> [解答](https://github.com/k3kaimu/d-manual/blob/master/answer.md#loop)
 
 * `test00601.d`で、`writeln(n);`でなくて`writeln(n-1);`となっている理由は？
 
