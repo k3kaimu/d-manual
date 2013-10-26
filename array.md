@@ -774,7 +774,7 @@ void main()
 ~~~~~
 
 
-## 問題 -> [解答](https://github.com/k3kaimu/d-manual/blob/master/answer.md#array)
+## 問題 -> [解答](answer.md#array)
 
 * 問1  
 `int`型の配列`arr`を適当に6要素初期化し、その内容を1要素ずつ改行して表示するプログラムを作ってください。  

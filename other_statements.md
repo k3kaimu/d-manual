@@ -317,7 +317,7 @@ switch(x){
 `goto default;`とすると、`default:`ラベルまでジャンプします。
 
 
-## 問題 -> [解答](https://github.com/k3kaimu/d-manual/blob/master/answer.md#other_statements)
+## 問題 -> [解答](answer.md#other_statements)
 
 * 問1  
 入力として`<整数> <四則演算子> <整数>`のような文字列を受け取り、出力としてその式の結果を返すプログラムを作ってください。たとえば、`123 + 456`という文字列が入力されれば、`579`を出力するようにしてください。  

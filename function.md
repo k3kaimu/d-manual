@@ -355,7 +355,7 @@ void main()
 
 ## 引数の記憶域クラス
 
-関数の引数にも、普通の変数と同様に[記憶域クラス(storage class)](https://github.com/k3kaimu/d-manual/blob/master/variable_type.md#%E8%A8%98%E6%86%B6%E5%9F%9F%E3%82%AF%E3%83%A9%E3%82%B9storage-class)を付けることができます。
+関数の引数にも、普通の変数と同様に[記憶域クラス(storage class)](variable_type.md#%E8%A8%98%E6%86%B6%E5%9F%9F%E3%82%AF%E3%83%A9%E3%82%B9storage-class)を付けることができます。
 
 一切ストレージクラスがついていない引数は、値が(参照型ならその参照が)コピーされます。
 これに対して、`ref`や`out`, `lazy`は特殊な渡され方をされます。
@@ -370,7 +370,7 @@ void main()
 
     (「mutableな」とは、「変更可能な」という意味です。)
 
-    [`const`型の解説](https://github.com/k3kaimu/d-manual/blob/master/variable_type.md#const)
+    [`const`型の解説](variable_type.md#const)
 
     ~~~~d
     int getValue(const int* p)
@@ -390,7 +390,7 @@ void main()
     もちろん、引数はコピーされるため`immutable`でない値型も受け付けます。
     値型であれば`immutable`なコピーを作ることができるからです。
 
-    [`immutable`型の解説](https://github.com/k3kaimu/d-manual/blob/master/variable_type.md#immutable)
+    [`immutable`型の解説](variable_type.md#immutable)
 
     ~~~~d
     immutable(int)* getValue(immutable int<b> p)
@@ -451,7 +451,7 @@ void main()
 
     このストレージクラスとなっている引数の型は、`shared`型になります。
 
-    [`shared`型の解説](https://github.com/k3kaimu/d-manual/blob/master/variable_type.md#shared)
+    [`shared`型の解説](variable_type.md#shared)
 
 
 + `scope`
@@ -1123,7 +1123,7 @@ void foo(int x, int y) pure
 例外は`throw ex;`で投げることができ、`catch`されるまで関数を遡っていきます。
 `main`関数までさかのぼり、最終的に`catch`されなければプログラムは終了します。
 
-ToDo: [例外の章へ](https://github.com/k3kaimu/d-manual/blob/master/exception.md)
+ToDo: [例外の章へ](exception.md)
 
 `nothrow`関数は、そんな例外を絶対に投げないことが静的に保証されている関数です。
 また、例外は関数を貫いて伝搬するため、`nothrow`関数内では`nothrow`関数しか呼ぶことが出来ません。
@@ -1171,16 +1171,16 @@ void foo() nothrow
 
 ### UDA(User Defined Attribute)
     
-ToDo: [UDAの章へ](https://github.com/k3kaimu/d-manual/blob/master/uda.md)
+ToDo: [UDAの章へ](uda.md)
 
 
 ### `const`, `immutable`, `inout`, `abstract`, `final`
 
 これらの属性は構造体`struct`やクラス`class`のメンバー関数でのみ使用することができます。
 
-ToDo: [共用体の章へ](https://github.com/k3kaimu/d-manual/blob/master/union.md)
-ToDo: [構造体の章へ](https://github.com/k3kaimu/d-manual/blob/master/struct.md)
-ToDo: [クラスの章へ](https://github.com/k3kaimu/d-manual/blob/master/class.md)
+ToDo: [共用体の章へ](union.md)
+ToDo: [構造体の章へ](struct.md)
+ToDo: [クラスの章へ](class.md)
 
 
 ## 関数オーバーロード(多重定義, overload)
@@ -1828,7 +1828,7 @@ void main()
 
 ## 問題
 
-[解答](https://github.com/k3kaimu/d-manual/blob/master/answer.md#function)
+[解答](answer.md#function)
 
 + <a name = "Q1">問題1 「readIntを実装しよう」</a>  
 
