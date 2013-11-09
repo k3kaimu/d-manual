@@ -325,7 +325,7 @@ bool getAndTest(int* p, size_t idx = 0, int v)
 */
 
 // デフォルト値は2つ以上の引数にも設定可能
-int getValue2d(int<b> p, size_t i = 0, size_t j = 0)
+int getValue2d(int** p, size_t i = 0, size_t j = 0)
 {
     return p[i][j];
 }
@@ -347,7 +347,7 @@ void main()
     // idxを省略して呼び出すと、idxは0であると解釈される
     writeln(getValue(p));           // 9
 
-    int</b> pp = &p;
+    int** pp = &p;
     writeln(getValue2d(pp));          // 9
 }
 ~~~~~~~~~~~~~~~~~~
