@@ -232,7 +232,12 @@ dekyllは、jekyllやHakyllに似た静的サイト生成ツールで、マク�
     UFCS(Uniform Function Call Syntax)
     CTFE(Compile Time Function Execution)
 
-### [012 メイン関数と標準入力]()
+
+### [012 メイン関数](main.md)
+    シグネチャ
+    コマンドライン引数と`std.getopt`
+    返り値
+
 
 
 ### 構造体

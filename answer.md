@@ -712,3 +712,7 @@ int getApprxEqElm(int[] arr, int needle) pure @safe
     return reduce!f(arr);
 }
 ~~~~
+
+
+## <a name="main">メイン関数</a>
+
