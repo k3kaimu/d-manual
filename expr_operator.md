@@ -499,8 +499,8 @@ import std.math;
 float a = 1;
 float b = a * 1.0000001;
 
-writeln(a == b);
-writeln(approxEqual(a, b));
+writeln(a == b);                // false
+writeln(approxEqual(a, b));     // true
 ~~~~
 
 
