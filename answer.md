@@ -716,3 +716,85 @@ int getApprxEqElm(int[] arr, int needle) pure @safe
 
 ## <a name="main">メイン関数</a>
 
+## <a name="io">ファイルと標準入出力</a>
+
+* 問1
+
+~~~~d
+import std.range,
+       std.stdio;
+
+void main()
+{
+    foreach(i; 0 .. 3){
+        auto line = readln();
+
+        // もしくはline.popFrontN(2);
+        foreach(j; 0 .. 2)
+            line.popFront();
+
+        write(line);
+    }
+}
+~~~~
+
+もしくは、`std.range.drop`を使って以下のように書けます。
+
+~~~~d
+import std.range,
+       std.stdio;
+
+void main()
+{
+    foreach(_; 0 .. 3)
+        readln().drop(2).write();
+}
+~~~~
+
+
+
+* 問2
+
+1.
+
+~~~~d
+import std.file;
+
+void copyTo(string from, string to)
+{
+    to.write(from.read());
+}
+~~~~
+
+2.
+
+~~~~d
+void copyTo(string from, string to)
+{
+    auto fromFile = File(from);
+    auto toFile = File(to, "w");
+
+    foreach(buf; fromFile.byChunk(4096))
+        toFile.rawWrite(buf);
+}
+~~~~
+
+
+* 問3
+
+~~~~d
+import std.conv,
+       std.stdio,
+       std.string;
+
+void main()
+{
+    immutable filename = readln().chomp(),
+              N = readln().chomp().to!int();
+
+    auto file = File(filename, "w");
+
+    foreach(i; 0 .. N)
+        file.write(readln());
+}
+~~~~
