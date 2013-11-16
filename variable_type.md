@@ -583,7 +583,7 @@ pragma(msg, typeof(e)); // immutable(int)
 ~~~~
 
 
-## 問題 -> [解答](https://github.com/k3kaimu/d-manual/blob/master/answer.md#002)
+## 問題 -> [解答](answer.md#variable_type)
 
 * ビッグエンディアンとリトルエンディアンについて調べてみましょう。
 

@@ -207,7 +207,7 @@ if((isA && isB) || isC)
 ~~~~
 
 
-## 問題 -> [解答](https://github.com/k3kaimu/d-manual/blob/master/answer.md#005)
+## 問題 -> [解答](answer.md#if)
 
 * まずは次のコードの実行結果を予想してみてください。その後実行してみて、予想と違うなら理由を考えてください。
 

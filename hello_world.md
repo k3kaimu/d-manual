@@ -395,7 +395,7 @@ void main()
 // １行コメント
 ````
 
-## 問題 -> [解答](https://github.com/k3kaimu/d-manual/blob/master/answer.md#001)
+## 問題 -> [解答](answer.md#hello_world)
 
 * 次のソースコードの`<a>`と`<b>`の部分に適切なものを入れて、`Hello, World!`と表示するプログラムを作ってください。  
 

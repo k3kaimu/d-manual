@@ -1,6 +1,6 @@
 # 問題の回答
 
-## 001
+## <a name="hello_world">D言語入門-Hello, World</a>
 
 * 問1
 
@@ -27,14 +27,14 @@ void main(){
 * 問3 解答なし
 
 
-## 002
+## <a name="variable_type">変数と型</a>
 
 * 問1 解答省略
 
 * 問2 解答なし
 
 
-## 003
+## <a name="expr_operator">式と演算子</a>
 
 * 問1
 
@@ -71,7 +71,7 @@ void main(){
 よって、オーバーフローにならない限りは、値の符号は変わらないことがわかります。
 
 
-## 004
+## <a name="standardinput">標準入力と文字と文字列</a>
 
 * 問1
 
@@ -113,12 +113,12 @@ void main()
 3
 ~~~~
 
-## 005
+## <a name="if">条件分岐</a>
 
 * 問1 ブロックに注意
 
 
-## 006
+## <a name="loop">ループ</a>
 
 * 問1
 
@@ -236,7 +236,7 @@ void main()
 }
 ~~~~
 
-## 007
+## <a name="other_statements">その他の制御文</a>
 
 * 問1
 
@@ -274,7 +274,7 @@ void main()
 }
 ~~~~
 
-## 008
+## <a name="array">配列</a>
 
 * 問1  
 
@@ -333,7 +333,67 @@ void main()
 ~~~~
 
 
-## 009
+## <a name="string">文字列</a>
+
+* 問1  
+
+~~~~d
+import std.ascii;
+import std.stdio;
+
+void main()
+{
+    foreach(i; 0 .. char.max+1)
+        if(isPrintable(cast(char)i))
+            writefln("0x%x : %s", i, cast(char)i);
+}
+~~~~
+
+
+* 問2  
+
+~~~~d
+import std.conv;
+import std.stdio;
+import std.string;
+
+void main()
+{
+    immutable num1 = readln.chomp.to!int,
+              num2 = readln.chomp.to!int;
+
+    writeln(num1 + num2);
+}
+~~~~
+
+
+* 問3  
+
+~~~~d
+import std.array;
+import std.conv;
+import std.regex;
+import std.stdio;
+import std.string;
+
+void main()
+{
+    auto r = regex(r"(?:-|\+)?[0-9](?:[0-9],[0-9]|,[0-9]|[0-9])*(?:\.[0-9]+)?", "g");
+    auto doc = readln.chomp;
+
+    real sum = 0;
+
+    foreach(c; doc.match(r)){
+        writeln(c);
+        sum += c.hit.replace(",", "").to!real;
+    }
+
+    writefln("%.3f", sum);
+}
+~~~~
+
+
+## <a name="associative_array">連想配列</a>
 
 * 問1  
 
@@ -440,7 +500,7 @@ void main()
 ~~~~
 
 
-## [011](function.md)
+## [<a name="function">関数</a>](function.md)
 
 * [問1](function.md#Q1)
 
@@ -650,5 +710,91 @@ int getApprxEqElm(int[] arr, int needle) pure @safe
     }
 
     return reduce!f(arr);
+}
+~~~~
+
+
+## <a name="main">メイン関数</a>
+
+## <a name="io">ファイルと標準入出力</a>
+
+* 問1
+
+~~~~d
+import std.range,
+       std.stdio;
+
+void main()
+{
+    foreach(i; 0 .. 3){
+        auto line = readln();
+
+        // もしくはline.popFrontN(2);
+        foreach(j; 0 .. 2)
+            line.popFront();
+
+        write(line);
+    }
+}
+~~~~
+
+もしくは、`std.range.drop`を使って以下のように書けます。
+
+~~~~d
+import std.range,
+       std.stdio;
+
+void main()
+{
+    foreach(_; 0 .. 3)
+        readln().drop(2).write();
+}
+~~~~
+
+
+
+* 問2
+
+1.
+
+~~~~d
+import std.file;
+
+void copyTo(string from, string to)
+{
+    to.write(from.read());
+}
+~~~~
+
+2.
+
+~~~~d
+void copyTo(string from, string to)
+{
+    auto fromFile = File(from);
+    auto toFile = File(to, "w");
+
+    foreach(buf; fromFile.byChunk(4096))
+        toFile.rawWrite(buf);
+}
+~~~~
+
+
+* 問3
+
+~~~~d
+import std.conv,
+       std.stdio,
+       std.string;
+
+void main()
+{
+    immutable filename = readln().chomp(),
+              N = readln().chomp().to!int();
+
+    auto file = File(filename, "w");
+
+    foreach(i; 0 .. N)
+        file.write(readln());
 }
 ~~~~
