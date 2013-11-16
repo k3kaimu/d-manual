@@ -173,7 +173,7 @@ void main()
     while(fib < 4_000_000)
     {
         if(fib % 2 == 0)
-        sum += fib;
+            sum += fib;
 
         fib_2 = fib_1;
         fib_1 = fib;
