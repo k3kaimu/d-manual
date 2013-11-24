@@ -1214,9 +1214,9 @@ int sprintf(char* str, size_t n, const char* format, void* argptr, TypeInfo[] ar
 「もっともマッチした関数」とは、以下の優先順位でもっとも高い関数です。
 
 1. 完全にマッチしている
-#. `const`付きでマッチしている
-#. 暗黙の型変換によるマッチ
-#. マッチしていない
+2. `const`付きでマッチしている
+3. 暗黙の型変換によるマッチ
+4. マッチしていない
 
 ~~~~d
 import std.stdio;
