@@ -436,7 +436,7 @@ const(int*) p = &a;     // すべての型はconstに暗黙変換可能
                         // constは推移的なので、*pはconst(int)型
                         // constなデータは書き換え不可なのでエラーがでる
 
-int *q = &a;            // constでないポインタ
+int* q = &a;            // constでないポインタ
 *q = 13;                // 書き換え可能
 
 p = q;                  // 非const型からconst型へは暗黙変換可能
