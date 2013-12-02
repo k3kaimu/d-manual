@@ -2,13 +2,15 @@
 
 ## 式(Expression)と文(Statement)とは？
 
-D言語のプログラムが関数とデータの集合であることは前の記事で説明しました。
-では、関数は何の集合でできているかというと、文(statement)の集合です。
-文は文で構成されたり、式(expression)で構成されます。
+D言語のプログラムが関数とデータの集合であることは前の章で説明しましたね。
+では、関数は何で構成されているのでしょうか。
+その答えは文(statement)です。
+`void main(){}`というのも実際には宣言文(Declaration Statement)ですし、`import std.stdio;`もインポート宣言(Import Declaration)という文です。
+さらに、`writeln("Hello, World!");`も文です。
+ということで、D言語のプログラムは文の集合だったりします
+また、文は文で構成されたり、式(expression)で構成されます。
 たとえば、`writeln("Hello, World!")`は式ですが、`;`を付けることで`writeln("Hello, World!");`となり文となります。
 `"Hello, World!"`も式ですし、`123`も式です。
-そして、 `void main(){}`というのも実際には宣言文(Declaration Statement)ですし、`import std.stdio;`もインポート宣言(Import Declaration)という文です。
-ということで、D言語のプログラムは文の集合だったりします。
 
 
 ## 変数(Variable)
