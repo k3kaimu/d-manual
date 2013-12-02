@@ -134,51 +134,113 @@ else
 ## boolと評価される式
 
 実は、`if(<condition>)`の`<condition>`式のように、特別な場所では`bool`型以外の型も`bool`型に暗黙に変換されます。
-たとえば数値型であれば、非ゼロな値は`true`となります。
-文字列型だったら、文字列の長さが0であれば`false`になります。
-その他、たくさんの型は`bool`型に暗黙変換されます。
+たとえば数値型であれば非ゼロな値は`true`となります。
+まだ説明していない型ですが、ポインタやクラスであれば、非ヌル`a !is null`の場合に`true`と評価されます。
+また`opCast!bool`を持っている構造体と共用体においては、`opCast!bool`の評価結果となります。
 
 ~~~~d
-int a = -12;            //マイナスも非ゼロなのでtrue
-string str = "";
+import std.stdio;
 
-if(a)
-    writeln("aは0以外");
 
-if(str)
-    writeln("strは空でない");
-else
-    writeln("strは空である");
+void main()
+{
+    // 数値型
+    int a = -12;            //マイナスも非ゼロなのでtrue
+    if(a)
+        writeln("a != 0 == true");
+
+    // ポインタ型
+    int* p = &a;
+    if(p)
+        writeln("p !is null == true");
+
+    // opCast!boolを持つ構造体
+    S s;
+    if(s)
+        writeln("s.opCast!bool == true");
+
+    // opCast!boolを持つ共用体
+    U u;
+    if(u)
+        writeln("u.opCast!bool == true");
+
+    // クラス
+    C c = new C;
+    if(c)
+        writeln("c !is null == true");
+}
+
+
+/// opCast!boolを持っている構造体
+struct S
+{
+    bool opCast(T : bool)()
+    {
+        return true;
+    }
+}
+
+
+/// opCast!boolを持っている共用体
+union U
+{
+    bool opCast(T : bool)()
+    {
+        return true;
+    }
+}
+
+
+/// クラス
+class C{}
 ~~~~
 
 
 ## if(宣言)な文
 
-string型の値が、文字列の長さが非ゼロであれば`true`となるという特性を利用して、次のプログラムを書きたいことがあります。
+if文のカッコの中では変数を宣言できます。
+この構文は、`opCall!bool`を定義している構造体や共用体、ポインタやクラスを返す関数の返り値を検査したい場合に大変有効です。
+
+例として、正規表現モジュール`std.regex`を使用する場合の活用の仕方を見てみましょう。
 
 ~~~~d
-string str = func();
+import std.regex;
+import std.stdio;
 
-if(str)
-    writeln(str);
-else
-    writeln("空");
+void main()
+{
+    foreach(line; stdin.byLine){
+        // 入力の最初の行に与えられた、最初の数値にマッチ
+        if(auto m = line.match(regex(`\d+`)))
+            writeln(m.hit);     // 数値を表示
+        else
+            writeln();          // マッチしなければ改行だけ
+    }
+}
 ~~~~
 
-プログラムの説明は、いい練習問題になるので省略しますが、
-このようにstrを宣言して、`if`文中で使いたい場合には次のようなことができます。
+入力:
 
-~~~~d
-if(string str = func())
-    writeln(str);
-else
-    writeln("空");
+~~~~
+foobar123
+foo222
+foo
+111222
 ~~~~
 
-なにが嬉しいかというと、`str`の使用出来る範囲が`if`文中だけになることが嬉しいのです。
+出力:
+
+~~~~
+123
+222
+
+111222
+~~~~
+
+なにが嬉しいかというと、`m`の使用出来る範囲(スコープ)が`if`文中だけになることです。
 このうれしさはプログラムをバリバリ書けるようになってくると実感します。
 
-ちなみに、`else`節では`str`は使えません。
+ちなみに、`else`節では`m`は使えません。
 
 
 ## &&(且つ)と||(又は)
