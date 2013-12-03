@@ -1658,17 +1658,14 @@ enum accum = (int a) => (int b) => a + b;
 次いで`{;}`、`(){}`になります。
 
 ~~~~d
-void function() //f1 = {},          // NG; Issue 11661
-                f2 = {;},           // こっちはOK
+void function() f1 = {},
+                f2 = {;},
                 f3 = (){};
 
 void delegate() d1 = {},
                 d2 = {;},
                 d3 = (){};
 ~~~~~~~~~~~~~~~~~~
-
-* **注意**  
-[NGケースである`void function() f1 = {};`については、[Issue 11661](https://d.puremagic.com/issues/show_bug.cgi?id=11661)として報告・修正されたため、dmd 2.065からはコンパイルが通るようになります。
 
 ラムダでも`function`や`delegate`の指定ができます。
 
