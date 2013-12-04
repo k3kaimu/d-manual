@@ -1668,7 +1668,7 @@ void delegate() d1 = {},
 ~~~~~~~~~~~~~~~~~~
 
 * **注意**  
-[NGケースである`void function() f1 = {};`については、[Issue 11661](https://d.puremagic.com/issues/show_bug.cgi?id=11661)として報告・修正されたため、dmd 2.065からはコンパイルが通るようになります。
+NGケースである`void function() f1 = {};`については、[Issue 11661](https://d.puremagic.com/issues/show_bug.cgi?id=11661)として報告・修正されたため、dmd 2.065からはコンパイルが通るようになります。
 
 ラムダでも`function`や`delegate`の指定ができます。
 
