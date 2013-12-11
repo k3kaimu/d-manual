@@ -42,7 +42,7 @@ void main(string[] args)
 ~~~~
 $ dmd io_main
 $ ./io_main foo bar
-[".\\test.exe", "foo", "bar"]
+[".\\io_main.exe", "foo", "bar"]
 ~~~~
 
 実行してみると、`args`の1つ目の要素にはプログラム名、2つ目には`"foo"`, 3つ目には`"bar"`が格納されていることがわかりますね。
@@ -51,7 +51,7 @@ $ ./io_main foo bar
 
 ~~~~
 $ ./io_main "foo bar"
-[".\\test.exe", "foo bar"]
+[".\\io_main.exe", "foo bar"]
 ~~~~
 
 コマンドライン引数は、普通のプログラム、たとえば`dmd`だと`-run`とか`-m64`だとかのようにハイフン`-`と識別子を与えたり、`-version=Foo`のように値を設定したり, 対象のファイルのパスを指定するのに使用されます。
