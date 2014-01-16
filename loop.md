@@ -27,7 +27,7 @@ void main()
 ~~~~
 
 ~~~~
-$ rdmd test00601
+$ rdmd test00601.d
 14
 105
 ~~~~
@@ -96,7 +96,7 @@ void main()
 ~~~~
 
 ~~~~
-$ rdmd test00603
+$ rdmd test00603.d
 0
 1
 2
@@ -134,7 +134,7 @@ void main()
 ~~~~
 
 ~~~~
-$ rdmd test00604
+$ rdmd test00604.d
 14
 105
 ~~~~
@@ -171,7 +171,7 @@ void main()
 ~~~~
 
 ~~~~
-$ rdmd test00605
+$ rdmd test00605.d
 0
 1
 2
@@ -417,7 +417,7 @@ void main()
 ~~~~
 
 ~~~~
-$ rdmd test00610
+$ rdmd test00610.d
 0
 1
 2

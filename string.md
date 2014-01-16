@@ -221,7 +221,7 @@ void main()
 ~~~~
 
 ~~~~
-$ rdmd exmaple00404
+$ rdmd exmaple00404.d
 ?
 鈴
 斎
@@ -247,7 +247,7 @@ void main()
 ~~~~
 
 ~~~~
-$ rdmd example00405
+$ rdmd example00405.d
 山
 鈴
 斎
@@ -294,7 +294,7 @@ void main()
 ~~~~
 
 ~~~~
-$ rdmd example
+$ rdmd example.d
 山 : 山田太郎
 田 : 田太郎
 太 : 太郎
@@ -365,7 +365,7 @@ void main()
 ~~~~~
 
 ~~~~
-$ rdmd example
+$ rdmd example.d
 田太
 田太
 ~~~~
@@ -397,7 +397,7 @@ void main()
 ~~~~
 
 ~~~~
-$ rdmd example
+$ rdmd example.d
 foofoofoo
 foooofo
 foobar

@@ -369,7 +369,7 @@ void main()
 ~~~~
 
 ~~~~
-$ rdmd test00801
+$ rdmd test00801.d
 3
 2
 1
