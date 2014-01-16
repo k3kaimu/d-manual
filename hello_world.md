@@ -42,7 +42,7 @@ void main()
 (`rdmd`が見つからないとエラーが出たら`dmd -run`を使ってみてください。)
 
 ````
-$ rdmd helloworld
+$ rdmd helloworld.d
 ````
 
 コンソールで以下のように出力されれば成功です、おめでとう！
@@ -57,7 +57,7 @@ Hello, world!
 これからは`rdmd ...`などのコマンドと実行結果を一緒に、以下のように表記します。
 
 ````
-$ rdmd helloworld
+$ rdmd helloworld.d
 Hello World!
 ````
 
@@ -174,7 +174,7 @@ void main()
 ````
 
 ````
-$ rdmd helloworld
+$ rdmd helloworld.d
 Hello, World! 123
 ````
 
