@@ -116,7 +116,7 @@ auto aa1 = ["mado": 1, "homu": 2, "saya": 3, "anko": 4];
 auto aa2 = ["mado": 1, "homu": 2, "saya": 3, "anko": 4];
 
 writeln(aa1 == aa2);            // true
-writeln(aa1 != aa2);            // true
+writeln(aa1 is aa2);            // false
 
 aa1["mami"] = 5;
 writeln(aa1 != aa2);            // true
