@@ -347,17 +347,6 @@ writeln(0 ^^ 0);        // 1
 writeln(2.3 ^^ 4.4);    // 39.0483
 ~~~~
 
-注意として、現在の実装では、`<Complex> ^^ <FloatingPoint>`な累乗はできないようです。
-`<Complex> ^^ <Integral>`な累乗は可能です。
-
-~~~~d
-cfloat c = 1 + 2.0i;
-
-//writeln(c ^^ 3.0);    // Compile Error
-writeln(c ^^ 3);        // -11+-2i
-~~~~
-
-
 ### ビット演算子(Bitwise operators)
 
 * 補数(Bitwise NOT)
