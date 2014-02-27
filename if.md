@@ -71,7 +71,7 @@ void main()
 
 それはそうと、解説です。
 まず、`isThirsty`の宣言はいいですね。1行読み込んで、それが`"Y"`なら`true`となります。
-`readln().chomp()`となっているのは改行文字を消すためで、なぜこのように書けるかというと、UFCS(Uniform Function Call Syntax)のおかげだと前回説明しましたね。
+`readln().chomp()`となっているのは改行文字を消すためで、なぜこのように書けるかというと、[UFCS(Uniform Function Call Syntax)](function.md#ufcsuniform-function-call-syntax)という機能のおかげです。
 
 さて、次の`if(isThirty){`が今回のメインなわけです。
 「もし～だったら、～して！」を表すのがif文だと冒頭で述べましたが、この場合には`isThirsty == true`であれば次の文を実行しろということです。
