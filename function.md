@@ -393,9 +393,9 @@ void main()
     [`immutable`型の解説](variable_type.md#immutable)
 
     ~~~~d
-    immutable(int)* getValue(immutable int<b> p)
+    immutable(int)* getValue(immutable int* p)
     {
-        //*p += 3;                  // pはimmutable(int</b>)型、*pはimmutable(int*)型なので書き換え不可
+        //*p += 3;                  // pはimmutable(int*)型、*pはimmutable(int*)型なので書き換え不可
 
         return *p;                  // *pはimmutable(int*)型なので、immutable(int)*型として返せる
     }
@@ -405,46 +405,86 @@ void main()
 + `inout`
 
     このストレージクラスとなった引数は`inout`型になります。
-    `inout`型は特殊で、その関数のすべての`inout`な引数の実引数がすべてmutableであれば関数内のすべての`inout`は取り除かれmutableになります。
-    また、すべて`immutable`であれば、その関数中に出てくるすべての`inout`は`immutable`になります。
-    上記の2つの状況にマッチしなかった場合には、すべての`inout`は`const`になります。
+    仮引数に`inout`型を一つでも含む関数はinout関数と呼ばれます。
+    inout関数は、その関数を呼び出す実引数によって関数の返り値の型が変わります。
 
-    `inout`型は`const`型に暗黙変換可能です。
+    まずは仮引数に`inout`型を1つだけ含む関数`inout(int[]) getFront(inout(int[]) x);`について考えてみましょう。
+    この関数には`int[]`や`const(int[])`、さらには`immutable(int[])`型の値を渡すことが出来ます。
+    `getFront`関数の返り値は、実引数が`int[]`の場合には`int[]`が、`const(int[])`の場合には`const(int[])`が、そして`immutable(int[])`の場合には`immutable(int[])`になります。
+
+    コンパイラが3つのパターンについて`getFront`関数を生成しているわけではないことに注意しましょう。
+    コンパイラは、呼び出し毎に、実引数の型を調査して、それに見合った返り値の型を設定しているのです。
+
+    次に、仮引数に`inout`型が1つよりも多く存在した場合ですが、コンパイラは呼び出し毎にすべての`inout`仮引数に対する実引数を調査します。
+    コンパイラによる実引数の調査の結果、コンパイラは次のように返り値の型を変更します。
+    1. `inout`に対応する型がすべて`immutable`であれば返り値の`inout`も`immutable`に置き換わった型になります。
+    2. `inout`に対応するすべての実引数の型がmutable(`const`でも`immutable`でもない)であれば、返り値の`inout`は取り除かれます。
+    3. 1や2にマッチしなかった場合は返り値の`inout`は`const`に置き換わります。
 
     ~~~~d
-    inout(int)[] mulVec(inout int[] p, inout int[] q, int[] r)
+    inout(int)[] foo(inout(int[]) x, inout(int[]) y)
     {
-        pragma(msg, typeof(p));     // inout(int)[]
-
-        r[] = p[] * q[];
-        
-        return p;
+        return x ~ y;
     }
 
 
     void main()
     {
-        int[] result = new int[3];
-        
-        immutable imm = [0, 1, 2];
-        const cns = [3, 4, 5];
-        int[] mut = [6, 7, 8];
+        int[] marr = [1, 2, 3];
+        const carr = marr;
+        immutable iarr = marr.dup;
 
-        writeln(typeid(mulVec(imm, imm, result)));      // immutable(int)[]
-                                                        // 両方共immutableなので
+        // (mutable, mutable) => mutable
+        auto a = foo(marr, marr);
+        static assert(is(typeof(a) == int[]));
 
-        writeln(typeid(mulVec(imm, cns, result)));      // const(int)[]
+        // (mutable, const) => const
+        auto b = foo(marr, carr);
+        static assert(is(typeof(b)== const(int)[]));
 
-        writeln(typeid(mulVec(imm, mut, result)));      // const(int)[]
+        // (mutable, immutable) => const
+        auto c = foo(marr, iarr);
+        static assert(is(typeof(c) == const(int)[]));
 
-        writeln(typeid(mulVec(cns, cns, result)));      // const(int)[]
+        // (const, immutable) => const
+        auto d = foo(carr, iarr);
+        static assert(is(typeof(d) == const(int)[]));
 
-        writeln(typeid(mulVec(cns, mut, result)));      // const(int)[]
-
-        writeln(typeid(mulVec(mut, mut, result)));      // int[]
-                                                        // 両方mutableだから
+        // (immutable, immutable) => immutable
+        auto e = foo(iarr, iarr);
+        static assert(is(typeof(e) == immutable(int)[]));
     }
-    ~~~~~~~~~~~~~~~~~~
+    ~~~~
+
+    また、inout関数内でのみ`inout`型の変数を宣言できます。
+    `inout(T)`という型は`const(T)`へは暗黙変換可能ですが、`T`や`immutable(T)`へは暗黙変換できません。
+
+    ~~~~d
+    import std.traits;
+
+    void foo(inout(int)[] x)
+    {
+        inout(int)[] y = x;
+        auto z = x ~ y;
+        static assert(is(typeof(z) == inout(int)[]));
+
+        //int[] mz = z;     Error
+        const cz = z;
+        //immutable iz = z; Error
+
+        // inout と mutable の CommonType => const
+        static assert(is(CommonType!(inout(int)[], int[])
+            == const(int)[]));
+
+        // inout と const の CommonType => const
+        static assert(is(CommonType!(inout(int)[], const(int)[])
+            == const(int)[]));
+
+        // inout と immutable の CommonType => inout(const(int))
+        static assert(is(CommonType!(inout(int)[], immutable(int)[])
+            == inout(const(int))[]));
+    }
+    ~~~~
 
 
 + `shared`
