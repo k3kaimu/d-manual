@@ -90,23 +90,19 @@ void main(){
 このように、`goto`はたしかに強力なのですが、プログラムの流れが破綻しやすく、期待した動作が得られなかったり、
 後からソースコードを読むときに理解が困難になったりします。
 
-* TDPL
+* goto文の制約
 
-TDPLを読む限りでは、`goto`文は、変数宣言を飛び越えることや`try`, `catch`, `finally`へのジャンプはできないみたいです。
+そんな嫌われ者の`goto`文ですが、正しく扱ってあげることによって上手いソースコードを作ることが出来ます。
+正しく扱うために、D言語の`goto`文は、変数宣言を飛び越えることや`try`, `catch`, `finally`へのジャンプはできません。
 
 ~~~~d
 void main()
 {
-    goto Label;
+    //goto Label; // Error: goto skips declaration of variable test.main.x
     int x;
-  Lable: {}
+  Label: {}
 }
 ~~~~
-
-しかし上記のコードのように、現在のdmdの実装では変数宣言は飛び越えれてしまいます。  
-([Bugzilla:4101](http://d.puremagic.com/issues/show_bug.cgi?id=4101)など)
-
-`try`, `catch`, `finally`は、正しくコンパイルエラーを出してくれます。
 
 ~~~~d
 void main(){
