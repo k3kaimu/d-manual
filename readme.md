@@ -25,12 +25,8 @@ k3kaimuの文章がわかりにくいために、「C言語がある程度使え
 * 現在はgithubでmarkdownの表示を行っていますが、近々pandocでhtmlを生成する方式に変える可能性があります。
 ローカルでmarkdownのプレビューを行う場合には、pandocでHTMLの生成を推奨します。
 
-pandocの拡張されたmarkdownの仕様とGFMとの差をある程度解消するために、Ddocのマクロが定義されたファイルを`ddoc/markdown.ddoc`に用意しています。
-そのため、もっとも推奨する書き方はdd(Ddoc)ファイルで執筆、dmdでDdocマクロの展開を行ってmarkdownを作るという方法です。
-dmdでマクロ展開を行う`ddoc/dd2md.d`というソースコードも公開しているので参考にしてください。
-
-将来的には、現在開発中のdekyllを使ってhtmlにし、github pagesで公開することを考えています。
-dekyllは、jekyllやHakyllに似た静的サイト生成ツールで、マクロなどはD言語で記述します。
+* きわどい日本語訳(`eponymous template`等)については、以下のページで確認して下さい。  
+[訳語一覧](transtable.md)
 
 
 ## ライセンス
