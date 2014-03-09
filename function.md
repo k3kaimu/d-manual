@@ -1178,6 +1178,27 @@ void foo(int x, int y) pure
     }
     ~~~~
 
+    強い純粋関数の返り値は常にユニークであるという特徴があります。
+    つまり、返り値は外部との関わりを一切持っていないということです。
+    この特徴によって、強い純粋関数が返す返り値はすべての修飾子付き型へ暗黙変換可能となります。
+
+    ~~~~d
+    // 強い純粋関数
+    T[] newArrN(T)(size_t n) pure
+    {
+        return new T[n];
+    }
+
+    void main()
+    {
+        // sharedやinoutを含むすべての修飾子を付加することが可能
+        auto marr = newArrN!int(12);
+        const carr = newArrN!int(12);
+        immutable iarr = newArrN!int(12);
+        shared sarr = newArrN!int(12);
+    }
+    ~~~~
+
 
 ### 例外を投げない関数`nothrow`
 
