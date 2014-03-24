@@ -597,7 +597,10 @@ writeln((writeln("foo"), writeln("bar"), "hoge"));
 
 ## 付録 演算子の優先順位と結合規則
 
-今回出て行きた演算子の優先順位と結合規則の一覧を以下に示しておきます。
+今回出てきた演算子の優先順位と結合規則の一覧を以下に示しておきます。
+
+ちなみに、全ての演算子の優先順位については次のページに定義されています。  
+[Operator precedence - D Wiki](http://wiki.dlang.org/Operator_precedence)
 
 ~~~~
 Operator    Order of Evaluation     Associativity: Example
@@ -606,14 +609,14 @@ Operator    Order of Evaluation     Associativity: Example
 a++         2                       ←
 a--         2                       ←
 
+a ^^ b      4                       ←: 2 ^^ 3 ^^ 2 => 2 ^^ (3 ^^ 2)
+
 ++a         3                       ←
 --a         3                       ←
--a          3                       ←
 +a          3                       ←
+-a          3                       ←
 !a          3                       ←
 ~a          3                       ←
-
-a ^^ b      4                       ←: 2 ^^ 3 ^^ 2 => 2 ^^ (3 ^^ 2)
 
 a * b       5                       →: 2 * 3 * 2 => (2 * 3) * 2
 a / b       5                       →: 2 * 3 / 2 => (2 * 3) / 2
@@ -633,9 +636,9 @@ a <= b      8                       →
 a > b       8                       →
 a >= b      8                       →
 
-a | b       9                       →
-a ^ b       9                       →
-a & b       9                       →
+a & b       9.0                     →
+a ^ b       9.1                     →
+a | b       9.2                     →
 
 a && b      10                      →
 
