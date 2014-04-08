@@ -774,3 +774,17 @@ core.exception.AssertError@foo(16): Assertion failure
 1. [意外と知られていない構造化プログラミング、あるいは構造化プログラミングはデータも手続きと一緒に抽象化する、あるいはストロヴストルップのオブジェクト指向プログラミング史観](http://www.tatapa.org/~takuo/structured_programming/structured_programming.html)
 
 2. [猫型プログラミング言語史観(1) 〜あるいはオブジェクト指向における設計指針のひとつ〜](http://nekogata.hatenablog.com/entry/2014/01/17/125600)
+
+
+## キーワード
+
+* `struct`, 構造体
+* ユーザー定義型
+* 構造化プログラミング
+* メンバ関数
+* アクセス保護属性
+* コンストラクタ
+* Postblit
+* デストラクタ
+* 静的メンバ
+* alias this
