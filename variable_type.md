@@ -431,18 +431,21 @@ writeln(std.range.drop(utf32, 2));              // ほげ
 ここでいう「ある程度の型」とは、値型である`int`や`ulong`, 参照を持つがその参照経由で変更ができない`const(T)*`, `immutable(T)*`などです。
 
 ~~~~d
-int a;
-const(int*) p = &a;     // すべての型はconstに暗黙変換可能
+void main()
+{
+    int a;
+    const(int*) p = &a;     // すべての型はconstに暗黙変換可能
 
-//*p += 3;              // Error: cannot modify const expression *p
-                        // constは推移的なので、*pはconst(int)型
-                        // constなデータは書き換え不可なのでエラーがでる
+    //*p += 3;              // Error: cannot modify const expression *p
+                            // constは推移的なので、*pはconst(int)型
+                            // constなデータは書き換え不可なのでエラーがでる
 
-int* q = &a;            // constでないポインタ
-*q = 13;                // 書き換え可能
+    int* q = &a;            // constでないポインタ
+    *q = 13;                // 書き換え可能
 
-p = q;                  // 非const型からconst型へは暗黙変換可能
-//q = p;                // 逆は不可能
+    const(int*) cq = q;     // 非const型からconst型へは暗黙変換可能
+    //q = p;                // 逆は不可能
+}
 ~~~~
 
 
