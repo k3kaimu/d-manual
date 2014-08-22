@@ -9,7 +9,7 @@ import std.stdio;
 
 void main()
 {
-    writeln("%s, %s", "Hello", "World!");
+    writefln("%s, %s", "Hello", "World!");
 }
 ~~~~
 
