@@ -559,7 +559,7 @@ writeln(slice == slice2);
 writeln(slice.ptr != slice2.ptr);
 
 int[10] stArray;
-pragma(msg, typeof(stArray.dup));   // int[]  (コンパイル時に出力)
+pragma(msg, typeof(stArray.idup));   // immutable(int)[]  (コンパイル時に出力)
 ~~~~
 
 ちなみに、dmd 2.063から入った変更によって、`dup`でも`idup`の機能は満たせます。
