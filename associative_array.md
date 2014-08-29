@@ -381,17 +381,81 @@ writefln("%-(%s : %s%|\n%)", madoMagi);
 
 ## クラスをキーとして使うには(高度)
 
-連想配列のキーとしてクラスを使うには、クラスに次のメソッドを定義する必要があります。
+連想配列のキーとしてクラスを使うには、クラスに`toHash`や`opEquals`を定義する必要があります。
 `hash_t`は`size_t`の`alias`です。
 
 ~~~~d
-hash_t toHash()
-bool opEquals(Object)
-int opCmp(Object)
+/// test.d
+import std.stdio;
+
+class MyKey
+{
+    this(int a){ _a = a; }
+
+    override hash_t toHash(){ return _a; }
+    override bool opEquals(Object o){
+        auto rhs = cast(MyKey)o;
+        return rhs && rhs._a == this._a;
+    }
+
+  private:
+    int _a;
+}
+
+void main()
+{
+    int[MyKey] aa;
+
+    aa[new MyKey(1)] = 12;
+    aa[new MyKey(2)] = 3;
+    aa[new MyKey(3)] = 4;
+
+    aa[new MyKey(1)] = 8;   // rewrite
+
+    writeln(aa);
+}
 ~~~~
 
-構造体や共用体については、これらはデフォルトではバイナリから算出されます。
-しかし、これらをプログラマが定義すると、プログラマ定義の方式でハッシュ, 比較されます。
+~~~~
+$ rdmd test
+[foo.MyKey:8, foo.MyKey:3, foo.MyKey:4]
+~~~~
+
+構造体や共用体については、これらの二つはデフォルトではバイナリから算出されます。
+もちろん、プログラマが定義するとその方式でハッシュ, 比較されます。
+
+~~~~d
+/// test.d
+import std.stdio;
+
+struct MyKey
+{
+    int a;
+    int b;  // これを無視したい
+
+    hash_t toHash() const nothrow @safe { return a; }
+    bool opEquals(ref const MyKey rhs) const
+    { return this.a == rhs.a; }
+}
+
+void main()
+{
+    int[MyKey] aa;
+
+    aa[MyKey(1, 2)] = 12;
+    aa[MyKey(2, 3)] = 3;
+    aa[MyKey(3, 4)] = 4;
+
+    aa[MyKey(1, 4)] = 8;   // rewrite
+
+    writeln(aa);
+}
+~~~~
+
+~~~~
+$ rdmd test
+[MyKey(1, 2):8, MyKey(2, 3):3, MyKey(3, 4):4]
+~~~~
 
 
 ## 問題 -> [解答](answer.md#associative_array)
