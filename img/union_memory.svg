@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20001102//EN" "http://www.w3.org/TR/2000/CR-SVG-20001102/DTD/svg-20001102.dtd">
+<!-- This file was created by the DynamicDraw's "SVG Export" plug-in version 1.1.2.-->
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='120.941mm' height='83.291mm' viewBox='0 0 120.941 83.291'>
+<g style='stroke-linecap:round;stroke-linejoin:round'>
+<!-- start DynamicDraw object [1], type : FDOJ_RECT -->
+<rect x='0.470630' y='0.470630' width='120.000000' height='10.000000' style='fill:white; stroke:black; stroke-width:0.500000'/>
+<text style='font-size:4.233333px'><tspan style='font-size:4.233333px;font-family:"Consolas";font-weight:400'><tspan style='fill:black'><tspan x='20.092733' y='6.886564'>struct { int a; long b; char[] c; }</tspan></tspan>
+</tspan>
+</text>
+<!-- end DynamicDraw object [1], type : FDOJ_RECT -->
+<!-- start DynamicDraw object [2], type : FDOJ_POLY -->
+<line x1='0.470630' y1='10.470630' x2='0.470630' y2='20.470630' style='fill:none; stroke:black; stroke-width:0.500000'/>
+<!-- end DynamicDraw object [2], type : FDOJ_POLY -->
+<!-- start DynamicDraw object [3], type : FDOJ_POLY -->
+<line x1='20.470630' y1='10.470630' x2='20.470630' y2='20.470630' style='fill:none; stroke:black; stroke-width:0.500000'/>
+<!-- end DynamicDraw object [3], type : FDOJ_POLY -->
+<!-- start DynamicDraw object [4], type : FDOJ_POLY -->
+<line x1='60.470630' y1='10.470630' x2='60.470630' y2='20.470630' style='fill:none; stroke:black; stroke-width:0.500000'/>
+<!-- end DynamicDraw object [4], type : FDOJ_POLY -->
+<!-- start DynamicDraw object [5], type : FDOJ_POLY -->
+<line x1='120.470630' y1='10.470630' x2='120.470630' y2='20.470630' style='fill:none; stroke:black; stroke-width:0.500000'/>
+<!-- end DynamicDraw object [5], type : FDOJ_POLY -->
+<!-- start DynamicDraw object [6], type : FDOJ_POLY -->
+<polyline points='3.186431,15.470630 3.627550,15.470630 17.313448,15.470630 17.754603,15.470630 ' style='fill:none; stroke:black; stroke-width:0.500000'/>
+<g style='stroke-linecap:square;stroke-linejoin:miter'><!-- group tag for arrow -->
+<polyline points='3.186431,15.720630 4.136431,17.303963 0.469765,15.470630 4.136431,13.637296 3.186431,15.220630 ' style='fill:black; stroke:black; stroke-width:0.000000'/>
+<polyline points='17.754603,15.220630 16.804603,13.637296 20.471270,15.470630 16.804603,17.303963 17.754603,15.720630 ' style='fill:black; stroke:black; stroke-width:0.000000'/>
+</g><!-- group tag for arrow -->
+<!-- end DynamicDraw object [6], type : FDOJ_POLY -->
+<!-- start DynamicDraw object [7], type : FDOJ_POLY -->
+<polyline points='23.186589,15.470630 23.627733,15.470630 57.311904,15.470630 57.753275,15.470630 ' style='fill:none; stroke:black; stroke-width:0.500000'/>
+<g style='stroke-linecap:square;stroke-linejoin:miter'><!-- group tag for arrow -->
+<polyline points='23.186589,15.720630 24.136589,17.303963 20.469922,15.470630 24.136589,13.637296 23.186589,15.220630 ' style='fill:black; stroke:black; stroke-width:0.000000'/>
+<polyline points='57.753275,15.220630 56.803275,13.637296 60.469942,15.470630 56.803275,17.303963 57.753275,15.720630 ' style='fill:black; stroke:black; stroke-width:0.000000'/>
+</g><!-- group tag for arrow -->
+<!-- end DynamicDraw object [7], type : FDOJ_POLY -->
+<!-- start DynamicDraw object [8], type : FDOJ_POLY -->
+<polyline points='63.185721,15.470630 63.626725,15.470630 117.311055,15.470630 117.752545,15.470630 ' style='fill:none; stroke:black; stroke-width:0.500000'/>
+<g style='stroke-linecap:square;stroke-linejoin:miter'><!-- group tag for arrow -->
+<polyline points='63.185721,15.720630 64.135721,17.303963 60.469054,15.470630 64.135721,13.637296 63.185721,15.220630 ' style='fill:black; stroke:black; stroke-width:0.000000'/>
+<polyline points='117.752545,15.220630 116.802545,13.637296 120.469212,15.470630 116.802545,17.303963 117.752545,15.720630 ' style='fill:black; stroke:black; stroke-width:0.000000'/>
+</g><!-- group tag for arrow -->
+<!-- end DynamicDraw object [8], type : FDOJ_POLY -->
+<!-- start DynamicDraw object [9], type : FDOJ_RECT -->
+<rect x='0.470630' y='40.470630' width='60.000000' height='10.000000' style='fill:white; stroke:black; stroke-width:0.500000'/>
+<text style='font-size:3.175000px'><tspan style='font-size:3.175000px;font-family:"Consolas";font-weight:400'><tspan style='fill:black'><tspan x='1.470630' y='44.672746'>union { int a;     </tspan><tspan style='font-size:3.175000px;font-family:"Consolas";font-weight:400'><tspan style='fill:black'><tspan x='1.470630' y='48.393449'>        long b; char[] c; } </tspan></tspan>
+</tspan>
+</tspan>
+</tspan>
+</text>
+<!-- end DynamicDraw object [9], type : FDOJ_RECT -->
+<!-- start DynamicDraw object [10], type : FDOJ_POLY -->
+<line x1='0.470630' y1='50.470630' x2='0.470630' y2='80.470630' style='fill:none; stroke:black; stroke-width:0.500000'/>
+<!-- end DynamicDraw object [10], type : FDOJ_POLY -->
+<!-- start DynamicDraw object [11], type : FDOJ_POLY -->
+<line x1='20.470630' y1='72.970630' x2='20.470630' y2='80.470630' style='fill:none; stroke:black; stroke-width:0.500000; stroke-dasharray:1.000,2.000,1.000,2.000'/>
+<!-- end DynamicDraw object [11], type : FDOJ_POLY -->
+<!-- start DynamicDraw object [12], type : FDOJ_POLY -->
+<line x1='0.470630' y1='50.470630' x2='0.470630' y2='60.470630' style='fill:none; stroke:black; stroke-width:0.500000'/>
+<!-- end DynamicDraw object [12], type : FDOJ_POLY -->
+<!-- start DynamicDraw object [13], type : FDOJ_POLY -->
+<line x1='60.470630' y1='50.470630' x2='60.470630' y2='60.470630' style='fill:none; stroke:black; stroke-width:0.500000'/>
+<!-- end DynamicDraw object [13], type : FDOJ_POLY -->
+<!-- start DynamicDraw object [14], type : FDOJ_POLY -->
+<polyline points='3.185721,55.470630 3.626725,55.470630 57.311055,55.470630 57.752545,55.470630 ' style='fill:none; stroke:black; stroke-width:0.500000'/>
+<g style='stroke-linecap:square;stroke-linejoin:miter'><!-- group tag for arrow -->
+<polyline points='3.185721,55.720630 4.135721,57.303963 0.469054,55.470630 4.135721,53.637296 3.185721,55.220630 ' style='fill:black; stroke:black; stroke-width:0.000000'/>
+<polyline points='57.752545,55.220630 56.802545,53.637296 60.469212,55.470630 56.802545,57.303963 57.752545,55.720630 ' style='fill:black; stroke:black; stroke-width:0.000000'/>
+</g><!-- group tag for arrow -->
+<!-- end DynamicDraw object [14], type : FDOJ_POLY -->
+<!-- start DynamicDraw object [15], type : FDOJ_POLY -->
+<polyline points='3.186589,65.470630 3.627733,65.470630 37.311904,65.470630 37.753275,65.470630 ' style='fill:none; stroke:black; stroke-width:0.500000'/>
+<g style='stroke-linecap:square;stroke-linejoin:miter'><!-- group tag for arrow -->
+<polyline points='3.186589,65.720630 4.136589,67.303963 0.469922,65.470630 4.136589,63.637296 3.186589,65.220630 ' style='fill:black; stroke:black; stroke-width:0.000000'/>
+<polyline points='37.753275,65.220630 36.803275,63.637296 40.469942,65.470630 36.803275,67.303963 37.753275,65.720630 ' style='fill:black; stroke:black; stroke-width:0.000000'/>
+</g><!-- group tag for arrow -->
+<!-- end DynamicDraw object [15], type : FDOJ_POLY -->
+<!-- start DynamicDraw object [16], type : FDOJ_POLY -->
+<line x1='40.470630' y1='50.470630' x2='40.470630' y2='55.470630' style='fill:none; stroke:black; stroke-width:0.500000; stroke-dasharray:1.000,2.000,1.000,2.000'/>
+<!-- end DynamicDraw object [16], type : FDOJ_POLY -->
+<!-- start DynamicDraw object [17], type : FDOJ_POLY -->
+<polyline points='3.186431,75.470630 3.627550,75.470630 17.313448,75.470630 17.754603,75.470630 ' style='fill:none; stroke:black; stroke-width:0.500000'/>
+<g style='stroke-linecap:square;stroke-linejoin:miter'><!-- group tag for arrow -->
+<polyline points='3.186431,75.720630 4.136431,77.303963 0.469765,75.470630 4.136431,73.637296 3.186431,75.220630 ' style='fill:black; stroke:black; stroke-width:0.000000'/>
+<polyline points='17.754603,75.220630 16.804603,73.637296 20.471270,75.470630 16.804603,77.303963 17.754603,75.720630 ' style='fill:black; stroke:black; stroke-width:0.000000'/>
+</g><!-- group tag for arrow -->
+<!-- end DynamicDraw object [17], type : FDOJ_POLY -->
+<!-- start DynamicDraw object [18], type : FDOJ_RECT -->
+<rect x='0.470630' y='15.470630' width='20.000000' height='7.500000' style='fill:none; stroke:black; stroke-width:0.000000'/>
+<text style='font-size:4.233333px'><tspan style='font-size:4.233333px;font-family:"Courier New";font-weight:400'><tspan style='fill:black'><tspan x='3.514982' y='20.347176'>int a;</tspan></tspan>
+</tspan>
+</text>
+<!-- end DynamicDraw object [18], type : FDOJ_RECT -->
+<!-- start DynamicDraw object [19], type : FDOJ_RECT -->
+<rect x='20.470630' y='15.470630' width='40.000000' height='7.500000' style='fill:none; stroke:black; stroke-width:0.000000'/>
+<text style='font-size:4.233333px'><tspan style='font-size:4.233333px;font-family:"Courier New";font-weight:400'><tspan style='fill:black'><tspan x='32.239608' y='20.347176'>long b;</tspan></tspan>
+</tspan>
+</text>
+<!-- end DynamicDraw object [19], type : FDOJ_RECT -->
+<!-- start DynamicDraw object [20], type : FDOJ_RECT -->
+<rect x='60.470630' y='15.470630' width='60.000000' height='7.500000' style='fill:none; stroke:black; stroke-width:0.000000'/>
+<text style='font-size:4.233333px'><tspan style='font-size:4.233333px;font-family:"Courier New";font-weight:400'><tspan style='fill:black'><tspan x='79.680590' y='20.347176'>char[] c;</tspan></tspan>
+</tspan>
+</text>
+<!-- end DynamicDraw object [20], type : FDOJ_RECT -->
+<!-- start DynamicDraw object [21], type : FDOJ_RECT -->
+<rect x='0.470630' y='75.470630' width='20.000000' height='7.500000' style='fill:none; stroke:black; stroke-width:0.000000'/>
+<text style='font-size:4.233333px'><tspan style='font-size:4.233333px;font-family:"Courier New";font-weight:400'><tspan style='fill:black'><tspan x='3.514982' y='80.347176'>int a;</tspan></tspan>
+</tspan>
+</text>
+<!-- end DynamicDraw object [21], type : FDOJ_RECT -->
+<!-- start DynamicDraw object [22], type : FDOJ_RECT -->
+<rect x='0.470630' y='65.470630' width='40.000000' height='7.500000' style='fill:none; stroke:black; stroke-width:0.000000'/>
+<text style='font-size:4.233333px'><tspan style='font-size:4.233333px;font-family:"Courier New";font-weight:400'><tspan style='fill:black'><tspan x='12.239608' y='70.347176'>long b;</tspan></tspan>
+</tspan>
+</text>
+<!-- end DynamicDraw object [22], type : FDOJ_RECT -->
+<!-- start DynamicDraw object [23], type : FDOJ_RECT -->
+<rect x='0.470630' y='55.470630' width='60.000000' height='7.500000' style='fill:none; stroke:black; stroke-width:0.000000'/>
+<text style='font-size:4.233333px'><tspan style='font-size:4.233333px;font-family:"Courier New";font-weight:400'><tspan style='fill:black'><tspan x='19.680590' y='60.347176'>char[] c;</tspan></tspan>
+</tspan>
+</text>
+<!-- end DynamicDraw object [23], type : FDOJ_RECT -->
+<!-- start DynamicDraw object [24], type : FDOJ_POLY -->
+<line x1='20.470630' y1='50.470630' x2='20.470630' y2='55.470630' style='fill:none; stroke:black; stroke-width:0.500000; stroke-dasharray:1.000,2.000,1.000,2.000'/>
+<!-- end DynamicDraw object [24], type : FDOJ_POLY -->
+<!-- start DynamicDraw object [25], type : FDOJ_POLY -->
+<line x1='40.470630' y1='62.970630' x2='40.470630' y2='70.470630' style='fill:none; stroke:black; stroke-width:0.500000; stroke-dasharray:1.000,2.000,1.000,2.000'/>
+<!-- end DynamicDraw object [25], type : FDOJ_POLY -->
+</g><!-- stroke-linecap, etc -->
+</svg>
