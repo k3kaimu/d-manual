@@ -11,7 +11,7 @@
 共用体と構造体のメモリ上でのメンバの配置は次のようになります。
 構造体はメンバそれぞれに領域が割り当てられるのに対して、共用体ではすべてのメンバで領域を共有します。
 
-![union memory](img/union_memory.svg)
+![union memory](https://rawgithub.com/k3kaimu/d-manual/add_union/img/union_memory.svg)
 
 たとえば、`int`型と`string`型から成る共用体型の値には、`int`型の値も格納可能ですし、`string`型の値も格納可能です。
 メンバは互いにメモリを共有しているため、あるメンバへ書き込みを行えば他のメンバの値を破壊します。
