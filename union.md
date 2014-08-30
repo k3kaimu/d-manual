@@ -33,7 +33,6 @@ void main()
     writeln(ios.str);       // 123
 
     writeln(ios.n);         // ???
-    // ↑でどんな値が表示されるか環境依存
 }
 ~~~~~
 
