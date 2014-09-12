@@ -1,4 +1,14 @@
-# 構造体
+---
+layout: post
+title:  "15 構造体"
+date:   2014-04-08 00:00:00
+categories: dmanual
+tags: dmanual
+---
+
+{{ **注意** このページを含むd-manualの全記事は[専用ページ](https://k3kaimu.github.io/dmanual/)へ移行しました。今後は専用ページでご覧ください。}}
+
+{% tree %}
 
 ## ユーザー定義型
 
@@ -18,7 +28,7 @@
 長方形は長方形の位置`float x, y`と長方形の大きさ`float width, height`で表せます。
 では、複数の長方形をプログラム上で表すにはどうしましょうか？
 
-~~~~{.d .numberLines .compilableCheck .inMain}
+~~~~d
 float[] xs, ys, ws, hs;
 // もしくは
 // float[4][] rects;
@@ -36,7 +46,7 @@ float[] xs, ys, ws, hs;
 構造体とは、複数のデータを一つにまとめたものを表すユーザー定義型です。
 たとえば、長方形を表す`Rectangle`型は次のように定義します。
 
-~~~~{.d .numberLines .compilableCheck srcNameAsString="def_rectangle"}
+~~~~d
 struct Rectangle
 {
     float x, y;
@@ -48,7 +58,7 @@ struct Rectangle
 `Rectangle`の内部に定義してある`x, y, width, height`をメンバ変数もしくはフィールドといいます。
 構造体のメンバ変数へは次のようにメンバ変数名を用いてアクセス可能です。
 
-~~~~{.d .numberLines .compilableCheck with="def_rectangle" .inMain}
+~~~~d
 Rectangle rect; // Rectangle型の変数rectを宣言
 
 rect.x = 5.5;   // xに5.5を代入
@@ -65,7 +75,7 @@ Rectangle rect2 = {x : 1, width : 3, y : 4, height : 2};
 今回の`Rectangle`のデフォルト初期化値は、それぞれのメンバ変数のデフォルト初期化値になりますが、
 次のように`Rectangle`を定義することでデフォルト初期化値を変更できます。
 
-~~~~{.d .numberLines .compilableCheck}
+~~~~d
 struct Rectangle
 {
     float x;
@@ -79,7 +89,7 @@ struct Rectangle
 
 最初に例として提示した`Rectangle`の配列は、当然ですが型は`Rectangle[]`となり、`int[]`などと同様に使用可能です。
 
-~~~~{.d .numberLines .compilableCheck with="def_rectangle" .inMain}
+~~~~d
 Rectangle[] rects;
 
 rects ~= Rectangle(1, 1, 2, 2);
@@ -118,7 +128,7 @@ writeln(rects);
 
 たとえば、長方形`Rectangle`を`(dx, dy)`だけ平行移動する関数`translate`は次のように書けます。
 
-~~~~{.d .numberLines .compilableCheck with="def_rectangle"}
+~~~~d
 void translate(ref Rectangle rect, float dx, float dy)
 {
     rect.x += dx;
@@ -143,7 +153,7 @@ void foo()
 `this`は`ref Rectangle`な引数だと考えることが出来ます。
 `this`に対して`const`や`immutable`、さらには`inout`などを付加させたい場合はメンバ関数の属性にそれらを付加させます。
 
-~~~~{.d .numberLines .compileCheck}
+~~~~d
 struct Rectangle
 {
     float x;
@@ -236,7 +246,7 @@ void main()
 確かに、UFCSを使えばメンバ関数でなくても`rect.translate(dx, dy)`のように呼び出せます。
 しかし、たとえばモジュールを跨いだコードでは上手く動きません。
 
-~~~~{.d .numberLines group="ufcs_typeclass_example" module="foo"}
+~~~~d
 module foo;
 
 auto ref callTranslate(T)(auto ref T t, float dx, float dy)
@@ -245,7 +255,7 @@ auto ref callTranslate(T)(auto ref T t, float dx, float dy)
 }
 ~~~~~
 
-~~~~{.d .numberLines group="ufcs_typeclass_example" module="rectangle" .checkUnCompilable}
+~~~~d
 module rectangle;
 
 import foo;
@@ -294,7 +304,7 @@ rectangle.d(23): Error: template instance foo.callTranslate!(Rectangle) error in
 
 ちなみに、メンバ変数については特別な理由がない限り`private`にしておくとよいでしょう。
 
-~~~~{.d .numberLines .checkCompilable}
+~~~~d
 struct Rectangle
 {
     /// いろいろな実装
@@ -324,7 +334,7 @@ struct Rectangle
 まず、メンバ関数として外部に公開するので、データ構造に変更を加えても何とかできる可能性が高くなります。
 また、メンバ変数へ代入される値を引数として取得できますから、不正な値が設定されないか監視できます。
 
-~~~~{.d .numberLines .checkCompilable}
+~~~~d
 struct Rectangle
 {
   @property
@@ -393,7 +403,7 @@ void main()
 そのために、コンストラクタ(constructor, ctor)という専用の関数が存在します。
 コンストラクタはその型の値を作成するための関数で、`this(...){...}`のように宣言します。
 
-~~~~{.d .numberLines .checkCompilable}
+~~~~d
 struct Rectangle
 {
     // コンストラクタの例
@@ -440,14 +450,14 @@ Dの構造体はただのデータの集合体ですから、デフォルトで�
 
 ある`S`型構造体の変数`v1`を使って、次のように`v2`を定義した場合にもデフォルトではメモリのコピーしか起こりません。
 
-~~~~{.d .numberLines}
+~~~~d
 S v2 = v1;
 ~~~~~
 
 しかし、`S`型構造体にPostblitが定義されていた場合、メモリのコピー後にv2のPostblitが呼ばれます。
 Postblitは次のように定義します。
 
-~~~~{.d .numberLines}
+~~~~d
 struct S
 {
     // postblitコンストラクタの定義
@@ -464,7 +474,7 @@ Postblitが呼ばれるタイミングは、`S`型の値がコピーされた後
 「値がコピーされた後」という表現はかなり曖昧ですが、つまりは「複製された直後」ということです。
 いつコピーされる(値が複製される)かどうかはコンパイラの最適化(NRVO)等に影響されます。
 
-~~~~{.d .numberLines .checkCompilable}
+~~~~d
 import std.stdio;
 
 struct S
@@ -518,7 +528,7 @@ C++などの他の言語ではコピーコンストラクタというものが�
 つまり、構造体の値が破棄されるときに呼ばれる特殊なメンバ関数みたいなもの、ということです。
 デストラクタの主な役割は、コンストラクタとかPostblitで確保したリソース(メモリとか)の解放です。
 
-~~~~{.d .numberLines}
+~~~~d
 void main()
 {
     {
@@ -538,7 +548,7 @@ GCを使わないので、DのGCヒープからメモリを確保しません。
 
 このように、コンストラクタとデストラクタを上手く使ってリソースを管理する手法をRAIIといいます。
 
-~~~~{.d .numberLines .checkCompilable}
+~~~~d
 import core.stdc.stdlib : malloc, free;     // Cライブラリを使う
 import core.exception : OutOfMemoryError;
 import std.exception : enforceEx;
@@ -646,7 +656,7 @@ void main()
 静的メンバ関数内では、通常のメンバ関数で使用できていた`this`が使用できなくなります。
 また、静的でないメンバを関数内で操作, 呼び出しできません。
 
-~~~~{.d .numberLines .checkCompilable}
+~~~~d
 struct S{
     struct SS{
     }
@@ -700,7 +710,7 @@ void main()
 
 たとえば、`int`型のように振る舞うものの、非負の整数しか許さない整数型は次のように実装できます。
 
-~~~~{.d .numberLines .checkCompilable}
+~~~~d
 struct LimitedInt
 {
     // getter

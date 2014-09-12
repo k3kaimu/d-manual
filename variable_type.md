@@ -1,4 +1,14 @@
-# 変数と型
+---
+layout: post
+title:  "02 変数と型"
+date:   2013-5-11 00:00:00
+categories: dmanual
+tags: dmanual
+---
+
+{{ **注意** このページを含むd-manualの全記事は[専用ページ](https://k3kaimu.github.io/dmanual/)へ移行しました。今後は専用ページでご覧ください。}}
+
+{% tree %}
 
 ## 式(Expression)と文(Statement)とは？
 
@@ -588,7 +598,7 @@ pragma(msg, typeof(e)); // immutable(int)
 ~~~~
 
 
-## 問題 -> [解答](answer.md#variable_type)
+## 問題 -> [解答]({{ site.baseurl }}/dmanual/answer#variable_type)
 
 * ビッグエンディアンとリトルエンディアンについて調べてみましょう。
 

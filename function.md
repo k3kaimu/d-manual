@@ -1,4 +1,14 @@
-# 関数
+---
+layout: post
+title:  "11 関数"
+date:   2013-8-23 00:00:00
+categories: dmanual
+tags: dmanual
+---
+
+{{ **注意** このページを含むd-manualの全記事は[専用ページ](https://k3kaimu.github.io/dmanual/)へ移行しました。今後は専用ページでご覧ください。}}
+
+{% tree %}
 
 ## 関数とは？
 
@@ -1873,7 +1883,7 @@ void main()
 
 ## 問題
 
-[解答](answer.md#function)
+[解答]({{ site.baseurl }}/dmanual/answer#function)
 
 + <a name = "Q1">問題1 「readIntを実装しよう」</a>  
 

@@ -1,4 +1,14 @@
-# D言語入門-Hello, World!
+---
+layout: post
+title:  "01 D言語入門-Hello, World!"
+date:   2013-5-6 00:00:00
+categories: dmanual
+tags: dmanual
+---
+
+{{ **注意** このページを含むd-manualの全記事は[専用ページ](https://k3kaimu.github.io/dmanual/)へ移行しました。今後は専用ページでご覧ください。}}
+
+{% tree %}
 
 ## Hello, world!---その前に
 
@@ -395,7 +405,7 @@ void main()
 // １行コメント
 ````
 
-## 問題 -> [解答](answer.md#hello_world)
+## 問題 -> [解答]({{ site.baseurl }}/dmanual/answer#hello_world)
 
 * 次のソースコードの`<a>`と`<b>`の部分に適切なものを入れて、`Hello, World!`と表示するプログラムを作ってください。  
 

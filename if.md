@@ -1,5 +1,14 @@
-# 条件分岐
+---
+layout: post
+title:  "04 条件分岐"
+date:   2013-5-25 00:00:00
+categories: dmanual
+tags: dmanual
+---
 
+{{ **注意** このページを含むd-manualの全記事は[専用ページ](https://k3kaimu.github.io/dmanual/)へ移行しました。今後は専用ページでご覧ください。}}
+
+{% tree %}
 
 ## 文のいろいろ
 
@@ -269,7 +278,7 @@ if((isA && isB) || isC)
 ~~~~
 
 
-## 問題 -> [解答](answer.md#if)
+## 問題 -> [解答]({{ site.baseurl }}/dmanual/answer#if)
 
 * まずは次のコードの実行結果を予想してみてください。その後実行してみて、予想と違うなら理由を考えてください。
 

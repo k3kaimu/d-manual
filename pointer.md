@@ -1,4 +1,14 @@
-# ポインタ
+---
+layout: post
+title:  "10 ポインタ"
+date:   2013-7-17 00:00:00
+categories: dmanual
+tags: dmanual
+---
+
+{{ **注意** このページを含むd-manualの全記事は[専用ページ](https://k3kaimu.github.io/dmanual/)へ移行しました。今後は専用ページでご覧ください。}}
+
+{% tree %}
 
 ## ポインタとは(復習)
 

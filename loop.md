@@ -1,4 +1,16 @@
-# 反復処理
+---
+layout: post
+title:  "05 反復処理"
+date:   2013-5-26 00:00:00
+categories: dmanual
+tags: dmanual
+---
+
+{{ **注意** このページを含むd-manualの全記事は[専用ページ](https://k3kaimu.github.io/dmanual/)へ移行しました。今後は専用ページでご覧ください。}}
+
+{% tree %}
+
+## ループとは？
 
 反復処理(ループ)というのは、作業の繰り返しのことです。
 プログラムでのループは、「決まった状態になるまで続ける」という処理を記述します。
@@ -495,7 +507,7 @@ void main()
 ~~~~
 
 
-## 問題 -> [解答](answer.md#loop)
+## 問題 -> [解答]({{ site.baseurl }}/dmanual/answer#loop)
 
 * `test00601.d`で、`writeln(n);`でなくて`writeln(n-1);`となっている理由は？
 

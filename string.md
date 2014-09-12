@@ -1,4 +1,16 @@
-# 文字列
+---
+layout: post
+title:  "08 文字列"
+date:   2013-6-16 00:00:00
+categories: dmanual
+tags: dmanual
+---
+
+{{ **注意** このページを含むd-manualの全記事は[専用ページ](https://k3kaimu.github.io/dmanual/)へ移行しました。今後は専用ページでご覧ください。}}
+
+{% tree %}
+
+## 文字と文字列とは？
 
 文字とは`'a'`とか`'@'`のことです。この文字が連なり文字列となります。
 配列が操れるあなたにとってD言語の文字列操作はすごく簡単です。
@@ -473,7 +485,7 @@ Phobosは素晴らしい機能がたくさん搭載された標準ライブラ�
 
 ## 問題
 
-[解答](answer.md#string)
+[解答]({{ site.baseurl }}/dmanual/answer#string)
 
 * ***問題1***
 

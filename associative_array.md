@@ -1,4 +1,6 @@
-# 連想配列
+
+
+{{ **注意** このページを含むd-manualの全記事は[専用ページ](https://k3kaimu.github.io/dmanual/)へ移行しました。今後は上記の専用ページでご覧ください。}}
 
 ## 連想配列(Associative Array)とは？
 

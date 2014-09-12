@@ -1,4 +1,14 @@
-# 共用体
+---
+layout: post
+title:  "16 共用体"
+date:   2014-08-31 00:00:00
+categories: dmanual
+tags: dmanual
+---
+
+{{ **注意** このページを含むd-manualの全記事は[専用ページ](https://k3kaimu.github.io/dmanual/)へ移行しました。今後は専用ページでご覧ください。}}
+
+{% tree %}
 
 ## 共用体とは？
 
@@ -11,7 +21,7 @@
 共用体と構造体のメモリ上でのメンバの配置は次のようになります。
 構造体はメンバそれぞれに領域が割り当てられるのに対して、共用体ではすべてのメンバで領域を共有します。
 
-![union memory](https://rawgithub.com/k3kaimu/d-manual/master/img/union_memory.svg)
+![union memory]({{ site.baseurl }}/assets/img/union_memory.svg)
 
 たとえば、`int`型と`string`型から成る共用体型の値には、`int`型の値も格納可能ですし、`string`型の値も格納可能です。
 メンバは互いにメモリを共有しているため、あるメンバへ書き込みを行えば他のメンバの値を破壊します。

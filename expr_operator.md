@@ -1,4 +1,14 @@
-# 式と演算子
+---
+layout: post
+title:  "03 式と演算子"
+date:   2013-5-18 00:00:00
+categories: dmanual
+tags: dmanual
+---
+
+{{ **注意** このページを含むd-manualの全記事は[専用ページ](https://k3kaimu.github.io/dmanual/)へ移行しました。今後は専用ページでご覧ください。}}
+
+{% tree %}
 
 ## 式と演算子
 
@@ -663,7 +673,7 @@ a, b        14                      →
 ~~~~
 
 
-## 問題 -> [解答](answer.md#expr_operator)
+## 問題 -> [解答]({{ site.baseurl }}/dmanual/answer#expr_operator)
 
 * シフト演算子の`>>`が、符号を維持できる理由は？  
     ヒント: 2の補数でGoogleで検索

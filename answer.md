@@ -1,4 +1,12 @@
-# 問題の回答
+---
+layout: post
+title:  "問題の解答"
+date:   2014-9-2 17:45:00
+categories: dmanual
+tags: dmanual
+---
+
+{{ **注意** このページを含むd-manualの全記事は[専用ページ](https://k3kaimu.github.io/dmanual/)へ移行しました。今後は上記の専用ページでご覧ください。}}
 
 ## <a name="hello_world">D言語入門-Hello, World</a>
 

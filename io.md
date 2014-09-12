@@ -1,4 +1,14 @@
-# ファイルと標準入出力
+---
+layout: post
+title:  "13 ファイルと標準入出力"
+date:   2013-11-16 00:00:00
+categories: dmanual
+tags: dmanual
+---
+
+{{ **注意** このページを含むd-manualの全記事は[専用ページ](https://k3kaimu.github.io/dmanual/)へ移行しました。今後は専用ページでご覧ください。}}
+
+{% tree %}
 
 ## ファイル出力
 
@@ -360,7 +370,7 @@ void main()
 
 ## 問題
 
-[解答](answer.md#main_io)
+[解答]({{ site.baseurl }}/dmanual/answer#main_io)
 
 * 問題1
 

@@ -1,8 +1,16 @@
-# main関数
+---
+layout: post
+title:  "12 main関数"
+date:   2013-11-16 00:00:00
+categories: dmanual
+tags: dmanual
+---
 
-この章では、今まで散々書いてきたmain関数について解説していきます。
+{{ **注意** このページを含むd-manualの全記事は[専用ページ](https://k3kaimu.github.io/dmanual/)へ移行しました。今後は専用ページでご覧ください。}}
 
-## シグネチャ
+{% tree %}
+
+## `main`関数のシグネチャ
 
 関数名, 関数の戻り値型, 関数が取る引数の型リストの3つをまとめてシグネチャ(signature)といいます。
 今まで書いてきたmain関数のシグネチャは`void main();`だけですが、実際には以下のバリエーションがあります。
