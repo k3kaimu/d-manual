@@ -1,6 +1,14 @@
-
+---
+layout: post
+title:  "09 連想配列"
+date:   2013-7-7 00:00:00
+categories: dmanual
+tags: dmanual
+---
 
 {{ **注意** このページを含むd-manualの全記事は[専用ページ](https://k3kaimu.github.io/dmanual/)へ移行しました。今後は上記の専用ページでご覧ください。}}
+
+{% tree %}
 
 ## 連想配列(Associative Array)とは？
 
@@ -460,7 +468,7 @@ $ rdmd test
 ~~~~
 
 
-## 問題 -> [解答](answer.md#associative_array)
+## 問題 -> [解答]({{ site.baseurl }}/dmanual/answer#associative_array)
 
 * 問題1  
 

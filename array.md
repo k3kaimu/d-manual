@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "09 連想配列"
-date:   2013-7-7 00:00:00
+title:  "07 配列"
+date:   2013-6-23 00:00:00
 categories: dmanual
 tags: dmanual
 ---
