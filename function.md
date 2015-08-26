@@ -1643,7 +1643,7 @@ Error: cannot implicitly convert expression (&accumImpl) of type int delegate(in
 <small>(このようなデリゲートをクロージャ(closure)と呼びます。)</small>
 
 `accum`を2回呼び出し、その2つの返り値のデリゲートが持っているスタックポインタを比較すると、それらは異なります。
-つまり、`accum`の環境(スタック)の複製をデリゲートは持ちます。
+なぜなら、デリゲートは`accum`の環境を独自に持ちます。
 このような性質により、`accum`を何回呼び出したとしてもメモリがある限り、返されるデリゲートは独立します。
 
 「`A`型を受け取り、`B`型を返すデリゲート」の型は`B delegate(A)`となります。
