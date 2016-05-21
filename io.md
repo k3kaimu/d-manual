@@ -363,7 +363,7 @@ void main()
                   .chomp()      // 末尾の改行を消して
                   .to!int();    // intに変換
 
-    writeln("Sum of the numbers you entered is %s.", n + m);
+    writefln("Sum of the numbers you entered is %s.", n + m);
 }
 ~~~~
 
